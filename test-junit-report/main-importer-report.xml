@@ -1,20 +1,20 @@
-<testsuites id="" name="" tests="6" failures="0" skipped="0" errors="0" time="53.64442699999999">
-<testsuite name="example.spec.ts" timestamp="2025-03-06T23:57:20.939Z" hostname="chromium" tests="2" failures="0" skipped="0" time="5.624" errors="0">
-<testcase name="has title" classname="example.spec.ts" time="2.131">
+<testsuites id="" name="" tests="6" failures="0" skipped="0" errors="0" time="61.193464999999996">
+<testsuite name="example.spec.ts" timestamp="2025-03-07T02:56:12.991Z" hostname="chromium" tests="2" failures="0" skipped="0" time="10.493" errors="0">
+<testcase name="has title" classname="example.spec.ts" time="8.306">
 </testcase>
-<testcase name="get started link" classname="example.spec.ts" time="3.493">
-</testcase>
-</testsuite>
-<testsuite name="example.spec.ts" timestamp="2025-03-06T23:57:20.939Z" hostname="firefox" tests="2" failures="0" skipped="0" time="11.172" errors="0">
-<testcase name="has title" classname="example.spec.ts" time="7.701">
-</testcase>
-<testcase name="get started link" classname="example.spec.ts" time="3.471">
+<testcase name="get started link" classname="example.spec.ts" time="2.187">
 </testcase>
 </testsuite>
-<testsuite name="example.spec.ts" timestamp="2025-03-06T23:57:20.939Z" hostname="webkit" tests="2" failures="0" skipped="0" time="6.499" errors="0">
-<testcase name="has title" classname="example.spec.ts" time="3.576">
+<testsuite name="example.spec.ts" timestamp="2025-03-07T02:56:12.991Z" hostname="firefox" tests="2" failures="0" skipped="0" time="20.721" errors="0">
+<testcase name="has title" classname="example.spec.ts" time="17.698">
 </testcase>
-<testcase name="get started link" classname="example.spec.ts" time="2.923">
+<testcase name="get started link" classname="example.spec.ts" time="3.023">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-03-07T02:56:12.991Z" hostname="webkit" tests="2" failures="0" skipped="0" time="8.409" errors="0">
+<testcase name="has title" classname="example.spec.ts" time="5.501">
+</testcase>
+<testcase name="get started link" classname="example.spec.ts" time="2.908">
 </testcase>
 </testsuite>
 </testsuites>
