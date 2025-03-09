@@ -1,5 +1,6 @@
 import { type Page, type Locator, expect } from '@playwright/test';
 
+
 export class EmployeePage {
     readonly page: Page;
     readonly addEmployeeBtn: Locator;
@@ -23,7 +24,7 @@ export class EmployeePage {
         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
         await this.addEmployeeBtn.click();
         await this.page.waitForLoadState('domcontentloaded');
-        await expect(this.page.url()).toContain('pim/addEmployee');
+        await expect(this.page).toHaveURL(/pim\/addEmployee/);
     }
 
     /*getCredentials() {
@@ -43,18 +44,31 @@ export class EmployeePage {
     }
 
     async saveClick() {
-    await this.saveBtn.click();
+        await this.saveBtn.click();
     }
 
-    async checkEmployeeIsAdded(firstName: string, lastName: string, employeeID: string) {
-        const firstNameRow = this.page.locator("(//div[contains(@class,'oxd-table-header-cell oxd-padding-cell')])[3]");
-        const lastNameRow = this.page.locator("//div[text()='Last Name']");
-        const employeeIDRow = this.page.locator("//div[text()='Id']");
+    async checkEmployeeIsAdded(firstName: string, lastName: string, employeeID: string): Promise<boolean> {
+        // Navegar a la lista de empleados
+        await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
+        await this.page.waitForLoadState('domcontentloaded');
 
+        // Buscar la fila del empleado usando el ID
+        const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${employeeID}")`);
 
-        await expect(firstNameRow).toHaveText(firstName);
-        await expect(lastNameRow).toHaveText(lastName);
-        await expect(employeeIDRow).toHaveText(employeeID);
-    
+        const isRowVisible = await employeeRow.isVisible();
+        if (!isRowVisible) {
+            return false; // Retorna false si la fila no está visible
+        }
+        const rowText = await employeeRow.textContent();
+
+        // Verificar si el texto de la fila contiene el nombre, apellido e ID
+        const containsFirstName = rowText?.includes(firstName) || false;
+        const containsLastName = rowText?.includes(lastName) || false;
+        const containsEmployeeID = rowText?.includes(employeeID) || false;
+
+        // Verificar todas las condiciones juntas
+        const isEmployeeAdded = isRowVisible && containsFirstName && containsLastName && containsEmployeeID;
+
+        return isEmployeeAdded;
     }
 }

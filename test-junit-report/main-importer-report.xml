@@ -1,34 +1,6 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="26.917468">
-<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-03-09T09:02:22.007Z" hostname="chromium" tests="1" failures="1" skipped="0" time="15.023" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee.spec.ts" time="15.023">
-<failure message="add-employee.spec.ts:6:9 Validar agregar un empleado exitosamente" type="FAILURE">
-<![CDATA[  [chromium] › e2e\employees\add-employee.spec.ts:6:9 › [US02] Gestión de empleados | Agregar nuevos empleados › Validar agregar un empleado exitosamente 
-
-    Error: Timed out 5000ms waiting for expect(locator).toHaveText(expected)
-
-    Locator: locator('xpath=(//div[contains(@class,\'oxd-table-header-cell oxd-padding-cell\')])[3]')
-    Expected string: "First"
-    Received: <element(s) not found>
-    Call log:
-      - expect.toHaveText with timeout 5000ms
-      - waiting for locator('xpath=(//div[contains(@class,\'oxd-table-header-cell oxd-padding-cell\')])[3]')
-        - waiting for" https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/182" navigation to finish...
-        - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/182"
-
-
-       at ..\pageobjectsmodels\EmployeePage.ts:55
-
-      53 |
-      54 |
-    > 55 |         await expect(firstNameRow).toHaveText('First');
-         |                                    ^
-      56 |         await expect(lastNameRow).toHaveText('Last');
-      57 |         await expect(employeeIDRow).toHaveText('id');
-      58 |     
-        at EmployeePage.checkEmployeeIsAdded (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\EmployeePage.ts:55:36)
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:12:28
-]]>
-</failure>
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="11.295968">
+<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-03-09T15:03:36.560Z" hostname="chromium" tests="1" failures="0" skipped="0" time="9.202" errors="0">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee.spec.ts" time="9.202">
 </testcase>
 </testsuite>
 </testsuites>
