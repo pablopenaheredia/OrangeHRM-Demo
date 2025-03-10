@@ -69,4 +69,24 @@ export class EmployeePage {
         const isEmployeeAdded = isRowVisible && containsFirstName && containsLastName && containsEmployeeID;
         return isEmployeeAdded;
     }
+
+    async isUniqueID(id: string): Promise<boolean> {
+        await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
+        await this.page.waitForLoadState('domcontentloaded');
+
+        const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${id}")`);
+
+        const isRowVisible = await employeeRow.isVisible();
+        return !isRowVisible;
+    }
+    
+    async generateUniqueID(): Promise<string> {
+        let uniqueID: string = '';
+        let isUnique: boolean = false;
+        while (!isUnique) {
+            uniqueID = Math.floor(Math.random() * (1000 - 1 + 1) + 1).toString();
+            isUnique = await this.isUniqueID(uniqueID);
+        }
+        return uniqueID;
+    }
 }
