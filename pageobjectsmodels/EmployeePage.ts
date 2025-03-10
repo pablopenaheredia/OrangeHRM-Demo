@@ -47,27 +47,29 @@ export class EmployeePage {
         await this.saveBtn.click();
     }
 
-    async checkEmployeeIsAdded(firstName: string, lastName: string, employeeID: string): Promise<boolean> {
+    async checkEmployeeIsAdded(firstName: string, lastName: string, id: string): Promise<boolean> {
         // Navegar a la lista de empleados
         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
         await this.page.waitForLoadState('domcontentloaded');
 
         // Buscar la fila del empleado usando el ID
-        const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${employeeID}")`);
+        const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${id}")`);
 
         const isRowVisible = await employeeRow.isVisible();
         if (!isRowVisible) {
             return false; // Retorna false si la fila no está visible
         }
-        const rowText = await employeeRow.textContent();
-        // Verificar si el texto de la fila contiene el nombre, apellido e ID
-        const containsFirstName = rowText?.includes(firstName) || false;
-        const containsLastName = rowText?.includes(lastName) || false;
-        const containsEmployeeID = rowText?.includes(employeeID) || false;
 
-        // Verificar todas las condiciones juntas
-        const isEmployeeAdded = isRowVisible && containsFirstName && containsLastName && containsEmployeeID;
-        return isEmployeeAdded;
+        // obtener fila del empleado
+        const employeeRowText = await employeeRow.textContent();
+        
+        // Verificar si el texto de la fila contiene el nombre, apellido e ID
+        const isNameVisible = employeeRowText?.includes(firstName) || false;
+        const isLastNameVisible = employeeRowText?.includes(lastName) || false;
+        const isIDVisible = employeeRowText?.includes(id) || false;
+
+        // Verificar todas las condiciones juntas sean true
+        return isNameVisible && isLastNameVisible && isIDVisible;
     }
 
     async isUniqueID(id: string): Promise<boolean> {
