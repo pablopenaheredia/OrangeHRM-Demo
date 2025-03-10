@@ -47,10 +47,11 @@ export class EmployeePage {
         await this.saveBtn.click();
     }
 
-    async checkEmployeeIsAdded(firstName: string, lastName: string, id: string): Promise<boolean> {
+    /*async checkEmployeeIsAdded(firstName: string, lastName: string, id: string): Promise<boolean> {
         // Navegar a la lista de empleados
         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
         await this.page.waitForLoadState('domcontentloaded');
+        await this.page.locator('div.oxd-table-body').waitFor({ state: 'visible', timeout: 15000 });
 
         // Buscar la fila del empleado usando el ID
         const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${id}")`);
@@ -70,7 +71,49 @@ export class EmployeePage {
 
         // Verificar todas las condiciones juntas sean true
         return isNameVisible && isLastNameVisible && isIDVisible;
+    }*/
+
+async checkEmployeeIsAdded(firstName: string, lastName: string, employeeID: string): Promise<boolean> {
+  // Navegar a la lista de empleados
+  await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
+  await this.page.waitForLoadState('domcontentloaded');
+
+  // Esperar a que el contenedor de la tabla esté visible
+  await this.page.waitForSelector('div.oxd-table-body', { timeout: 15000 });
+  
+  // Esperar unos segundos adicionales para que la tabla se actualice (si es necesario)
+  await this.page.waitForTimeout(3000);
+
+  // Obtener todas las filas de la tabla
+  const rows = this.page.locator('div.oxd-table-body div.oxd-table-row');
+  const count = await rows.count();
+  console.log(`Se encontraron ${count} filas en la tabla`);
+
+  // Recorrer cada fila y mostrar su contenido para depuración
+  for (let i = 0; i < count; i++) {
+    const row = rows.nth(i);
+    const text = await row.textContent();
+    console.log(`Fila ${i}: ${text}`);
+    if (text) {
+      // Normalizamos el texto de la fila y los valores esperados
+      const normalizedText = text.toLowerCase().trim();
+      const normFirstName = firstName.toLowerCase().trim();
+      const normLastName = lastName.toLowerCase().trim();
+      const normEmployeeID = employeeID.toLowerCase().trim();
+
+      // Si la fila contiene los tres valores, retornamos true
+      if (normalizedText.includes(normEmployeeID) &&
+          normalizedText.includes(normFirstName) &&
+          normalizedText.includes(normLastName)) {
+        return true;
+      }
     }
+  }
+  // Si ninguna fila cumple con la condición, retornamos false
+  return false;
+}
+
+
 
     async isUniqueID(id: string): Promise<boolean> {
         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');

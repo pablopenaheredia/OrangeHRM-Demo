@@ -11,7 +11,9 @@ test.describe('[US02] Gestión de empleados | Agregar nuevos empleados', () => {
         await employeePage.goToAddEmployeePage();
         await employeePage.fillAddEmployee("messi", "dios", uniqueID);
         await employeePage.saveClick();
-        const isEmployeeAdded = await employeePage.checkEmployeeIsAdded("messi", 'dis', uniqueID);
-        expect(isEmployeeAdded).toBe(false);
+        await employeePage.page.waitForLoadState('domcontentloaded');
+        await employeePage.page.waitForTimeout(5000);
+        const isEmployeeAdded = await employeePage.checkEmployeeIsAdded("messi", 'dios', uniqueID);
+        expect(isEmployeeAdded).toBe(true);
     });
 });
