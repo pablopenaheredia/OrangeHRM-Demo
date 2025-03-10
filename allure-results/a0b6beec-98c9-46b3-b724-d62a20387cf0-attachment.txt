@@ -1,0 +1,3 @@
+Empleado agregado: John Doe, ID: 5769
+Botón Save clickeado
+Fila visible: false

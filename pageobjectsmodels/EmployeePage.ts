@@ -60,7 +60,6 @@ export class EmployeePage {
             return false; // Retorna false si la fila no está visible
         }
         const rowText = await employeeRow.textContent();
-
         // Verificar si el texto de la fila contiene el nombre, apellido e ID
         const containsFirstName = rowText?.includes(firstName) || false;
         const containsLastName = rowText?.includes(lastName) || false;
