@@ -68,7 +68,6 @@ export class EmployeePage {
 
         // Verificar todas las condiciones juntas
         const isEmployeeAdded = isRowVisible && containsFirstName && containsLastName && containsEmployeeID;
-
         return isEmployeeAdded;
     }
 }

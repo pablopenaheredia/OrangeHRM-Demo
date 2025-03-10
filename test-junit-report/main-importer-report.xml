@@ -1,14 +1,6 @@
-<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="65.363237">
-<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-10T00:51:05.502Z" hostname="chromium" tests="1" failures="0" skipped="0" time="15.968" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="15.968">
-</testcase>
-</testsuite>
-<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-10T00:51:05.502Z" hostname="firefox" tests="1" failures="0" skipped="0" time="15.083" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="15.083">
-</testcase>
-</testsuite>
-<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-10T00:51:05.502Z" hostname="webkit" tests="1" failures="0" skipped="0" time="13.658" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="13.658">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="33.214662000000004">
+<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-10T01:29:44.190Z" hostname="chromium" tests="1" failures="0" skipped="0" time="31.809" errors="0">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="31.809">
 </testcase>
 </testsuite>
 </testsuites>
