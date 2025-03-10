@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="14.061425999999999">
-<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-10T02:19:46.441Z" hostname="chromium" tests="1" failures="0" skipped="0" time="11.239" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="11.239">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="32.002886000000004">
+<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-10T02:36:49.380Z" hostname="chromium" tests="1" failures="0" skipped="0" time="16.353" errors="0">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="16.353">
 </testcase>
 </testsuite>
 </testsuites>
