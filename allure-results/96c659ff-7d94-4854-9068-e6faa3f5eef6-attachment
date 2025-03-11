@@ -1,0 +1,69 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: [US02] Gestión de empleados | Agregar nuevos empleados >> Escenario 1 | Validar agregar un empleado exitosamente
+- Location: C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:10:9
+
+# Error details
+
+```
+Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+Call log:
+  - navigating to "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login", waiting until "load"
+
+    at LoginPage.goToLoginPage (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\LoginPage.ts:18:25)
+    at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:4:21
+```
+
+# Test source
+
+```ts
+   1 | import type { Page, Locator } from '@playwright/test';
+   2 |
+   3 | export class LoginPage {
+   4 |     readonly page: Page;
+   5 |     readonly usernameInput: Locator;
+   6 |     readonly passwordInput: Locator;
+   7 |     readonly loginBtn: Locator;
+   8 |
+   9 |     
+  10 |     constructor(page: Page) {
+  11 |         this.page = page;
+  12 |         this.usernameInput = page.locator("input[name='username']");
+  13 |         this.passwordInput = page.locator("input[type='password']");
+  14 |         this.loginBtn = page.locator("button[type='submit']");
+  15 |     }
+  16 |     
+  17 |     async goToLoginPage() {
+> 18 |         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+     |                         ^ Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+  19 |     }
+  20 |
+  21 |     getCredentials() {
+  22 |         const username = process.env.USER;
+  23 |         const password = process.env.PASSWORD;
+  24 |         if (!username || !password) {
+  25 |             throw new Error('Missing credentials in environment variables');
+  26 |         }
+  27 |         return { username, password };
+  28 |     }
+  29 |     /** 
+  30 |     *@param {string} [username=process.env.USER]
+  31 |     *@param {string} [password=process.env.PASSWORD] 
+  32 | **/
+  33 |     async login(username: string = process.env.USER || '', password = process.env.PASSWORD || '') {
+  34 |         await this.usernameInput.fill(username);
+  35 |         await this.passwordInput.fill(password);
+  36 |         await this.loginBtn.click();
+  37 |     }
+  38 |     async loginBtnDisabled(): Promise<boolean> {
+  39 |         return this.loginBtn.isDisabled();
+  40 |     }
+  41 | }
+  42 |
+```

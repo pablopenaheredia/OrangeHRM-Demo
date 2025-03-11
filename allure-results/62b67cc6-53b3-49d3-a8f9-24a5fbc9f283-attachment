@@ -1,0 +1,163 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: [US02] Gestión de empleados | Agregar nuevos empleados >> Escenario 1 | Validar agregar un empleado exitosamente
+- Location: C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:10:9
+
+# Error details
+
+```
+Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+
+Locator: locator('div.oxd-table-cell:has-text("527")').first()
+Expected: visible
+Received: <element(s) not found>
+Call log:
+  - expect.soft.toBeVisible with timeout 5000ms
+  - waiting for locator('div.oxd-table-cell:has-text("527")').first()
+
+    at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:33:70
+    at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:32:20
+```
+
+# Page snapshot
+
+```yaml
+- complementary:
+  - navigation "Sidepanel":
+    - link "client brand banner":
+      - img "client brand banner"
+    - textbox "Search"
+    - button ""
+    - separator
+    - list:
+      - listitem:
+        - link "Admin"
+      - listitem:
+        - link "PIM"
+      - listitem:
+        - link "Leave"
+      - listitem:
+        - link "Time"
+      - listitem:
+        - link "Recruitment"
+      - listitem:
+        - link "My Info"
+      - listitem:
+        - link "Performance"
+      - listitem:
+        - link "Dashboard"
+      - listitem:
+        - link "Directory"
+      - listitem:
+        - link "Maintenance"
+      - listitem:
+        - link "Claim":
+          - img
+          - text: Claim
+      - listitem:
+        - link "Buzz"
+- banner:
+  - heading "PIM" [level=6]
+  - link "Upgrade":
+    - button "Upgrade"
+  - list:
+    - listitem:
+      - img "profile picture"
+      - paragraph: waad shujaa
+      - text: 
+  - navigation "Topbar Menu":
+    - list:
+      - listitem: Configuration 
+      - listitem:
+        - link "Employee List"
+      - listitem:
+        - link "Add Employee"
+      - listitem:
+        - link "Reports"
+      - button ""
+- heading "Employee Information" [level=5]
+- button ""
+- separator
+- text: Employee Name
+- textbox "Type for hints..."
+- text: Employee Id
+- textbox: "527"
+- text: Employment Status -- Select --  Include Current Employees Only  Supervisor Name
+- textbox "Type for hints..."
+- text: Job Title -- Select --  Sub Unit -- Select -- 
+- separator
+- button "Reset"
+- button "Search"
+- button " Add"
+- separator
+- text: No Records Found
+- table:
+  - rowgroup:
+    - row " Id  First (& Middle) Name  Last Name  Job Title  Employment Status  Sub Unit  Supervisor  Actions":
+      - columnheader "":
+        - checkbox ""
+        - text: 
+      - columnheader "Id "
+      - columnheader "First (& Middle) Name "
+      - columnheader "Last Name "
+      - columnheader "Job Title "
+      - columnheader "Employment Status "
+      - columnheader "Sub Unit "
+      - columnheader "Supervisor "
+      - columnheader "Actions"
+  - rowgroup
+- paragraph: OrangeHRM OS 5.7
+- paragraph:
+  - text: © 2005 - 2025
+  - link "OrangeHRM, Inc"
+  - text: . All rights reserved.
+```
+
+# Test source
+
+```ts
+   1 | import { expect, test } from '../../fixtures';
+   2 |
+   3 | test.beforeEach(async ({ loginPage }) => {
+   4 |     await loginPage.goToLoginPage();
+   5 |     await loginPage.login();
+   6 | });
+   7 |
+   8 | test.describe('[US02] Gestión de empleados | Agregar nuevos empleados', () => {
+   9 |
+  10 |     test('Escenario 1 | Validar agregar un empleado exitosamente', async ({ employeePage }) => {
+  11 |         
+  12 |         const uniqueID = await employeePage.generateUniqueID();
+  13 |         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
+  14 |         await test.step('Cuando el usuario navega a la página de empleados', async () => {
+  15 |             await employeePage.clickOnPIMModule();
+  16 |         });
+  17 |            await test.step('Y se dirige hacia la sección de agregar empleados', async () => {
+  18 |         await employeePage.goToAddEmployeePage();
+  19 |         });
+  20 |         await test.step('Y el usuario llena los campos requeridos', async () => {
+  21 |             await employeePage.fillAddEmployee("messi", "dios", uniqueID);
+  22 |         });
+  23 |         await test.step('Y el usuario guarda al empleado', async () => {
+  24 |             await employeePage.saveClick();
+  25 |         });
+  26 |
+  27 |         await test.step('Y el usuario busca al empleado por su ID', async () => {
+  28 |             await employeePage.clickOnPIMModule();
+  29 |             await employeePage.fillEmployeeInfoIDInput(uniqueID);
+  30 |             await employeePage.searchClick();
+  31 |         });
+  32 |         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
+> 33 |             await expect.soft(employeePage.idColumnValues(uniqueID)).toBeVisible();
+     |                                                                      ^ Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+  34 |         });
+  35 |     });
+  36 | });
+  37 |
+```
