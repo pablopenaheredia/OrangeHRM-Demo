@@ -1,6 +1,30 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="29.731334999999998">
-<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-11T21:37:27.610Z" hostname="chromium" tests="1" failures="0" skipped="0" time="23.096" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Escenario 1 | Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="23.096">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="17.668205999999998">
+<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-13T06:33:01.042Z" hostname="chromium" tests="1" failures="1" skipped="0" time="15.744" errors="0">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Escenario 1 | Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="15.744">
+<failure message="add-employee-success.spec.ts:10:9 Escenario 1 | Validar agregar un empleado exitosamente" type="FAILURE">
+<![CDATA[  [chromium] › e2e\employees\add-employee-success.spec.ts:10:9 › [US02] Gestión de empleados | Agregar nuevos empleados › Escenario 1 | Validar agregar un empleado exitosamente › Entonces el empleado se encuentra en la lista de empleados 
+
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+
+    Locator: locator('div.oxd-table-cell:has-text("8288")').first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.soft.toBeVisible with timeout 5000ms
+      - waiting for locator('div.oxd-table-cell:has-text("8288")').first()
+
+
+      31 |         });
+      32 |         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
+    > 33 |             await expect.soft(employeePage.idColumnValues(uniqueID)).toBeVisible();
+         |                                                                      ^
+      34 |         });
+      35 |     });
+      36 | });
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:33:70
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:32:20
+]]>
+</failure>
 </testcase>
 </testsuite>
 </testsuites>

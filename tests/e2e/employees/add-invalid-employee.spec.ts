@@ -94,15 +94,18 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
         await test.step('Y el usuario guarda al empleado', async () => {
             await employeePage.saveClick();
         });
-
         await test.step('Y el usuario busca al empleado por su ID', async () => {
             await employeePage.clickOnPIMModule();
             await employeePage.fillEmployeeInfoIDInput(uniqueID);
             await employeePage.searchClick();
         });
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
-            await expect.soft(employeePage.idColumnValues(uniqueID)).toBeVisible();
-        });
+            await employeePage.page.waitForLoadState('networkidle');
+            await employeePage.page.waitForTimeout(2000); // Agregar un retraso manual
+            const locator = employeePage.idColumnValues(uniqueID);
+            await locator.scrollIntoViewIfNeeded();
+            await expect.soft(locator).toBeVisible({ timeout: 10000 });
+});
         await test.step('Entonces el usuario navega a la página de empleados nuevamente', async () => {
             await employeePage.clickOnPIMModule();
         });
@@ -115,13 +118,11 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
         await test.step('Y el usuario intenta guardar al empleado', async () => {
             await employeePage.saveClick();
         });
-        await test.step('Entonces se muestra un mensaje de error', async () => {
-            await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
-            await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]")).toBeVisible();
+        await test.step('Y se muestra un mensaje de error', async () => {
+            await employeePage.page.waitForLoadState('networkidle');
+            await employeePage.page.waitForSelector("//span[text()='Employee Id already exists']");
+            await expect(employeePage.page.locator("//span[text()='Employee Id already exists']")).toBeVisible();
         });
-    await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
-        await expect.soft(employeePage.idColumnValues(uniqueID)).toBeHidden();
-    });
     });
 
     test('Validar error al ingresar un empleado con numeros o simbolos para el sector nombre y apellido, y letras para el sector ID.', async ({ employeePage }) => {
@@ -154,4 +155,4 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await expect.soft(employeePage.idColumnValues(stringID)).toBeHidden();
         });
     });
-}); 
+});

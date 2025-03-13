@@ -30,7 +30,10 @@ test.describe('[US02] Gestión de empleados | Agregar nuevos empleados', () => {
             await employeePage.searchClick();
         });
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
-            await expect.soft(employeePage.idColumnValues(uniqueID)).toBeVisible();
+            await employeePage.page.waitForLoadState('domcontentloaded');
+            const locator = employeePage.idColumnValues(uniqueID);
+            await locator.scrollIntoViewIfNeeded();
+            await expect.soft(locator).toBeVisible();
         });
     });
 });

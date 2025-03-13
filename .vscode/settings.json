@@ -154,8 +154,8 @@
 	// =====================
 	//? Workbench Settings
 	// =====================
-	"workbench.iconTheme": "vscode-icons",
-	"workbench.settings.editor": "json",
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.settings.editor": "ui",
 	"workbench.tree.enableStickyScroll": true,
 	"files.watcherExclude": {
 		"**/.git/objects/**": true,
