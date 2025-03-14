@@ -1,0 +1,890 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: [US03] Gestión de empleados | Editar empleados correctamente >> Validar editar un empleado exitosamente
+- Location: C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.info.spec.ts:10:9
+
+# Error details
+
+```
+Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+
+Locator: locator('div.oxd-table-cell:has-text("4638")').first()
+Expected: visible
+Received: <element(s) not found>
+Call log:
+  - expect.soft.toBeVisible with timeout 5000ms
+  - waiting for locator('div.oxd-table-cell:has-text("4638")').first()
+
+    at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.info.spec.ts:50:70
+    at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.info.spec.ts:49:20
+```
+
+# Page snapshot
+
+```yaml
+- complementary:
+  - navigation "Sidepanel":
+    - link "client brand banner":
+      - img "client brand banner"
+    - textbox "Search"
+    - button ""
+    - separator
+    - list:
+      - listitem:
+        - link "Admin"
+      - listitem:
+        - link "PIM"
+      - listitem:
+        - link "Leave"
+      - listitem:
+        - link "Time"
+      - listitem:
+        - link "Recruitment"
+      - listitem:
+        - link "My Info"
+      - listitem:
+        - link "Performance"
+      - listitem:
+        - link "Dashboard"
+      - listitem:
+        - link "Directory"
+      - listitem:
+        - link "Maintenance"
+      - listitem:
+        - link "Claim":
+          - img
+          - text: Claim
+      - listitem:
+        - link "Buzz"
+- banner:
+  - heading "PIM" [level=6]
+  - link "Upgrade":
+    - button "Upgrade"
+  - list:
+    - listitem:
+      - img "profile picture"
+      - paragraph: prueba editar
+      - text: 
+  - navigation "Topbar Menu":
+    - list:
+      - listitem: Configuration 
+      - listitem:
+        - link "Employee List"
+      - listitem:
+        - link "Add Employee"
+      - listitem:
+        - link "Reports"
+      - button ""
+- heading "Employee Information" [level=5]
+- button ""
+- separator
+- text: Employee Name
+- textbox "Type for hints..."
+- text: Employee Id
+- textbox
+- text: Employment Status -- Select --  Include Current Employees Only  Supervisor Name
+- textbox "Type for hints..."
+- text: Job Title -- Select --  Sub Unit -- Select -- 
+- separator
+- button "Reset"
+- button "Search"
+- button " Add"
+- separator
+- text: (141) Records Found
+- table:
+  - rowgroup:
+    - row " Id  First (& Middle) Name  Last Name  Job Title  Employment Status  Sub Unit  Supervisor  Actions":
+      - columnheader "":
+        - checkbox ""
+        - text: 
+      - columnheader "Id "
+      - columnheader "First (& Middle) Name "
+      - columnheader "Last Name "
+      - columnheader "Job Title "
+      - columnheader "Employment Status "
+      - columnheader "Sub Unit "
+      - columnheader "Supervisor "
+      - columnheader "Actions"
+  - rowgroup:
+    - row " 0295 99N75 425 5TlV Account Assistant Full-Time Permanent Development yedghjb1 90jsnd  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0295"
+      - cell "99N75 425"
+      - cell "5TlV"
+      - cell "Account Assistant"
+      - cell "Full-Time Permanent"
+      - cell "Development"
+      - cell "yedghjb1 90jsnd"
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0312 A8DCo 4Ys 010Z  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0312"
+      - cell "A8DCo 4Ys"
+      - cell "010Z"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0360 aniket t t  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0360"
+      - cell "aniket t"
+      - cell "t"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 968 aniket Ashok patil  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "968"
+      - cell "aniket Ashok"
+      - cell "patil"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0374 Anthony Graves  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0374"
+      - cell "Anthony"
+      - cell "Graves"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0375 as as as  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0375"
+      - cell "as as"
+      - cell "as"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 5555 asddasd add  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "5555"
+      - cell "asddasd"
+      - cell "add"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0367 Ash J Tyson  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0367"
+      - cell "Ash J"
+      - cell "Tyson"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " dfgsjsjdh Automation Employee EMP001  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "dfgsjsjdh"
+      - cell "Automation Employee"
+      - cell "EMP001"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0303 bala kumar ravi  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0303"
+      - cell "bala kumar"
+      - cell "ravi"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0292 bmrtahvwhibmrtahvwhi hbfqkhjfqbhbfqkhjfqb  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0292"
+      - cell "bmrtahvwhibmrtahvwhi"
+      - cell "hbfqkhjfqbhbfqkhjfqb"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0320 Charles Carter  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0320"
+      - cell "Charles"
+      - cell "Carter"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 00392 Charlotte Smith  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "00392"
+      - cell "Charlotte"
+      - cell "Smith"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0363 Christopher Mcmillan  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0363"
+      - cell "Christopher"
+      - cell "Mcmillan"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0414 Christopher Green  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0414"
+      - cell "Christopher"
+      - cell "Green"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0392 Dennis Wells  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0392"
+      - cell "Dennis"
+      - cell "Wells"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0290 dhbrukkuzldhbrukkuzl ibuvlwtfsfibuvlwtfsf  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0290"
+      - cell "dhbrukkuzldhbrukkuzl"
+      - cell "ibuvlwtfsfibuvlwtfsf"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0294 DHINA KARAN P  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0294"
+      - cell "DHINA KARAN"
+      - cell "P"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0394 Diana Vargas  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0394"
+      - cell "Diana"
+      - cell "Vargas"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 09557 Emily Jones  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "09557"
+      - cell "Emily"
+      - cell "Jones"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 5454 fdfd ffd  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "5454"
+      - cell "fdfd"
+      - cell "ffd"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 6666 fdsggfdg dgdfgfdgfd  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "6666"
+      - cell "fdsggfdg"
+      - cell "dgdfgfdgfd"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0404 firstname007 lastname007  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0404"
+      - cell "firstname007"
+      - cell "lastname007"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0403 firstname007 lastname007  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0403"
+      - cell "firstname007"
+      - cell "lastname007"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0395 firstname007 lastname007  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0395"
+      - cell "firstname007"
+      - cell "lastname007"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0408 firstname007 lastname007  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0408"
+      - cell "firstname007"
+      - cell "lastname007"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0406 firstname007 lastname007  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0406"
+      - cell "firstname007"
+      - cell "lastname007"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 1235 FName Mname LName  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "1235"
+      - cell "FName Mname"
+      - cell "LName"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftdkux ltsxgy  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftdkux"
+      - cell "ltsxgy"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue fthnvn ltwrrt  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "fthnvn"
+      - cell "ltwrrt"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue fthnvn ltwrrt  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "fthnvn"
+      - cell "ltwrrt"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue fthyfv ltrhtm  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "fthyfv"
+      - cell "ltrhtm"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftioiu ltpugr  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftioiu"
+      - cell "ltpugr"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftioiu ltpugr  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftioiu"
+      - cell "ltpugr"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftioiu ltpugr  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftioiu"
+      - cell "ltpugr"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftioiu ltpugr  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftioiu"
+      - cell "ltpugr"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftndlm ltdyyf  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftndlm"
+      - cell "ltdyyf"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftpjte ltpzkj  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftpjte"
+      - cell "ltpzkj"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftyseo ltzbbp  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftyseo"
+      - cell "ltzbbp"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftyseo ltzbbp  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftyseo"
+      - cell "ltzbbp"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftyseo ltzbbp  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftyseo"
+      - cell "ltzbbp"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftyseo ltzbbp  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftyseo"
+      - cell "ltzbbp"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftyseo ltzbbp  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftyseo"
+      - cell "ltzbbp"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " ATPValue ftyseo ltzbbp  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "ATPValue"
+      - cell "ftyseo"
+      - cell "ltzbbp"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0315hh hh hh  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0315hh"
+      - cell "hh"
+      - cell "hh"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0365 James Butler  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0365"
+      - cell "James"
+      - cell "Butler"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0381 Jennifer Henderson  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0381"
+      - cell "Jennifer"
+      - cell "Henderson"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 0385 Jessica Lawrence  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "0385"
+      - cell "Jessica"
+      - cell "Lawrence"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " 503 jjjj Ashok patil  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell "503"
+      - cell "jjjj Ashok"
+      - cell "patil"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+    - row " João Silva1 Andrade1  ":
+      - cell "":
+        - checkbox ""
+        - text: 
+      - cell
+      - cell "João Silva1"
+      - cell "Andrade1"
+      - cell
+      - cell
+      - cell
+      - cell
+      - cell " ":
+        - button ""
+        - button ""
+- navigation "Pagination Navigation":
+  - list:
+    - listitem:
+      - button "1"
+    - listitem:
+      - button "2"
+    - listitem:
+      - button "3"
+    - listitem:
+      - button ""
+- paragraph: OrangeHRM OS 5.7
+- paragraph:
+  - text: © 2005 - 2025
+  - link "OrangeHRM, Inc"
+  - text: . All rights reserved.
+```
+
+# Test source
+
+```ts
+   1 | import {expect, test } from '../../fixtures';
+   2 |
+   3 | test.beforeEach(async ({ loginPage }) => {
+   4 |     await loginPage.goToLoginPage();
+   5 |     await loginPage.login();
+   6 | });
+   7 |
+   8 | test.describe('[US03] Gestión de empleados | Editar empleados correctamente', () => {
+   9 |
+  10 |     test('Validar editar un empleado exitosamente', async ({ employeePage }) => {
+  11 |         const uniqueID = await employeePage.generateUniqueID();
+  12 |         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
+  13 |         await test.step('Cuando el usuario navega a la página de empleados', async () => {
+  14 |             await employeePage.clickOnPIMModule();
+  15 |         });
+  16 |         await test.step('Y se dirige hacia la sección de agregar empleados', async () => {
+  17 |             await employeePage.goToAddEmployeePage();
+  18 |         });
+  19 |         await test.step('Y el usuario llena los campos requeridos', async () => {
+  20 |             await employeePage.fillAddEmployee("Roberto", "Heredia", uniqueID);
+  21 |         });
+  22 |         await test.step('Y el usuario guarda al empleado', async () => {
+  23 |             await employeePage.saveNewEmployeeClick();
+  24 |         });
+  25 |
+  26 |         await test.step('Y el usuario busca al empleado por su ID', async () => {
+  27 |             await employeePage.clickOnPIMModule();
+  28 |             await employeePage.fillEmployeeInfoIDInput(uniqueID);
+  29 |             await employeePage.searchClick();
+  30 |         });
+  31 |         /*await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
+  32 |             await employeePage.page.waitForLoadState('domcontentloaded');
+  33 |             const locator = employeePage.idColumnValues(uniqueID);
+  34 |             await expect.soft(locator).toBeVisible();
+  35 |         });*/
+  36 |         await test.step('Y hace click en el boton para editar su información', async () => {
+  37 |             await employeePage.editEmployeeInfoIconClick();
+  38 |         });
+  39 |         await test.step('Y el usuario edita la información del empleado', async () => {
+  40 |             await employeePage.fillAddEmployee("Roberto", "Sanchez", uniqueID);
+  41 |             await employeePage.saveEditEmployeeClick();
+  42 |         });
+  43 |         /*await test.step('Y se edita correctamente', async () => {
+  44 |             await expect(employeePage.successPopUp).toBeVisible();
+  45 |         });*/
+  46 |         await test.step("Entonces el usuario vuelve a la lista de empleados", async () => {
+  47 |             await employeePage.clickOnPIMModule();
+  48 |         });
+  49 |         await test.step('Y el empleado editado se encuentra en la lista de empleados', async () => {
+> 50 |             await expect.soft(employeePage.idColumnValues(uniqueID)).toBeVisible();
+     |                                                                      ^ Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+  51 |         });        
+  52 |     })
+  53 | });
+  54 |         
+```

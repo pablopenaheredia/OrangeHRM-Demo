@@ -1,0 +1,230 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: [US03] Gestión de empleados | Editar empleados correctamente >> Validar editar un empleado exitosamente
+- Location: C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.info.spec.ts:10:9
+
+# Error details
+
+```
+Error: locator.click: Error: strict mode violation: locator('//div[@class=\'oxd-table-cell-actions\']//button[1]') resolved to 50 elements:
+    1) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' dfgsjsjdh 123445 34 444444' }).getByRole('button').first()
+    2) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' 0295 99N75 425 5TlV  ' }).getByRole('button').first()
+    3) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' 0312 A8DCo 4Ys 010Z  ' }).getByRole('button').first()
+    4) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' 01715 Amelia Brown  ' }).getByRole('button').first()
+    5) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' 0360 aniket t t  ' }).getByRole('button').first()
+    6) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' 0367 Ash J Tyson  ' }).getByRole('button').first()
+    7) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' 0303 bala kumar ravi  ' }).getByRole('button').first()
+    8) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' 0292 bmrtahvwhibmrtahvwhi' }).getByRole('button').first()
+    9) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' 0320 Charles Carter  ' }).getByRole('button').first()
+    10) <button type="button" data-v-f5c763eb="" data-v-c423d1fa="" class="oxd-icon-button oxd-table-cell-action-space">…</button> aka getByRole('row', { name: ' 00392 Charlotte Smith  ' }).getByRole('button').first()
+    ...
+
+Call log:
+  - waiting for locator('//div[@class=\'oxd-table-cell-actions\']//button[1]')
+
+    at EmployeePage.editEmployeeInfoIconClick (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\EmployeePage.ts:69:44)
+    at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.info.spec.ts:38:32
+    at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.info.spec.ts:37:20
+```
+
+# Page snapshot
+
+```yaml
+- complementary:
+  - navigation "Sidepanel":
+    - link "client brand banner":
+      - img "client brand banner"
+    - textbox "Search"
+    - button ""
+    - separator
+    - list:
+      - listitem:
+        - link "Admin"
+      - listitem:
+        - link "PIM"
+      - listitem:
+        - link "Leave"
+      - listitem:
+        - link "Time"
+      - listitem:
+        - link "Recruitment"
+      - listitem:
+        - link "My Info"
+      - listitem:
+        - link "Performance"
+      - listitem:
+        - link "Dashboard"
+      - listitem:
+        - link "Directory"
+      - listitem:
+        - link "Maintenance"
+      - listitem:
+        - link "Claim":
+          - img
+          - text: Claim
+      - listitem:
+        - link "Buzz"
+- banner:
+  - heading "PIM" [level=6]
+  - link "Upgrade":
+    - button "Upgrade"
+  - list:
+    - listitem:
+      - img "profile picture"
+      - paragraph: manda user
+      - text: 
+  - navigation "Topbar Menu":
+    - list:
+      - listitem: Configuration 
+      - listitem:
+        - link "Employee List"
+      - listitem:
+        - link "Add Employee"
+      - listitem:
+        - link "Reports"
+      - button ""
+- heading "Employee Information" [level=5]
+- button ""
+- separator
+- text: Employee Name
+- textbox "Type for hints..."
+- text: Employee Id
+- textbox: "5455"
+- text: Employment Status -- Select --  Include Current Employees Only  Supervisor Name
+- textbox "Type for hints..."
+- text: Job Title -- Select --  Sub Unit -- Select -- 
+- separator
+- button "Reset"
+- button "Search"
+- button " Add"
+- separator
+- text: No Records Found
+- table:
+  - rowgroup:
+    - row " Id  First (& Middle) Name  Last Name  Job Title  Employment Status  Sub Unit  Supervisor  Actions":
+      - columnheader "":
+        - checkbox ""
+        - text: 
+      - columnheader "Id "
+      - columnheader "First (& Middle) Name "
+      - columnheader "Last Name "
+      - columnheader "Job Title "
+      - columnheader "Employment Status "
+      - columnheader "Sub Unit "
+      - columnheader "Supervisor "
+      - columnheader "Actions"
+  - rowgroup
+- paragraph: OrangeHRM OS 5.7
+- paragraph:
+  - text: © 2005 - 2025
+  - link "OrangeHRM, Inc"
+  - text: . All rights reserved.
+- text: 
+- paragraph: Info
+- paragraph: No Records Found
+- button "×"
+```
+
+# Test source
+
+```ts
+   1 | import { type Page, type Locator, expect } from '@playwright/test';
+   2 |
+   3 | export class EmployeePage {
+   4 |     readonly page: Page;
+   5 |     readonly addEmployeeBtn: Locator;
+   6 |     readonly firstNameInput: Locator;
+   7 |     readonly lastNameInput: Locator;
+   8 |     readonly employeeIDInput: Locator;
+   9 |     readonly saveNewEmployeeBtn: Locator;
+  10 |     readonly saveEditBtn: Locator;
+  11 |     readonly searchBtn: Locator;
+  12 |     readonly pimModuleBtn: Locator;
+  13 |     readonly employeeInfoIDInput: Locator;
+  14 |     readonly idColumnValues = (id: string) => this.page.locator(`div.oxd-table-cell:has-text("${id}")`).first()
+  15 |     readonly lastNameValues = (lastname: string) => this.page.locator(`div.oxd-table-cell:has-text("${lastname}")`).first()
+  16 |     readonly editEmployeeInfoIconBtn: Locator
+  17 |     readonly successPopUp: Locator
+  18 |     
+  19 |     constructor(page: Page) {
+  20 |         this.page = page;
+  21 |         this.addEmployeeBtn = this.page.locator("//button[contains(.,'Add')]");
+  22 |         this.firstNameInput = this.page.getByRole('textbox', { name: 'First Name' });
+  23 |         this.lastNameInput = this.page.getByRole('textbox', { name: 'Last Name' });
+  24 |         this.employeeIDInput = this.page.locator("(//input[@class='oxd-input oxd-input--active'])[2]");
+  25 |         this.saveNewEmployeeBtn = this.page.getByRole('button', { name: 'Save' });
+  26 |         this.saveEditBtn = this.page.locator("(//button[@type='submit'])[1]");
+  27 |         this.searchBtn = this.page.getByRole('button', { name: 'Search' });
+  28 |         this.pimModuleBtn = this.page.getByRole('link', { name: 'PIM' });
+  29 |         this.employeeInfoIDInput = this.page.getByRole('textbox').nth(2);
+  30 |         this.editEmployeeInfoIconBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[1]");
+  31 |         this.successPopUp = this.page.getByRole('alert', { name: 'Successfully Updated' });
+  32 |     }
+  33 |
+  34 |     async goToAddEmployeePage() {
+  35 |         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
+  36 |         await this.addEmployeeBtn.click();
+  37 |         await this.page.waitForLoadState('domcontentloaded');
+  38 |         await expect(this.page).toHaveURL(/pim\/addEmployee/);
+  39 |     }
+  40 |
+  41 |     async fillAddEmployee(firstName: string, lastName: string, employeeID: string) {
+  42 |         await this.firstNameInput.fill(firstName);
+  43 |         await this.lastNameInput.fill(lastName);
+  44 |         await this.employeeIDInput.fill(employeeID);
+  45 |     }
+  46 |
+  47 |     async searchClick() {
+  48 |         await this.searchBtn.click();
+  49 |     }
+  50 |
+  51 |     async fillEmployeeInfoIDInput(id: string) {
+  52 |         await this.employeeInfoIDInput.fill(id);
+  53 |     }
+  54 |     async saveNewEmployeeClick() {
+  55 |         await this.saveNewEmployeeBtn.click();
+  56 |     }
+  57 |     async saveEditEmployeeClick() {
+  58 |         await this.saveEditBtn.click();
+  59 |     }
+  60 |     async clickOnPIMModule() {
+  61 |         await this.pimModuleBtn.click();
+  62 |     }
+  63 |
+  64 |     async succeedPopUpVisible() {
+  65 |         await this.successPopUp.isVisible();
+  66 |     };
+  67 |
+  68 |     async editEmployeeInfoIconClick() {
+> 69 |         await this.editEmployeeInfoIconBtn.click();
+     |                                            ^ Error: locator.click: Error: strict mode violation: locator('//div[@class=\'oxd-table-cell-actions\']//button[1]') resolved to 50 elements:
+  70 |     }
+  71 |
+  72 |     async isUniqueID(id: string): Promise<boolean> {
+  73 |         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
+  74 |         await this.page.waitForLoadState('domcontentloaded');
+  75 |
+  76 |         const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${id}")`);
+  77 |
+  78 |         const isRowVisible = await employeeRow.isVisible();
+  79 |         return !isRowVisible;
+  80 |     }
+  81 |
+  82 |     async generateUniqueID(): Promise<string> {
+  83 |         let uniqueID: string = '';
+  84 |         let isUnique: boolean = false;
+  85 |         while (!isUnique) {
+  86 |             uniqueID = Math.floor(Math.random() * (10000 - 1 + 1) + 1).toString();
+  87 |             isUnique = await this.isUniqueID(uniqueID);
+  88 |         }
+  89 |         return uniqueID;
+  90 |     }
+  91 | }
+  92 |
+```

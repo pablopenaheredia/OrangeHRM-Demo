@@ -6,7 +6,8 @@ export class EmployeePage {
     readonly firstNameInput: Locator;
     readonly lastNameInput: Locator;
     readonly employeeIDInput: Locator;
-    readonly saveBtn: Locator;
+    readonly saveNewEmployeeBtn: Locator;
+    readonly saveEditBtn: Locator;
     readonly searchBtn: Locator;
     readonly pimModuleBtn: Locator;
     readonly employeeInfoIDInput: Locator;
@@ -21,12 +22,13 @@ export class EmployeePage {
         this.firstNameInput = this.page.getByRole('textbox', { name: 'First Name' });
         this.lastNameInput = this.page.getByRole('textbox', { name: 'Last Name' });
         this.employeeIDInput = this.page.locator("(//input[@class='oxd-input oxd-input--active'])[2]");
-        this.saveBtn = this.page.getByRole('button', { name: 'Save' });
+        this.saveNewEmployeeBtn = this.page.getByRole('button', { name: 'Save' });
+        this.saveEditBtn = this.page.locator("(//button[@type='submit'])[1]");
         this.searchBtn = this.page.getByRole('button', { name: 'Search' });
         this.pimModuleBtn = this.page.getByRole('link', { name: 'PIM' });
         this.employeeInfoIDInput = this.page.getByRole('textbox').nth(2);
-        this.editEmployeeInfoIconBtn = this.page.locator("class='oxd-table-cell-actions').first()");
-        this.successPopUp = this.page.getByRole('paragraph', {name: 'Successfully Updated'});
+        this.editEmployeeInfoIconBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[1]");
+        this.successPopUp = this.page.getByRole('alert', { name: 'Successfully Updated' });
     }
 
     async goToAddEmployeePage() {
@@ -49,8 +51,11 @@ export class EmployeePage {
     async fillEmployeeInfoIDInput(id: string) {
         await this.employeeInfoIDInput.fill(id);
     }
-    async saveClick() {
-        await this.saveBtn.click();
+    async saveNewEmployeeClick() {
+        await this.saveNewEmployeeBtn.click();
+    }
+    async saveEditEmployeeClick() {
+        await this.saveEditBtn.click();
     }
     async clickOnPIMModule() {
         await this.pimModuleBtn.click();

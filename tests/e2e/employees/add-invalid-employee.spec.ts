@@ -20,7 +20,7 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await employeePage.fillAddEmployee("", 'Doe', uniqueID);
         });
         await test.step('Y el usuario guarda al empleado', async () => {
-            await employeePage.saveClick();
+            await employeePage.saveNewEmployeeClick();
         });
         await test.step('Entonces se muestra un mensaje de error', async () => {
             await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
@@ -44,7 +44,7 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await employeePage.fillAddEmployee("John", '', uniqueID);
         });
         await test.step('Y el usuario guarda al empleado', async () => {
-            await employeePage.saveClick();
+            await employeePage.saveNewEmployeeClick();
         });
         await test.step('Entonces se muestra un mensaje de error', async () => {
             await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
@@ -68,7 +68,7 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await employeePage.fillAddEmployee("John", 'Doe', '');
         });
         await test.step('Y el usuario guarda al empleado', async () => {
-            await employeePage.saveClick();
+            await employeePage.saveNewEmployeeClick();
         });
         await test.step('Entonces se muestra un mensaje de error', async () => {
             await employeePage.page.waitForSelector("//span[text()='Required']");
@@ -92,7 +92,7 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await employeePage.fillAddEmployee("Pa", "blo", uniqueID);
         });
         await test.step('Y el usuario guarda al empleado', async () => {
-            await employeePage.saveClick();
+            await employeePage.saveNewEmployeeClick();
         });
         await test.step('Y el usuario busca al empleado por su ID', async () => {
             await employeePage.clickOnPIMModule();
@@ -116,7 +116,7 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await employeePage.fillAddEmployee("Adam", 'Smith', uniqueID);
         });
         await test.step('Y el usuario intenta guardar al empleado', async () => {
-            await employeePage.saveClick();
+            await employeePage.saveNewEmployeeClick();
         });
         await test.step('Y se muestra un mensaje de error', async () => {
             await employeePage.page.waitForLoadState('networkidle');
@@ -138,7 +138,7 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await employeePage.fillAddEmployee('124%6/', '124%6/', stringID);
         });
         await test.step('Y el usuario guarda al empleado', async () => {
-            await employeePage.saveClick();
+            await employeePage.saveNewEmployeeClick();
         });
         await test.step('Entonces se muestra un mensaje de error encima del InputFirstName', async () => {
             await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");

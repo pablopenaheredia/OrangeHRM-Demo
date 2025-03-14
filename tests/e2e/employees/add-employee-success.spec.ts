@@ -18,10 +18,10 @@ test.describe('[US02] Gestión de empleados | Agregar nuevos empleados', () => {
         await employeePage.goToAddEmployeePage();
         });
         await test.step('Y el usuario llena los campos requeridos', async () => {
-            await employeePage.fillAddEmployee("messi", "dios", uniqueID);
+            await employeePage.fillAddEmployee("Sam", "Tarly", uniqueID);
         });
         await test.step('Y el usuario guarda al empleado', async () => {
-            await employeePage.saveClick();
+            await employeePage.saveNewEmployeeClick();
         });
 
         await test.step('Y el usuario busca al empleado por su ID', async () => {

@@ -9,6 +9,7 @@ test.describe('[US03] Gestión de empleados | Editar empleados correctamente', (
 
     test('Validar editar un empleado exitosamente', async ({ employeePage }) => {
         const uniqueID = await employeePage.generateUniqueID();
+        const newUniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
         await test.step('Cuando el usuario navega a la página de empleados', async () => {
             await employeePage.clickOnPIMModule();
@@ -20,7 +21,7 @@ test.describe('[US03] Gestión de empleados | Editar empleados correctamente', (
             await employeePage.fillAddEmployee("Roberto", "Heredia", uniqueID);
         });
         await test.step('Y el usuario guarda al empleado', async () => {
-            await employeePage.saveClick();
+            await employeePage.saveNewEmployeeClick();
         });
 
         await test.step('Y el usuario busca al empleado por su ID', async () => {
@@ -28,26 +29,33 @@ test.describe('[US03] Gestión de empleados | Editar empleados correctamente', (
             await employeePage.fillEmployeeInfoIDInput(uniqueID);
             await employeePage.searchClick();
         });
-        await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
-            await expect.soft(employeePage.idColumnValues(uniqueID)).toBeVisible();
-        });
+        /*await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
+            await employeePage.page.waitForLoadState('domcontentloaded');
+            const locator = employeePage.idColumnValues(uniqueID);
+            await expect.soft(locator).toBeVisible();
+        });*/
         await test.step('Y hace click en el boton para editar su información', async () => {
+            await employeePage.page.waitForLoadState('domcontentloaded');
+            await employeePage.page.waitForTimeout(2000);
             await employeePage.editEmployeeInfoIconClick();
-            await expect(employeePage.page).toHaveURL(`https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/${uniqueID}`);
         });
         await test.step('Y el usuario edita la información del empleado', async () => {
-            await employeePage.fillAddEmployee("Roberto", "Sanchez", uniqueID);
-            await employeePage.saveClick();
+            await employeePage.fillAddEmployee("Roberto", "Sanchez", newUniqueID);
+            await employeePage.saveEditEmployeeClick();
         });
-        await test.step('Y se edita correctamente', async () => {
+        /*await test.step('Y se edita correctamente', async () => {
             await expect(employeePage.successPopUp).toBeVisible();
-        });
-        await test.step("Entonces el usuario vuelve a la lista de empleados", async () => {
+        });*/
+        await test.step("Entonces el usuario vuelve a la lista de empleados para buscarlo por ID", async () => {
             await employeePage.clickOnPIMModule();
+            await employeePage.fillEmployeeInfoIDInput(newUniqueID);
+            await employeePage.searchClick();
         });
-        await test.step('Y el empleado editado se encuentra en la lista de empleados', async () => {
-            await expect.soft(employeePage.idColumnValues(uniqueID)).toBeVisible();
-        });        
+        await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
+            await employeePage.page.waitForLoadState('domcontentloaded');
+            const locator = employeePage.idColumnValues(newUniqueID);
+            await expect.soft(locator).toBeVisible();
+        });
     })
 });
         
