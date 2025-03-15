@@ -32,6 +32,7 @@ test.describe('[US02] Gestión de empleados | Agregar nuevos empleados', () => {
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
             await employeePage.page.waitForLoadState('networkidle');
             const locator = employeePage.idColumnValues(uniqueID);
+            await locator.scrollIntoViewIfNeeded();
             await locator.waitFor({ state: 'visible', timeout: 30000 });
         });
     });
