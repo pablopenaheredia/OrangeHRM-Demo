@@ -21,19 +21,19 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
             await employeePage.goToAddEmployeePage();
         });
 
-        await test.step('Y el usuario llena los campos requeridos', async () => {
+        await test.step('Y el usuario llena los campos y agrega al empleado', async () => {
             await employeePage.fillAddEmployee({
                 firstName: "Sam",
                 lastName: "Tarly",
                 employeeID: uniqueID
             });
-        });
-
-        await test.step('Y el usuario guarda al empleado', async () => {
-            await employeePage.saveNewEmployeeClick();
-            await employeePage.page.waitForResponse(response =>
-                response.url().includes('/api/v2/pim/employees') && response.status() === 200 && response.request().method() === 'POST'
+            const responsePromiseAddEmployee = employeePage.page.waitForResponse(response =>
+                response.url().includes('/api/v2/pim/employees')
+                && response.status() === 200
+                && response.request().method() === 'POST'
             );
+            await employeePage.saveNewEmployeeClick();
+            await responsePromiseAddEmployee;
         });
 
         await test.step('Y el usuario busca al empleado por su ID', async () => {
@@ -61,14 +61,15 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
                 lastName: "Parker",
                 employeeID: newUniqueID
             });
-            await employeePage.saveEditEmployeeClick();
 
-            await employeePage.page.waitForResponse(response =>
+            const responsePromiseEditEmployee = employeePage.page.waitForResponse(response =>
                 response.url().includes('/api/v2/pim/employees') &&
                 response.url().includes('/personal-details') &&
                 response.status() === 200 &&
                 response.request().method() === 'PUT'
             );
+            await employeePage.saveEditEmployeeClick();
+            await responsePromiseEditEmployee;
         });
 
         await test.step("Entonces el usuario vuelve a la lista de empleados y lo busca por ID", async () => {
@@ -82,6 +83,7 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
             await employeePage.page.waitForTimeout(2000);
             await employeePage.page.waitForLoadState('networkidle');
             const locator = employeePage.idColumnValues(newUniqueID);
+            await employeePage.page.screenshot({ path: 'search_result.png' });
             await locator.waitFor({ state: 'visible', timeout: 3000 });
         });
     });
