@@ -1,20 +1,28 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="15.33281700000004">
-<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-14T20:01:34.374Z" hostname="chromium" tests="1" failures="1" skipped="0" time="10.985" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Escenario 1 | Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="10.985">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="57.6827">
+<testsuite name="e2e\employees\add-employee-success.spec.ts" timestamp="2025-03-16T01:49:11.515Z" hostname="chromium" tests="1" failures="1" skipped="0" time="42.464" errors="0">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › Escenario 1 | Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee-success.spec.ts" time="42.464">
 <failure message="add-employee-success.spec.ts:10:9 Escenario 1 | Validar agregar un empleado exitosamente" type="FAILURE">
-<![CDATA[  [chromium] › e2e\employees\add-employee-success.spec.ts:10:9 › [US02] Gestión de empleados | Agregar nuevos empleados › Escenario 1 | Validar agregar un empleado exitosamente › Entonces el empleado se encuentra en la lista de empleados 
+<![CDATA[  [chromium] › e2e\employees\add-employee-success.spec.ts:10:9 › [US02] Gestión de empleados | Agregar nuevos empleados › Escenario 1 | Validar agregar un empleado exitosamente 
 
-    Error: Locator for ID 875 not found.
+    Test timeout of 40000ms exceeded.
 
-      41 |                 await expect(locator).toBeVisible();
-      42 |             } else {
-    > 43 |                 throw new Error(`Locator for ID ${uniqueID} not found.`);
-         |                       ^
-      44 |             }
-      45 |         });
-      46 |     });
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:43:23
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:32:9
+    Error: locator.scrollIntoViewIfNeeded: Test timeout of 40000ms exceeded.
+    Call log:
+      - waiting for locator('div.oxd-table-row:has-text("7666")')
+
+
+       at ..\pageobjectsmodels\EmployeePage.ts:91
+
+      89 |
+      90 |         const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${id}")`);
+    > 91 |         await employeeRow.scrollIntoViewIfNeeded();
+         |                           ^
+      92 |         const isRowVisible = await employeeRow.isVisible();
+      93 |         return !isRowVisible;
+      94 |     }
+        at EmployeePage.isUniqueID (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\EmployeePage.ts:91:27)
+        at EmployeePage.generateUniqueID (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\EmployeePage.ts:101:24)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee-success.spec.ts:11:26
 ]]>
 </failure>
 </testcase>

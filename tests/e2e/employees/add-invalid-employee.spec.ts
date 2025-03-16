@@ -74,8 +74,8 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await employeePage.page.waitForSelector("//span[text()='Required']");
             await expect(employeePage.page.locator("//span[text()='Required']")).toHaveText('Required');
         });
-        await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
-            await expect.soft(employeePage.lastNameValues('')).toBeVisible();
+        await test.step('Entonces el empleado no deberia aparecer en la lista de empleados', async () => {
+            await expect.soft(employeePage.lastNameValues('Doe')).toBeVisible();
         });
     });
 
@@ -103,7 +103,6 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await employeePage.page.waitForLoadState('networkidle');
             await employeePage.page.waitForTimeout(2000); // Agregar un retraso manual
             const locator = employeePage.idColumnValues(uniqueID);
-            await locator.scrollIntoViewIfNeeded();
             await expect.soft(locator).toBeVisible({ timeout: 10000 });
 });
         await test.step('Entonces el usuario navega a la página de empleados nuevamente', async () => {

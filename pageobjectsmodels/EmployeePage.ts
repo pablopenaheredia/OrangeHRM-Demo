@@ -1,5 +1,11 @@
 import { type Page, type Locator, expect } from '@playwright/test';
 
+export type EmployeeData = {
+    firstName: string;
+    lastName: string;
+    employeeID: string;
+};
+
 export class EmployeePage {
     readonly page: Page;
     readonly addEmployeeBtn: Locator;
@@ -11,6 +17,7 @@ export class EmployeePage {
     readonly searchBtn: Locator;
     readonly pimModuleBtn: Locator;
     readonly employeeInfoIDInput: Locator;
+    //readonly idColumnValues = (id: string) =>  this.page.locator(`div.oxd-table-body div.oxd-table-row div.oxd-table-cell:nth-child(2):has-text("${id}")`).first();
     readonly idColumnValues = (id: string) => this.page.locator(`div.oxd-table-cell:has-text("${id}")`).first()
     readonly lastNameValues = (lastname: string) => this.page.locator(`div.oxd-table-cell:has-text("${lastname}")`).first()
     readonly editEmployeeInfoIconBtn: Locator
@@ -38,10 +45,19 @@ export class EmployeePage {
         await expect(this.page).toHaveURL(/pim\/addEmployee/);
     }
 
-    async fillAddEmployee(firstName: string, lastName: string, employeeID: string) {
-        await this.firstNameInput.fill(firstName);
-        await this.lastNameInput.fill(lastName);
-        await this.employeeIDInput.fill(employeeID);
+    async fillAddEmployee(employee: EmployeeData) {
+        await this.firstNameInput.fill(employee.firstName);
+        await this.lastNameInput.fill(employee.lastName);
+        await this.employeeIDInput.fill(employee.employeeID);
+    }
+        
+    async addNewEmployee(employee: EmployeeData) {
+        await this.clickOnPIMModule();
+        await this.goToAddEmployeePage();
+        await this.fillAddEmployee(employee);
+        await this.saveNewEmployeeClick();
+        await this.page.waitForResponse(response => response.url().includes('/api/v2/pim/employees') && response.status() === 200);
+        await this.page.waitForTimeout(2000);
     }
 
     async searchClick() {
@@ -74,7 +90,7 @@ export class EmployeePage {
         await this.page.waitForLoadState('domcontentloaded');
 
         const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${id}")`);
-
+        await employeeRow.scrollIntoViewIfNeeded();
         const isRowVisible = await employeeRow.isVisible();
         return !isRowVisible;
     }
