@@ -17,9 +17,11 @@ test.describe('[US02] Gestión de empleados | Agregar empleados incorrectamente'
             await employeePage.goToAddEmployeePage();
         });
         await test.step('Y el usuario llena los campos requeridos sin nombre', async () => {
-            await employeePage.fillAddEmployee("", 'Doe', uniqueID);
-        });
-        await test.step('Y el usuario guarda al empleado', async () => {
+            await employeePage.fillAddEmployee({
+                firstName: "",
+                lastName: "Tarly",
+                employeeID: uniqueID
+            });
             await employeePage.saveNewEmployeeClick();
         });
         await test.step('Entonces se muestra un mensaje de error', async () => {

@@ -36,7 +36,6 @@ test.describe('[US02] Gestión de empleados | Agregar nuevos empleados', () => {
             await employeePage.page.waitForTimeout(2000);
             await employeePage.page.waitForLoadState('networkidle');
             const locator = employeePage.idColumnValues(uniqueID);
-            await locator.scrollIntoViewIfNeeded();
             await locator.waitFor({ state: 'visible', timeout: 30000 });
         });
     });

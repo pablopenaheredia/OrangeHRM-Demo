@@ -90,7 +90,6 @@ export class EmployeePage {
         await this.page.waitForLoadState('domcontentloaded');
 
         const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${id}")`);
-        await employeeRow.scrollIntoViewIfNeeded();
         const isRowVisible = await employeeRow.isVisible();
         return !isRowVisible;
     }
