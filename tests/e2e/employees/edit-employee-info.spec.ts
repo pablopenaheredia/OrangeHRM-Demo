@@ -12,12 +12,8 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
         const uniqueID = await employeePage.generateUniqueID();
 
         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
-
-        await test.step('Cuando el usuario navega a la página de empleados', async () => {
+        await test.step('Dado que el usuario navega a la seccion de agregar empleados', async () => {
             await employeePage.clickOnPIMModule();
-        });
-
-        await test.step('Y se dirige hacia la sección de agregar empleados', async () => {
             await employeePage.goToAddEmployeePage();
         });
 
@@ -43,15 +39,19 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
         });
 
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
-            await employeePage.page.waitForTimeout(2000);
-            await employeePage.page.waitForLoadState('networkidle');
             const locator = employeePage.idColumnValues(uniqueID);
-            await locator.waitFor({ state: 'visible', timeout: 30000 });
+            await locator.waitFor({ state: 'visible', timeout: 10000 });
         });
 
         await test.step('Y hace click en el botón para editar su información', async () => {
-            //await employeePage.page.waitForLoadState('domcontentloaded');
+            const responsePromiseEditEmployee = employeePage.page.waitForResponse(response =>
+                response.url().includes('/api/v2/pim/employees') &&
+                response.url().includes('/personal-details') &&
+                response.status() === 200 &&
+                response.request().method() === 'GET'
+            );
             await employeePage.editEmployeeInfoIconClick();
+            await responsePromiseEditEmployee;
         });
 
         await test.step('Y el usuario edita y guarda la información del empleado', async () => {
@@ -78,11 +78,8 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
         });
 
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
-            await employeePage.page.reload();
-            await employeePage.page.waitForLoadState('networkidle');
             const locator = employeePage.idColumnValues(newUniqueID);
-            await employeePage.page.screenshot({ path: 'search_result.png' });
-            await locator.waitFor({ state: 'visible', timeout: 3000 });
+            await locator.waitFor({ timeout: 3000 });
         });
     });
 });
