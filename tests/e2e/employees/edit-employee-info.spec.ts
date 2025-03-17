@@ -40,7 +40,6 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
             await employeePage.clickOnPIMModule();
             await employeePage.fillEmployeeInfoIDInput(uniqueID);
             await employeePage.searchClick();
-            await employeePage.page.waitForTimeout(2000);
         });
 
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
@@ -51,7 +50,7 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
         });
 
         await test.step('Y hace click en el botón para editar su información', async () => {
-            await employeePage.page.waitForLoadState('domcontentloaded');
+            //await employeePage.page.waitForLoadState('domcontentloaded');
             await employeePage.editEmployeeInfoIconClick();
         });
 
@@ -73,14 +72,13 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
         });
 
         await test.step("Entonces el usuario vuelve a la lista de empleados y lo busca por ID", async () => {
-            await employeePage.page.reload();
             await employeePage.clickOnPIMModule();
             await employeePage.fillEmployeeInfoIDInput(newUniqueID);
             await employeePage.searchClick();
         });
 
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
-            await employeePage.page.waitForTimeout(2000);
+            await employeePage.page.reload();
             await employeePage.page.waitForLoadState('networkidle');
             const locator = employeePage.idColumnValues(newUniqueID);
             await employeePage.page.screenshot({ path: 'search_result.png' });

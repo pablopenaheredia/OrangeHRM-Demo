@@ -17,7 +17,8 @@ export class EmployeePage {
     readonly searchBtn: Locator;
     readonly pimModuleBtn: Locator;
     readonly employeeInfoIDInput: Locator;
-    //readonly idColumnValues = (id: string) =>  this.page.locator(`div.oxd-table-body div.oxd-table-row div.oxd-table-cell:nth-child(2):has-text("${id}")`).first();
+
+    //readonly idColumnValues = (id: string) => this.page.getByRole('cell', { name: id }).first();
     readonly idColumnValues = (id: string) => this.page.locator(`div.oxd-table-cell:has-text("${id}")`).first()
     readonly lastNameValues = (lastname: string) => this.page.locator(`div.oxd-table-cell:has-text("${lastname}")`).first()
     readonly editEmployeeInfoIconBtn: Locator
@@ -50,7 +51,7 @@ export class EmployeePage {
         await this.lastNameInput.fill(employee.lastName);
         await this.employeeIDInput.fill(employee.employeeID);
     }
-        
+
     async addNewEmployee(employee: EmployeeData) {
         await this.clickOnPIMModule();
         await this.goToAddEmployeePage();
