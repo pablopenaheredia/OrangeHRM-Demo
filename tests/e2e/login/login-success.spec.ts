@@ -3,7 +3,7 @@ import { expect, test } from '../../fixtures';
 const user = process.env.USER;
 const password = process.env.PASSWORD;
 
-test.describe('[US01] Inicio de sesión', () => {
+test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales', () => {
     
     test('Validar inicio de sesión exitoso', async ({ loginPage }) => {
         await test.step('Dado que el usuario navega a la página de inicio de sesión', async () => {

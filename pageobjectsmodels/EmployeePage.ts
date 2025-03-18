@@ -95,7 +95,7 @@ export class EmployeePage {
         }
         return uniqueID;
     }
-/*
+
     async addNewEmployee(employee: EmployeeData) {
         await this.clickOnPIMModule();
         await this.goToAddEmployeePage();
@@ -116,7 +116,7 @@ export class EmployeePage {
         await locator.waitFor({ state: 'visible', timeout: 10000 });
     }
 
-    async editEmployeeInfo(employee: EmployeeData) {
+    /*async editEmployeeInfo(employee: EmployeeData) {
         const responsePromiseEditEmployee = this.page.waitForResponse(response =>
                 response.url().includes('/api/v2/pim/employees') &&
                 response.url().includes('/personal-details') &&

@@ -1,18 +1,24 @@
+
 import { expect, test } from '../../fixtures';
 
-test.beforeEach(async ({ loginPage }) => {
+test.beforeEach(async ({ loginPage, employeePage }) => {
     await loginPage.goToLoginPage();
     await loginPage.login();
+    const uniqueID = await employeePage.generateUniqueID();
+    await employeePage.addNewEmployee({
+        firstName: "Sam",
+        lastName: "Tarly",
+        employeeID: uniqueID
+    });
 });
 
-test.describe('[US02] Gestión de empleados | Editar empleados correctamente', () => {
+test.describe('[US03] Gestión de empleados | Editar información de empleados existentes', () => {
 
-    test('Validar editar un empleado exitosamente', async ({ employeePage }) => {
+    /*test('Validar editar un empleado exitosamente', async ({ employeePage }) => {
         const newUniqueID = await employeePage.generateUniqueID();
         const uniqueID = await employeePage.generateUniqueID();
 
         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
-
         await test.step('Cuando el usuario navega a la página de empleados', async () => {
             await employeePage.clickOnPIMModule();
         });
@@ -86,5 +92,15 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
             await employeePage.page.screenshot({ path: 'search_result.png' });
             await locator.waitFor({ timeout: 3000 });
         });
+    });
+*/
+    
+    test('Validar editar un empleado exitosamente', async ({ employeePage }) => {
+        await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
+        await test.step('Y ya hay un empleado agregado', async () => { });
+        await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({  }) => {
+            await employeePage.verifyEmployeeInList(employeePage.employeeID);
+        });
+
     });
 });
