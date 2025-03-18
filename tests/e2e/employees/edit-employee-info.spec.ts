@@ -43,15 +43,19 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
         });
 
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
-            await employeePage.page.waitForTimeout(2000);
-            await employeePage.page.waitForLoadState('networkidle');
             const locator = employeePage.idColumnValues(uniqueID);
-            await locator.waitFor({ state: 'visible', timeout: 30000 });
+            await locator.waitFor({ timeout: 3000 });
         });
 
         await test.step('Y hace click en el botón para editar su información', async () => {
-            //await employeePage.page.waitForLoadState('domcontentloaded');
+            const responsePromiseEditEmployee = employeePage.page.waitForResponse(response =>
+                response.url().includes('/api/v2/pim/employees') &&
+                response.url().includes('/personal-details') &&
+                response.status() === 200 &&
+                response.request().method() === 'GET'
+            );
             await employeePage.editEmployeeInfoIconClick();
+            await responsePromiseEditEmployee;
         });
 
         await test.step('Y el usuario edita y guarda la información del empleado', async () => {
@@ -78,11 +82,9 @@ test.describe('[US02] Gestión de empleados | Editar empleados correctamente', (
         });
 
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
-            await employeePage.page.reload();
-            await employeePage.page.waitForLoadState('networkidle');
             const locator = employeePage.idColumnValues(newUniqueID);
             await employeePage.page.screenshot({ path: 'search_result.png' });
-            await locator.waitFor({ state: 'visible', timeout: 3000 });
+            await locator.waitFor({ timeout: 3000 });
         });
     });
 });

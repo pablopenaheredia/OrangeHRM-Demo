@@ -29,12 +29,8 @@ test.describe('[US02] Gestión de empleados | Agregar nuevos empleados', () => {
             await employeePage.clickOnPIMModule();
             await employeePage.fillEmployeeInfoIDInput(uniqueID);
             await employeePage.searchClick();
-            await employeePage.page.waitForTimeout(2000);
-            await employeePage.page.screenshot({ path: 'search_result.png', fullPage: true });
         });
         await test.step('Entonces el empleado se encuentra en la lista de empleados', async () => {
-            await employeePage.page.waitForTimeout(2000);
-            await employeePage.page.waitForLoadState('networkidle');
             const locator = employeePage.idColumnValues(uniqueID);
             await locator.waitFor({ state: 'visible', timeout: 30000 });
         });

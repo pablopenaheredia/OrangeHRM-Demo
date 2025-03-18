@@ -18,8 +18,8 @@ export class EmployeePage {
     readonly pimModuleBtn: Locator;
     readonly employeeInfoIDInput: Locator;
 
-    //readonly idColumnValues = (id: string) => this.page.getByRole('cell', { name: id }).first();
-    readonly idColumnValues = (id: string) => this.page.locator(`div.oxd-table-cell:has-text("${id}")`).first()
+    readonly idColumnValues = (id: string) => this.page.getByRole('cell', { name: id }).first();
+    //readonly idColumnValues = (id: string) => this.page.locator(`div.oxd-table-cell:has-text("${id}")`).first()
     readonly lastNameValues = (lastname: string) => this.page.locator(`div.oxd-table-cell:has-text("${lastname}")`).first()
     readonly editEmployeeInfoIconBtn: Locator
     readonly successPopUp: Locator
