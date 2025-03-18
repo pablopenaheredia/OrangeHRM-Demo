@@ -95,7 +95,7 @@ export class EmployeePage {
         }
         return uniqueID;
     }
-
+/*
     async addNewEmployee(employee: EmployeeData) {
         await this.clickOnPIMModule();
         await this.goToAddEmployeePage();
@@ -108,12 +108,11 @@ export class EmployeePage {
         await responsePromiseAddEmployee;
     }
 
-    async verifyEmployeeInList(employee: EmployeeData) {
-        const uniqueID = employee.employeeID;
+    async verifyEmployeeInList(employeeID: string) {
         await this.clickOnPIMModule();
-        await this.fillEmployeeInfoIDInput(uniqueID);
+        await this.fillEmployeeInfoIDInput(employeeID);
         await this.searchClick();
-        const locator = this.idColumnValues(uniqueID);
+        const locator = this.idColumnValues(employeeID);
         await locator.waitFor({ state: 'visible', timeout: 10000 });
     }
 
@@ -137,14 +136,13 @@ export class EmployeePage {
             await responsePromiseSaveEditedEmployee;
     }
 
-    async verifyEmployeeEdited(employee: EmployeeData) {
-        const newUniqueID = employee.employeeID;
-        await this.clickOnPIMModule();
-        await this.fillEmployeeInfoIDInput(newUniqueID);
+    async verifyEmployeeEdited(employeeID: string) {
+         await this.clickOnPIMModule();
+        await this.fillEmployeeInfoIDInput(employeeID);
         await this.searchClick();
-        const locator = this.idColumnValues(newUniqueID);
+        const locator = this.idColumnValues(employeeID);
         await locator.waitFor({ timeout:
         3000 });
     }
-   
+*/
 }

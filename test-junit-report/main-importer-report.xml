@@ -1,6 +1,39 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="70.38108999999997">
-<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-03-18T05:05:43.507Z" hostname="chromium" tests="1" failures="0" skipped="0" time="60.061" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 2 | Validar agregar un empleado sin nombre" classname="e2e\employees\add-employee.spec.ts" time="60.061">
+<testsuites id="" name="" tests="6" failures="1" skipped="0" errors="0" time="75.62712899999995">
+<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-03-18T17:00:01.841Z" hostname="chromium" tests="6" failures="1" skipped="0" time="66.899" errors="0">
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 1 | Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee.spec.ts" time="11.247">
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 2 | Validar agregar un empleado sin nombre" classname="e2e\employees\add-employee.spec.ts" time="9.099">
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 3 | Validar agregar un empleado sin apellido" classname="e2e\employees\add-employee.spec.ts" time="9.941">
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 4 | Validar agregar un empleado sin ID" classname="e2e\employees\add-employee.spec.ts" time="13.364">
+<failure message="add-employee.spec.ts:107:9 Escenario 4 | Validar agregar un empleado sin ID" type="FAILURE">
+<![CDATA[  [chromium] › e2e\employees\add-employee.spec.ts:107:9 › [US02] Gestión de empleados | Agregar y validar empleados › Escenario 4 | Validar agregar un empleado sin ID › Entonces se muestra un mensaje de error 
+
+    Error: expect.toHaveText: Error: strict mode violation: locator('//div[@class=\'oxd-input-group oxd-input-field-bottom-space\']//span[1]') resolved to 2 elements:
+        1) <span data-v-7ef819fd="" class="oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input"></span> aka locator('label').filter({ hasText: /^Male$/ }).locator('span')
+        2) <span data-v-7ef819fd="" class="oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input"></span> aka locator('label').filter({ hasText: 'Female' }).locator('span')
+
+    Call log:
+      - expect.toHaveText with timeout 6000ms
+      - waiting for locator('//div[@class=\'oxd-input-group oxd-input-field-bottom-space\']//span[1]')
+
+
+      128 |         await test.step('Entonces se muestra un mensaje de error', async () => {
+      129 |             await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
+    > 130 |             await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]")).toHaveText('Required');
+          |                                                                                                                              ^
+      131 |         });
+      132 |
+      133 |         await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:130:126
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:128:9
+]]>
+</failure>
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 5 | Validar agregar un empleado con ID duplicado" classname="e2e\employees\add-employee.spec.ts" time="14.426">
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput" classname="e2e\employees\add-employee.spec.ts" time="8.822">
 </testcase>
 </testsuite>
 </testsuites>
