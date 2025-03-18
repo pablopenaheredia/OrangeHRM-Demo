@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="35.61977000000002">
 <testsuite name="e2e\employees\edit-employee-info.spec.ts" timestamp="2025-03-18T02:05:44.700Z" hostname="chromium" tests="1" failures="0" skipped="0" time="28.883" errors="0">
 <testcase name="[US02] Gestión de empleados | Editar empleados correctamente › Validar editar un empleado exitosamente" classname="e2e\employees\edit-employee-info.spec.ts" time="28.883">
+=======
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="27.72246000000008">
+<testsuite name="e2e\employees\edit-employee-info.spec.ts" timestamp="2025-03-17T19:28:27.562Z" hostname="chromium" tests="1" failures="0" skipped="0" time="23.246" errors="0">
+<testcase name="[US02] Gestión de empleados | Editar empleados correctamente › Validar editar un empleado exitosamente" classname="e2e\employees\edit-employee-info.spec.ts" time="23.246">
+>>>>>>> 0d82595f94ec0e3d159f5c43e5ff3831795d57f8
 </testcase>
 </testsuite>
 </testsuites>
