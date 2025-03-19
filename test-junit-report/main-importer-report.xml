@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="45.539867000000086">
-<testsuite name="e2e\employees\edit-employee.spec.ts" timestamp="2025-03-18T17:22:30.055Z" hostname="chromium" tests="1" failures="0" skipped="0" time="37.691" errors="0">
-<testcase name="[US03] Gestión de empleados | Editar información de empleados existentes › Validar editar un empleado exitosamente" classname="e2e\employees\edit-employee.spec.ts" time="37.691">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="19.63276600000006">
+<testsuite name="e2e\employees\delete-employee.spec.ts" timestamp="2025-03-19T02:06:24.214Z" hostname="chromium" tests="1" failures="0" skipped="0" time="15.807" errors="0">
+<testcase name="[US04] Gestión de empleados | Eliminar empleados › [US-04 | TC-01] | Validar eliminar un empleado exitosamente" classname="e2e\employees\delete-employee.spec.ts" time="15.807">
 </testcase>
 </testsuite>
 </testsuites>

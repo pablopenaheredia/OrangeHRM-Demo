@@ -17,12 +17,17 @@ export class EmployeePage {
     readonly searchBtn: Locator;
     readonly pimModuleBtn: Locator;
     readonly employeeInfoIDInput: Locator;
-
     readonly idColumnValues = (id: string) => this.page.getByRole('cell', { name: id }).first();
-    //readonly idColumnValues = (id: string) => this.page.locator(`div.oxd-table-cell:has-text("${id}")`).first()
-    readonly lastNameValues = (lastname: string) => this.page.locator(`div.oxd-table-cell:has-text("${lastname}")`).first()
-    readonly editEmployeeInfoIconBtn: Locator
-    readonly successPopUp: Locator
+    //readonly lastNameValues = (lastname: string) => this.page.locator(`div.oxd-table-cell:has-text("${lastname}")`).first()
+    readonly editEmployeeInfoIconBtn: Locator;
+    readonly deleteEmployeeIconBtn: Locator;
+    readonly successPopUp: Locator;
+    readonly firstNameEditInput: Locator;
+    readonly lastNameEditInput: Locator;
+    readonly employeeIDEditInput: Locator;
+    readonly deleteEmployeeConfirmBtn: Locator;
+    //readonly deletePopUp: Locator;
+
     
     constructor(page: Page) {
         this.page = page;
@@ -30,13 +35,19 @@ export class EmployeePage {
         this.firstNameInput = this.page.getByRole('textbox', { name: 'First Name' });
         this.lastNameInput = this.page.getByRole('textbox', { name: 'Last Name' });
         this.employeeIDInput = this.page.locator("(//input[@class='oxd-input oxd-input--active'])[2]");
+        this.firstNameEditInput = this.page.getByRole('textbox', { name: 'First Name' });
+        this.lastNameEditInput = this.page.getByRole('textbox', { name: 'Last Name' });
+        this.employeeIDEditInput = this.page.getByRole('textbox', { name: 'Employee Id' });
         this.saveNewEmployeeBtn = this.page.getByRole('button', { name: 'Save' });
         this.saveEditBtn = this.page.locator("(//button[@type='submit'])[1]");
         this.searchBtn = this.page.getByRole('button', { name: 'Search' });
         this.pimModuleBtn = this.page.getByRole('link', { name: 'PIM' });
         this.employeeInfoIDInput = this.page.getByRole('textbox').nth(2);
         this.editEmployeeInfoIconBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[1]");
+        this.deleteEmployeeIconBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[2]");
+        this.deleteEmployeeConfirmBtn = this.page.getByRole('button', { name: 'Yes, Delete' });
         this.successPopUp = this.page.getByRole('alert', { name: 'Successfully Updated' });
+        //this.deletePopUp = this.page.getByRole('document', { : })
     }
 
     async goToAddEmployeePage() {
@@ -116,7 +127,7 @@ export class EmployeePage {
         await locator.waitFor({ state: 'visible', timeout: 10000 });
     }
 
-    /*async editEmployeeInfo(employee: EmployeeData) {
+    async editEmployeeInfoSuccess(employee: EmployeeData) {
         const responsePromiseEditEmployee = this.page.waitForResponse(response =>
                 response.url().includes('/api/v2/pim/employees') &&
                 response.url().includes('/personal-details') &&
@@ -136,13 +147,37 @@ export class EmployeePage {
             await responsePromiseSaveEditedEmployee;
     }
 
+    async editEmployeeInfoUnsuccess(employee: EmployeeData) {
+        const responsePromiseEditEmployee = this.page.waitForResponse(response =>
+                response.url().includes('/api/v2/pim/employees') &&
+                response.url().includes('/personal-details') &&
+                response.status() === 200 &&
+                response.request().method() === 'GET'
+            );
+        await this.editEmployeeInfoIconClick();
+        await responsePromiseEditEmployee;
+        await this.fillAddEmployee(employee);
+        await this.saveEditEmployeeClick();
+
+    }
+
     async verifyEmployeeEdited(employeeID: string) {
-         await this.clickOnPIMModule();
+        await this.clickOnPIMModule();
         await this.fillEmployeeInfoIDInput(employeeID);
         await this.searchClick();
         const locator = this.idColumnValues(employeeID);
-        await locator.waitFor({ timeout:
-        3000 });
+        await locator.waitFor({ timeout: 3000 });
     }
-*/
+
+    async deleteEmployee() {
+        const responsePromiseDeleteEmployee = this.page.waitForResponse(response =>
+                response.url().includes('/api/v2/pim/employees') &&
+                response.status() === 200 &&
+                response.request().method() === 'DELETE'
+            );
+        await this.deleteEmployeeIconBtn.click();
+        await this.deleteEmployeeConfirmBtn.click();
+        await responsePromiseDeleteEmployee;
+
+    }
 }
