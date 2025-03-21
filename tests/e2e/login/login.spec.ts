@@ -16,7 +16,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
 
         await test.step('Entonces el usuario debería ser redirigido al dashboard y ver el menú principal', async () => {
             await expect(loginPage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index');
-            await expect(loginPage.page.locator('ul.oxd-main-menu')).toBeVisible();
+            await expect(loginPage.sideMenu).toBeVisible();
         });
     });
 
@@ -30,7 +30,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
         });
 
         await test.step('Entonces debería aparecer un mensaje de error indicando "Invalid credentials"', async () => {
-            await expect(loginPage.page.locator('div.oxd-alert-content.oxd-alert-content--error')).toHaveText('Invalid credentials');
+            await expect(loginPage.invalidCredentialsError).toBeTruthy();
         });
     });
 
@@ -44,7 +44,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
         });
 
         await test.step('Entonces debería aparecer un mensaje de error indicando "Invalid credentials"', async () => {
-            await expect(loginPage.page.locator('div.oxd-alert-content.oxd-alert-content--error')).toHaveText('Invalid credentials');
+            await expect(loginPage.invalidCredentialsError).toBeTruthy();
         });
     });
 
@@ -58,7 +58,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
         });
 
         await test.step('Entonces debería aparecer un mensaje de error indicando "Required"', async () => {
-            await expect(loginPage.page.locator('span.oxd-text.oxd-text--span')).toHaveText('Required');
+            await expect(loginPage.requiredError).toBeTruthy();
         });
     });
 
@@ -72,7 +72,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
         });
 
         await test.step('Entonces debería aparecer un mensaje de error indicando "Required"', async () => {
-            await expect(loginPage.page.locator('span.oxd-text.oxd-text--span')).toHaveText('Required');
+            await expect(loginPage.requiredError).toBeTruthy();
         });
     });
 
@@ -82,7 +82,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
         });
 
         await test.step('Entonces el botón "Login" debería estar deshabilitado cuando los campos están vacíos', async () => {
-            await expect(loginPage.page.locator("button[type='submit']")).toBeDisabled();
+            await expect(loginPage.loginBtn).toBeDisabled();
         });
     });
 

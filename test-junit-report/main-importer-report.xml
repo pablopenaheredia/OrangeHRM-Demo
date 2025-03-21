@@ -1,6 +1,29 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="19.63276600000006">
-<testsuite name="e2e\employees\delete-employee.spec.ts" timestamp="2025-03-19T02:06:24.214Z" hostname="chromium" tests="1" failures="0" skipped="0" time="15.807" errors="0">
-<testcase name="[US04] Gestión de empleados | Eliminar empleados › [US-04 | TC-01] | Validar eliminar un empleado exitosamente" classname="e2e\employees\delete-employee.spec.ts" time="15.807">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="23.247852000000012">
+<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-03-21T03:13:05.504Z" hostname="chromium" tests="1" failures="1" skipped="0" time="18.532" errors="0">
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput" classname="e2e\employees\add-employee.spec.ts" time="18.532">
+<failure message="add-employee.spec.ts:185:9 Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput" type="FAILURE">
+<![CDATA[  [chromium] › e2e\employees\add-employee.spec.ts:185:9 › [US02] Gestión de empleados | Agregar y validar empleados › Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput › Entonces se muestra un mensaje de error 
+
+    Error: expect.toHaveText: Error: strict mode violation: locator('//div[@class=\'oxd-input-group oxd-input-field-bottom-space\']//span[1]') resolved to 2 elements:
+        1) <span data-v-7ef819fd="" class="oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input"></span> aka locator('label').filter({ hasText: /^Male$/ }).locator('span')
+        2) <span data-v-7ef819fd="" class="oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input"></span> aka locator('label').filter({ hasText: 'Female' }).locator('span')
+
+    Call log:
+      - expect.toHaveText with timeout 6000ms
+      - waiting for locator('//div[@class=\'oxd-input-group oxd-input-field-bottom-space\']//span[1]')
+
+
+      206 |         await test.step('Entonces se muestra un mensaje de error', async () => {
+      207 |             await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
+    > 208 |             await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]")).toHaveText('Invalid characters');
+          |                                                                                                                              ^
+      209 |             await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[2]");
+      210 |             await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[2]")).toHaveText('Invalid characters');
+      211 |         });
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:208:126
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:206:9
+]]>
+</failure>
 </testcase>
 </testsuite>
 </testsuites>

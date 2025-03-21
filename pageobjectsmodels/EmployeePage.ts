@@ -26,12 +26,14 @@ export class EmployeePage {
     readonly lastNameEditInput: Locator;
     readonly employeeIDEditInput: Locator;
     readonly deleteEmployeeConfirmBtn: Locator;
+    readonly requiredError: Locator;
+    readonly employeeAlreadyExists: Locator;
     //readonly deletePopUp: Locator;
 
     
     constructor(page: Page) {
         this.page = page;
-        this.addEmployeeBtn = this.page.locator("//button[contains(.,'Add')]");
+        this.addEmployeeBtn = this.page.getByRole('button', { name: 'Add' });
         this.firstNameInput = this.page.getByRole('textbox', { name: 'First Name' });
         this.lastNameInput = this.page.getByRole('textbox', { name: 'Last Name' });
         this.employeeIDInput = this.page.locator("(//input[@class='oxd-input oxd-input--active'])[2]");
@@ -39,7 +41,7 @@ export class EmployeePage {
         this.lastNameEditInput = this.page.getByRole('textbox', { name: 'Last Name' });
         this.employeeIDEditInput = this.page.getByRole('textbox', { name: 'Employee Id' });
         this.saveNewEmployeeBtn = this.page.getByRole('button', { name: 'Save' });
-        this.saveEditBtn = this.page.locator("(//button[@type='submit'])[1]");
+        this.saveEditBtn = this.page.getByRole('button', { name: 'Save' });
         this.searchBtn = this.page.getByRole('button', { name: 'Search' });
         this.pimModuleBtn = this.page.getByRole('link', { name: 'PIM' });
         this.employeeInfoIDInput = this.page.getByRole('textbox').nth(2);
@@ -47,6 +49,8 @@ export class EmployeePage {
         this.deleteEmployeeIconBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[2]");
         this.deleteEmployeeConfirmBtn = this.page.getByRole('button', { name: 'Yes, Delete' });
         this.successPopUp = this.page.getByRole('alert', { name: 'Successfully Updated' });
+        this.requiredError = this.page.locator("//span[text()='Required']");
+        this.employeeAlreadyExists = this.page.locator("//span[text()='Employee Id already exists']")
         //this.deletePopUp = this.page.getByRole('document', { : })
     }
 

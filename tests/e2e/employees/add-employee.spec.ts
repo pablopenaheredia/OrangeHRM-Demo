@@ -64,8 +64,7 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
         });
 
         await test.step('Entonces se muestra un mensaje de error', async () => {
-            await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
-            await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]")).toHaveText('Required');
+            await employeePage.requiredError.waitFor({ state: 'visible' });
         });
 
         await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
@@ -95,8 +94,7 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
         });
 
         await test.step('Entonces se muestra un mensaje de error', async () => {
-            await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
-            await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]")).toHaveText('Required');
+            await employeePage.requiredError.waitFor({ state: 'visible' });
         });
 
         await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
@@ -126,8 +124,7 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
         });
 
         await test.step('Entonces se muestra un mensaje de error', async () => {
-            await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
-            await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]")).toHaveText('Required');
+            await employeePage.requiredError.waitFor({ state: 'visible' });
         });
 
         await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
@@ -181,8 +178,8 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
             await employeePage.saveNewEmployeeClick();
         });
         await test.step('Entonces se muestra un mensaje de error', async () => {
-            await employeePage.page.waitForSelector("//span[text()='Employee Id already exists']");
-            await expect(employeePage.page.locator("//span[text()='Employee Id already exists']")).toBeVisible();
+            await employeePage.employeeAlreadyExists.waitFor({ state: 'visible' });
+
         });
     });
     test('Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput', async ({ employeePage }) => {

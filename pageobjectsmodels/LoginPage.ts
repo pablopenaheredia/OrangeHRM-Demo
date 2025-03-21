@@ -5,13 +5,19 @@ export class LoginPage {
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
     readonly loginBtn: Locator;
+    readonly sideMenu: Locator;
+    readonly invalidCredentialsError: Locator;
+    readonly requiredError: Locator;
 
     
     constructor(page: Page) {
         this.page = page;
-        this.usernameInput = page.locator("input[name='username']");
-        this.passwordInput = page.locator("input[type='password']");
-        this.loginBtn = page.locator("button[type='submit']");
+        this.usernameInput = page.getByRole('textbox', { name: 'Username' });
+        this.passwordInput = page.getByRole('textbox', { name: 'Password' });
+        this.loginBtn = page.getByRole('button', { name: 'LOGIN' });
+        this.sideMenu = page.getByRole('link', { name: 'banner' });
+        this.invalidCredentialsError = page.getByRole('alert', { name: 'Invalid credentials' });
+        this.requiredError = page.getByRole('alert', { name: 'Required' });
     }
     
     async goToLoginPage() {
