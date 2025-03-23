@@ -1,5 +1,5 @@
 
-import { expect, test } from '../../fixtures';
+import { test } from '../../fixtures';
 
 let uniqueID: string;
 test.beforeEach(async ({ loginPage, employeePage }) => {
@@ -34,7 +34,6 @@ test.describe('[US03] Gestión de empleados | Editar información de empleados e
         });
     });
 
-
     test('Validar error al intentar editar un empleado sin nombre', async ({ employeePage }) => {
         const newUniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
@@ -50,8 +49,7 @@ test.describe('[US03] Gestión de empleados | Editar información de empleados e
             });
         });
         await test.step('Entonces se muestra un mensaje de error', async () => {
-            await employeePage.page.waitForSelector("//span[text()='Required']");
-            await expect(employeePage.page.locator("//span[text()='Required']")).toHaveText('Required');
+            await employeePage.requiredError.waitFor({ state: 'visible' });
         });
     });
 
@@ -70,8 +68,7 @@ test.describe('[US03] Gestión de empleados | Editar información de empleados e
             });
         });
         await test.step('Entonces se muestra un mensaje de error', async () => {
-            await employeePage.page.waitForSelector("//span[text()='Required']");
-            await expect(employeePage.page.locator("//span[text()='Required']")).toHaveText('Required');
+            await employeePage.requiredError.waitFor({ state: 'visible' });
         });
     });
 
@@ -90,8 +87,7 @@ test.describe('[US03] Gestión de empleados | Editar información de empleados e
             });
         });
         await test.step('Entonces se muestra un mensaje de error', async () => {
-            await employeePage.page.waitForSelector("//span[text()='Required']");
-            await expect(employeePage.page.locator("//span[text()='Required']")).toHaveText('Required');
+            await employeePage.requiredError.waitFor({ state: 'visible' });
         });
     });
 });

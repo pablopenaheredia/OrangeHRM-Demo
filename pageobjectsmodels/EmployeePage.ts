@@ -18,7 +18,6 @@ export class EmployeePage {
     readonly pimModuleBtn: Locator;
     readonly employeeInfoIDInput: Locator;
     readonly idColumnValues = (id: string) => this.page.getByRole('cell', { name: id }).first();
-    //readonly lastNameValues = (lastname: string) => this.page.locator(`div.oxd-table-cell:has-text("${lastname}")`).first()
     readonly editEmployeeInfoIconBtn: Locator;
     readonly deleteEmployeeIconBtn: Locator;
     readonly successPopUp: Locator;
@@ -41,7 +40,7 @@ export class EmployeePage {
         this.lastNameEditInput = this.page.getByRole('textbox', { name: 'Last Name' });
         this.employeeIDEditInput = this.page.getByRole('textbox', { name: 'Employee Id' });
         this.saveNewEmployeeBtn = this.page.getByRole('button', { name: 'Save' });
-        this.saveEditBtn = this.page.getByRole('button', { name: 'Save' });
+        this.saveEditBtn = this.page.getByRole('button', { name: 'Save' }).first();
         this.searchBtn = this.page.getByRole('button', { name: 'Search' });
         this.pimModuleBtn = this.page.getByRole('link', { name: 'PIM' });
         this.employeeInfoIDInput = this.page.getByRole('textbox').nth(2);

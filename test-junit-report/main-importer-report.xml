@@ -1,6 +1,39 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="23.247852000000012">
-<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-03-21T03:13:05.504Z" hostname="chromium" tests="1" failures="1" skipped="0" time="18.532" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput" classname="e2e\employees\add-employee.spec.ts" time="18.532">
+<testsuites id="" name="" tests="6" failures="2" skipped="0" errors="0" time="132.92983999999984">
+<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-03-21T20:01:53.759Z" hostname="chromium" tests="6" failures="2" skipped="0" time="126.418" errors="0">
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 1 | Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee.spec.ts" time="12.378">
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 2 | Validar agregar un empleado sin nombre" classname="e2e\employees\add-employee.spec.ts" time="10.356">
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 3 | Validar agregar un empleado sin apellido" classname="e2e\employees\add-employee.spec.ts" time="10.671">
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 4 | Validar agregar un empleado sin ID" classname="e2e\employees\add-employee.spec.ts" time="60.08">
+<failure message="add-employee.spec.ts:105:9 Escenario 4 | Validar agregar un empleado sin ID" type="FAILURE">
+<![CDATA[  [chromium] › e2e\employees\add-employee.spec.ts:105:9 › [US02] Gestión de empleados | Agregar y validar empleados › Escenario 4 | Validar agregar un empleado sin ID › Entonces se muestra un mensaje de error 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.waitFor: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for locator('//span[text()=\'Required\']') to be visible
+        - waiting for" https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/168" navigation to finish...
+        - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/168"
+
+
+      125 |
+      126 |         await test.step('Entonces se muestra un mensaje de error', async () => {
+    > 127 |             await employeePage.requiredError.waitFor({ state: 'visible' });
+          |                                              ^
+      128 |         });
+      129 |
+      130 |         await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:127:46
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:126:20
+]]>
+</failure>
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 5 | Validar agregar un empleado con ID duplicado" classname="e2e\employees\add-employee.spec.ts" time="17.323">
+</testcase>
+<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput" classname="e2e\employees\add-employee.spec.ts" time="15.61">
 <failure message="add-employee.spec.ts:185:9 Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput" type="FAILURE">
 <![CDATA[  [chromium] › e2e\employees\add-employee.spec.ts:185:9 › [US02] Gestión de empleados | Agregar y validar empleados › Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput › Entonces se muestra un mensaje de error 
 
