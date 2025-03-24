@@ -123,7 +123,9 @@ export class EmployeePage {
     }
 
     async verifyEmployeeInList(employeeID: string) {
+        
         await this.clickOnPIMModule();
+        await this.page.waitForLoadState('networkidle');
         await this.fillEmployeeInfoIDInput(employeeID);
         await this.searchClick();
         const locator = this.idColumnValues(employeeID);

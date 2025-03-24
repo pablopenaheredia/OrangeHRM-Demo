@@ -1,13 +1,13 @@
 import { test as base } from '@playwright/test';
 import { LoginPage } from '../pageobjectsmodels/LoginPage';
 import { EmployeePage } from '../pageobjectsmodels/EmployeePage';
-//import { DashboardPage } from '../pageobjectsmodels/DashboardPage';
+import { AdminPage } from '../pageobjectsmodels/AdminPage';
 
 
 type MyFixtures = {
     loginPage: LoginPage;
     employeePage: EmployeePage;
-    //dashboardPage: DashboardPage;
+    adminPage: AdminPage;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -19,6 +19,11 @@ export const test = base.extend<MyFixtures>({
     employeePage: async ({ page }, use) => {
         const employeePage = new EmployeePage(page);
         await use(employeePage);
+    },
+
+    adminPage: async ({ page }, use) => {
+        const adminPage = new AdminPage(page);
+        await use(adminPage);
     }
 });
 

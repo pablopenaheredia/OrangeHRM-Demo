@@ -1,60 +1,33 @@
-<testsuites id="" name="" tests="6" failures="2" skipped="0" errors="0" time="132.92983999999984">
-<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-03-21T20:01:53.759Z" hostname="chromium" tests="6" failures="2" skipped="0" time="126.418" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 1 | Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee.spec.ts" time="12.378">
-</testcase>
-<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 2 | Validar agregar un empleado sin nombre" classname="e2e\employees\add-employee.spec.ts" time="10.356">
-</testcase>
-<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 3 | Validar agregar un empleado sin apellido" classname="e2e\employees\add-employee.spec.ts" time="10.671">
-</testcase>
-<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 4 | Validar agregar un empleado sin ID" classname="e2e\employees\add-employee.spec.ts" time="60.08">
-<failure message="add-employee.spec.ts:105:9 Escenario 4 | Validar agregar un empleado sin ID" type="FAILURE">
-<![CDATA[  [chromium] › e2e\employees\add-employee.spec.ts:105:9 › [US02] Gestión de empleados | Agregar y validar empleados › Escenario 4 | Validar agregar un empleado sin ID › Entonces se muestra un mensaje de error 
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="199.74907199999998">
+<testsuite name="e2e\permissons\add-permissons.spec.ts" timestamp="2025-03-24T03:22:09.328Z" hostname="chromium" tests="1" failures="1" skipped="0" time="195.078" errors="0">
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › [US-05 | TC-01] | Validar asignar permisos de administrador un empleado exitosamente" classname="e2e\permissons\add-permissons.spec.ts" time="195.078">
+<failure message="add-permissons.spec.ts:18:9 [US-05 | TC-01] | Validar asignar permisos de administrador un empleado exitosamente" type="FAILURE">
+<![CDATA[  [chromium] › e2e\permissons\add-permissons.spec.ts:18:9 › [US05] Asignación de permisos | Asignar permisos a los empleados › [US-05 | TC-01] | Validar asignar permisos de administrador un empleado exitosamente › Y se verifica que el usuario se encuentre en la lista de empleados con permisos 
 
-    Test timeout of 60000ms exceeded.
-
-    Error: locator.waitFor: Test timeout of 60000ms exceeded.
+    Error: locator.click: Target page, context or browser has been closed
     Call log:
-      - waiting for locator('//span[text()=\'Required\']') to be visible
-        - waiting for" https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/168" navigation to finish...
-        - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/168"
+      - waiting for getByRole('link', { name: 'Admin' })
+        - locator resolved to <a data-v-6475d26d="" class="oxd-main-menu-item active" href="/web/index.php/admin/viewAdminModule">…</a>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
 
 
-      125 |
-      126 |         await test.step('Entonces se muestra un mensaje de error', async () => {
-    > 127 |             await employeePage.requiredError.waitFor({ state: 'visible' });
-          |                                              ^
-      128 |         });
-      129 |
-      130 |         await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:127:46
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:126:20
-]]>
-</failure>
-</testcase>
-<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 5 | Validar agregar un empleado con ID duplicado" classname="e2e\employees\add-employee.spec.ts" time="17.323">
-</testcase>
-<testcase name="[US02] Gestión de empleados | Agregar y validar empleados › Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput" classname="e2e\employees\add-employee.spec.ts" time="15.61">
-<failure message="add-employee.spec.ts:185:9 Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput" type="FAILURE">
-<![CDATA[  [chromium] › e2e\employees\add-employee.spec.ts:185:9 › [US02] Gestión de empleados | Agregar y validar empleados › Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput › Entonces se muestra un mensaje de error 
+       at ..\pageobjectsmodels\AdminPage.ts:42
 
-    Error: expect.toHaveText: Error: strict mode violation: locator('//div[@class=\'oxd-input-group oxd-input-field-bottom-space\']//span[1]') resolved to 2 elements:
-        1) <span data-v-7ef819fd="" class="oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input"></span> aka locator('label').filter({ hasText: /^Male$/ }).locator('span')
-        2) <span data-v-7ef819fd="" class="oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input"></span> aka locator('label').filter({ hasText: 'Female' }).locator('span')
-
-    Call log:
-      - expect.toHaveText with timeout 6000ms
-      - waiting for locator('//div[@class=\'oxd-input-group oxd-input-field-bottom-space\']//span[1]')
-
-
-      206 |         await test.step('Entonces se muestra un mensaje de error', async () => {
-      207 |             await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
-    > 208 |             await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]")).toHaveText('Invalid characters');
-          |                                                                                                                              ^
-      209 |             await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[2]");
-      210 |             await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[2]")).toHaveText('Invalid characters');
-      211 |         });
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:208:126
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:206:9
+      40 |
+      41 |     async goToAdminPage() {
+    > 42 |             await this.adminModuleBtn.click();
+         |                                       ^
+      43 |             await this.page.waitForLoadState('domcontentloaded');
+      44 |             await expect(this.page).toHaveURL(/admin\/viewSystemUsers/);
+      45 |         }
+        at AdminPage.goToAdminPage (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:42:39)
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:104:20)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\add-permissons.spec.ts:30:29
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\add-permissons.spec.ts:29:20
 ]]>
 </failure>
 </testcase>
