@@ -5,7 +5,7 @@ export class AdminPage {
     readonly userRoleDropdown: Locator;
     readonly userRoleOptions = (role: string) => this.page.getByRole('option', { name: role });
     readonly employeeNameInput: Locator;
-    readonly employeeNameSelect = (empName: string) => this.page.getByRole('option', { name: empName });
+    readonly employeeNameSelect = (name: string) => this.page.getByRole('cell', { name: name }).first();
     readonly statusDropdown: Locator;
     readonly userStatusOptions = (status: string) => this.page.getByRole('option', { name: status });
     readonly usernameInput: Locator;
@@ -16,7 +16,6 @@ export class AdminPage {
     readonly chooseStatusDropdown: Locator
     readonly saveBtn: Locator;
     readonly adminModuleBtn: Locator;
-    readonly idColumnValues = (employeeFullName: string) => this.page.getByRole('cell', { name: employeeFullName }).first();
     readonly logOutBtn: Locator
     readonly userProfileBtn: Locator;
 
@@ -110,13 +109,19 @@ export class AdminPage {
         await this.page.keyboard.press('Enter');
         await this.chooseStatusDropdown.click();
         await this.userStatusOptions(status).click();
+        const responsePromiseSearchUserRole = this.page.waitForResponse(response =>
+                response.url().includes('/api/v2/admin/') &&
+                response.status() === 200 &&
+                response.request().method() === 'GET'
+            );
         await this.searchBtn.click();
+        await responsePromiseSearchUserRole;  
         const locator = this.employeeNameSelect(employeeName);
-        await locator.waitFor({ timeout: 3000 });
+        await locator.waitFor({ state: 'visible', timeout: 6000 });
     }
 
     async logOut() {
-        await this.userRoleDropdown.click();
+        await this.userProfileBtn.click();
         await this.logOutBtn.click();
         await expect(this.page).toHaveURL(/auth\/login/);
     }

@@ -1,35 +1,6 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="199.74907199999998">
-<testsuite name="e2e\permissons\add-permissons.spec.ts" timestamp="2025-03-24T03:22:09.328Z" hostname="chromium" tests="1" failures="1" skipped="0" time="195.078" errors="0">
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › [US-05 | TC-01] | Validar asignar permisos de administrador un empleado exitosamente" classname="e2e\permissons\add-permissons.spec.ts" time="195.078">
-<failure message="add-permissons.spec.ts:18:9 [US-05 | TC-01] | Validar asignar permisos de administrador un empleado exitosamente" type="FAILURE">
-<![CDATA[  [chromium] › e2e\permissons\add-permissons.spec.ts:18:9 › [US05] Asignación de permisos | Asignar permisos a los empleados › [US-05 | TC-01] | Validar asignar permisos de administrador un empleado exitosamente › Y se verifica que el usuario se encuentre en la lista de empleados con permisos 
-
-    Error: locator.click: Target page, context or browser has been closed
-    Call log:
-      - waiting for getByRole('link', { name: 'Admin' })
-        - locator resolved to <a data-v-6475d26d="" class="oxd-main-menu-item active" href="/web/index.php/admin/viewAdminModule">…</a>
-      - attempting click action
-        - waiting for element to be visible, enabled and stable
-        - element is visible, enabled and stable
-        - scrolling into view if needed
-        - done scrolling
-
-
-       at ..\pageobjectsmodels\AdminPage.ts:42
-
-      40 |
-      41 |     async goToAdminPage() {
-    > 42 |             await this.adminModuleBtn.click();
-         |                                       ^
-      43 |             await this.page.waitForLoadState('domcontentloaded');
-      44 |             await expect(this.page).toHaveURL(/admin\/viewSystemUsers/);
-      45 |         }
-        at AdminPage.goToAdminPage (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:42:39)
-        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:104:20)
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\add-permissons.spec.ts:30:29
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\add-permissons.spec.ts:29:20
-]]>
-</failure>
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="31.51655">
+<testsuite name="e2e\permissons\add-permissons.spec.ts" timestamp="2025-03-24T19:28:11.485Z" hostname="chromium" tests="1" failures="0" skipped="0" time="25.64" errors="0">
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › [US-05 | TC-01] | Validar asignar permisos de administrador un empleado exitosamente" classname="e2e\permissons\add-permissons.spec.ts" time="25.64">
 </testcase>
 </testsuite>
 </testsuites>
