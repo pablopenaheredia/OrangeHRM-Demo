@@ -21,6 +21,11 @@ export class AdminPage {
     readonly requiredError: Locator;
     readonly passwordNotMatch: Locator;
     readonly userNameAlreadyExists: Locator;
+    readonly passwordLengthError: Locator;
+    readonly passwordNumberError: Locator;
+    readonly passwordDoNotMatchError: Locator;
+    readonly deleteTableBtn: Locator;
+    readonly deleteConfirmBtn: Locator;
 
     
     constructor(page: Page) {
@@ -41,6 +46,11 @@ export class AdminPage {
         this.requiredError = this.page.locator("//span[text()='Required']");
         this.passwordNotMatch = this.page.locator("//span[text()='Passwords do not match']");
         this.userNameAlreadyExists = this.page.locator("//span[text()='Already exists']");
+        this.passwordLengthError = this.page.locator("//span[text()='Should have at least 7 characters']")
+        this.passwordNumberError = this.page.locator("//span[text()='Your password must contain minimum 1 number']")
+        this.passwordDoNotMatchError = this.page.locator("//span[text()='Passwords do not match']")
+        this.deleteTableBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[2]");
+        this.deleteConfirmBtn = this.page.getByRole('button', { name: 'Yes, Delete' });
     }
 
     async goToAdminPage() {
@@ -108,23 +118,24 @@ export class AdminPage {
     }
 
     async verifyUserRole(employeeName: string, userName: string, userRole: 'Admin' | 'ESS', status: 'Enabled' | 'Disabled') {
-        await this.goToAdminPage();
-        await this.usernameInput.fill(userName);
-        await this.userRoleDropdown.click();
-        await this.userRoleOptions(userRole).click();
-        await this.employeeNameInput.fill(employeeName);
-        await this.page.keyboard.press('ArrowDown');
-        await this.page.keyboard.press('Enter');
-        await this.chooseStatusDropdown.click();
-        await this.userStatusOptions(status).click();
         const responsePromiseSearchUserRole = this.page.waitForResponse(response =>
                 response.url().includes('/api/v2/admin/') &&
                 response.status() === 200 &&
                 response.request().method() === 'GET'
             );
+        await this.goToAdminPage();
+        await this.usernameInput.fill(userName);
+        await this.userRoleDropdown.click();
+        await this.userRoleOptions(userRole).click();
+        await this.employeeNameInput.fill(employeeName);
+        await this.page.waitForTimeout(3000);
+        await this.page.keyboard.press('ArrowDown');
+        await this.page.keyboard.press('Enter');
+        await this.chooseStatusDropdown.click();
+        await this.userStatusOptions(status).click();
         await this.searchBtn.click();
         await responsePromiseSearchUserRole;  
-        const locator = this.employeeNameSelect(employeeName);
+        const locator = this.employeeNameSelect(userName);
         await locator.waitFor({ state: 'visible', timeout: 6000 });
     }
 
@@ -132,5 +143,16 @@ export class AdminPage {
         await this.userProfileBtn.click();
         await this.logOutBtn.click();
         await expect(this.page).toHaveURL(/auth\/login/);
+    }
+    async deletePermissons() {
+        const responsePromiseDeleteEmployee = this.page.waitForResponse(response =>
+                response.url().includes('/api/v2/pim/employees') &&
+                response.status() === 200 &&
+                response.request().method() === 'DELETE'
+            );
+        await this.deleteTableBtn.click();
+        await this.deleteConfirmBtn.click();
+        await responsePromiseDeleteEmployee;
+
     }
 }
