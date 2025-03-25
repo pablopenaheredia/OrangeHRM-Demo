@@ -18,6 +18,9 @@ export class AdminPage {
     readonly adminModuleBtn: Locator;
     readonly logOutBtn: Locator
     readonly userProfileBtn: Locator;
+    readonly requiredError: Locator;
+    readonly passwordNotMatch: Locator;
+    readonly userNameAlreadyExists: Locator;
 
     
     constructor(page: Page) {
@@ -35,6 +38,9 @@ export class AdminPage {
         this.adminModuleBtn = page.getByRole('link', { name: 'Admin' });
         this.logOutBtn = page.getByRole('button', { name: 'Logout' });
         this.userProfileBtn = page.locator('oxd-userdropdown-tab');
+        this.requiredError = this.page.locator("//span[text()='Required']");
+        this.passwordNotMatch = this.page.locator("//span[text()='Passwords do not match']");
+        this.userNameAlreadyExists = this.page.locator("//span[text()='Already exists']");
     }
 
     async goToAdminPage() {
@@ -43,7 +49,7 @@ export class AdminPage {
             await expect(this.page).toHaveURL(/admin\/viewSystemUsers/);
         }
 
-    async addNewUserRole(username: string, userRole: string, employeeName: string, status: string, password: string) {
+    async addNewUserRole(username: string, userRole: string, employeeName: string, status: string, password: string, confirmpassword: string) {
         await this.goToAdminPage();
         await this.addBtn.click();
 
@@ -58,8 +64,10 @@ export class AdminPage {
         await this.userStatusOptions(status).click();
 
         await this.usernameInput.fill(username);
+
         await this.passwordInput.fill(password);
-        await this.confirmPasswordInput.fill(password);
+        await this.confirmPasswordInput.fill(confirmpassword);
+
         await this.saveBtn.click();
     }
 
