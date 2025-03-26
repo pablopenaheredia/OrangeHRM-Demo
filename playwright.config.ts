@@ -35,7 +35,10 @@ expect: {
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
 		['./tests/custom-reporter.ts'],
-		['html', { outputFolder: 'test-html-report/main', open: 'never' }],
+    [ 'html', {
+      outputFolder: 'test-html-report/main', open: 'never',
+      attachments: false,
+      traces: false   }],
 		['junit', { outputFolder: 'test-junit-report', outputFile: 'test-junit-report/main-importer-report.xml' }],
 		['allure-playwright']
 	],
@@ -50,7 +53,7 @@ expect: {
 		/* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
 		actionTimeout: 0,
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-		trace: 'on-first-retry',
+		trace: 'off',
 		//screenshot: 'on'
 	},
 

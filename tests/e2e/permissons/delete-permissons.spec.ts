@@ -21,11 +21,11 @@ test.describe('[US05] Asignación de permisos | Asignar eliminar permisos a los 
             await adminPage.goToAdminPage();
         });
         await test.step('Y se agrega un nuevo rol de usuario', async () => {
-            await adminPage.addNewUserRole('XristophAdmin', 'Admin', 'Xristoph Pereh', 'Enabled', 'admin1234', 'admin1234');
+            await adminPage.addNewUserRole('XristopherAdmin', 'Admin', 'Xristoph Pereh', 'Enabled', 'admin1234', 'admin1234');
         });
         
         await test.step('Y se verifica que el usuario se encuentre en la lista de empleados con permisos', async () => {
-            await adminPage.verifyUserRole('Xristoph Pereh', 'XristophAdmin', 'Admin', 'Enabled');
+            await adminPage.verifyUserRole('XristopherAdmin');
         });
         await test.step('Y se elimina el permiso del usuario', async () => {
             await adminPage.deletePermissons();

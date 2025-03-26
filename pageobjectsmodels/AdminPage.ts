@@ -5,7 +5,7 @@ export class AdminPage {
     readonly userRoleDropdown: Locator;
     readonly userRoleOptions = (role: string) => this.page.getByRole('option', { name: role });
     readonly employeeNameInput: Locator;
-    readonly employeeNameSelect = (name: string) => this.page.getByRole('cell', { name: name }).first();
+    readonly employeeUserNameSelect = (name: string) => this.page.getByRole('cell', { name: name }).first();
     readonly statusDropdown: Locator;
     readonly userStatusOptions = (status: string) => this.page.getByRole('option', { name: status });
     readonly usernameInput: Locator;
@@ -42,14 +42,14 @@ export class AdminPage {
         this.chooseStatusDropdown = page.locator("(//div[@class='oxd-select-text-input'])[2]");
         this.adminModuleBtn = page.getByRole('link', { name: 'Admin' });
         this.logOutBtn = page.getByRole('button', { name: 'Logout' });
-        this.userProfileBtn = page.locator('oxd-userdropdown-tab');
+        this.userProfileBtn = page.locator('.oxd-userdropdown-tab');
         this.requiredError = this.page.locator("//span[text()='Required']");
         this.passwordNotMatch = this.page.locator("//span[text()='Passwords do not match']");
         this.userNameAlreadyExists = this.page.locator("//span[text()='Already exists']");
         this.passwordLengthError = this.page.locator("//span[text()='Should have at least 7 characters']")
         this.passwordNumberError = this.page.locator("//span[text()='Your password must contain minimum 1 number']")
         this.passwordDoNotMatchError = this.page.locator("//span[text()='Passwords do not match']")
-        this.deleteTableBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[2]");
+        this.deleteTableBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[1]");
         this.deleteConfirmBtn = this.page.getByRole('button', { name: 'Yes, Delete' });
     }
 
@@ -81,24 +81,12 @@ export class AdminPage {
         await this.saveBtn.click();
     }
 
-    async searchUser(username: string, userRole: string, employeeName: string, status: string) {
-        await this.usernameInput.fill(username);
-        await this.userRoleDropdown.selectOption({ label: userRole });
-        await this.employeeNameInput.fill(employeeName);
-        await this.statusDropdown.selectOption({ label: status });
+    async searchUserClick() {
         await this.searchBtn.click();
     }
 
-    async fillEmployeeNameInput(username: string) {
+    async fillUserNameInput(username: string) {
         await this.usernameInput.fill(username);
-        const responsePromiseSearchUserName = this.page.waitForResponse(response =>
-                response.url().includes('/api/v2/pim/employees') &&
-                response.url().includes('/personal-details') &&
-                response.status() === 200 &&
-                response.request().method() === 'GET'
-        );
-        await this.usernameInput.selectOption({ label: username });
-        await responsePromiseSearchUserName;
     }
 
     async chooseUserRole(userRole: 'Admin' | 'ESS') {
@@ -106,38 +94,34 @@ export class AdminPage {
         await this.userRoleOptions(userRole).click();
     }
 
-    async fillSystemUserForm(username: string, employeeName: string) {
-        await this.fillEmployeeNameInput(username);
-        await this.userRoleDropdown.selectOption({ label: 'Admin' });
-        await this.employeeNameInput.fill(employeeName);
-        await this.chooseStatus('Enabled');
-    }
-
     async chooseStatus(status: string) {
-        await this.statusDropdown.selectOption({ label: status });
+        await this.chooseStatusDropdown.click();
+        await this.userStatusOptions(status).click();
     }
 
-    async verifyUserRole(employeeName: string, userName: string, userRole: 'Admin' | 'ESS', status: 'Enabled' | 'Disabled') {
+    async fillSystemUserForm(username: string, employeeName: string, status: 'Enabled' | 'Disabled', userRole: 'Admin' | 'ESS') {
+        await this.fillUserNameInput(username);
+        await this.chooseUserRole(userRole);
+        await this.employeeNameInput.fill(employeeName);
+        await this.page.waitForTimeout(3000);
+        await this.page.keyboard.press('ArrowDown');
+        await this.page.keyboard.press('Enter');
+        await this.chooseStatus(status);
+    }
+
+    async verifyUserRole(username: string) {
+        await this.goToAdminPage();
+        await this.fillUserNameInput(username);
         const responsePromiseSearchUserRole = this.page.waitForResponse(response =>
                 response.url().includes('/api/v2/admin/') &&
                 response.status() === 200 &&
                 response.request().method() === 'GET'
             );
-        await this.goToAdminPage();
-        await this.usernameInput.fill(userName);
-        await this.userRoleDropdown.click();
-        await this.userRoleOptions(userRole).click();
-        await this.employeeNameInput.fill(employeeName);
-        await this.page.waitForTimeout(3000);
-        await this.page.keyboard.press('ArrowDown');
-        await this.page.keyboard.press('Enter');
-        await this.chooseStatusDropdown.click();
-        await this.userStatusOptions(status).click();
-        await this.searchBtn.click();
-        await responsePromiseSearchUserRole;  
-        const locator = this.employeeNameSelect(userName);
+        await this.searchUserClick();
+        await responsePromiseSearchUserRole;
+        const locator = this.employeeUserNameSelect(username);
         await locator.waitFor({ state: 'visible', timeout: 6000 });
-    }
+}
 
     async logOut() {
         await this.userProfileBtn.click();
@@ -146,11 +130,12 @@ export class AdminPage {
     }
     async deletePermissons() {
         const responsePromiseDeleteEmployee = this.page.waitForResponse(response =>
-                response.url().includes('/api/v2/pim/employees') &&
+                response.url().includes('/api/v2/admin/') &&
                 response.status() === 200 &&
                 response.request().method() === 'DELETE'
             );
         await this.deleteTableBtn.click();
+        await this.deleteConfirmBtn.waitFor({ state: 'visible' });
         await this.deleteConfirmBtn.click();
         await responsePromiseDeleteEmployee;
 

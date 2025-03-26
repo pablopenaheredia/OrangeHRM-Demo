@@ -27,7 +27,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
         });
         
         await test.step('Y se verifica que el usuario se encuentre en la lista de empleados con permisos', async () => {
-            await adminPage.verifyUserRole('Xristoph Pereh', 'XristophAdmin', 'Admin', 'Enabled');
+            await adminPage.verifyUserRole('XristophAdmin');
         });
     });
 });
