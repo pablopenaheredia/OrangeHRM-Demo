@@ -24,8 +24,11 @@ export class AdminPage {
     readonly passwordLengthError: Locator;
     readonly passwordNumberError: Locator;
     readonly passwordDoNotMatchError: Locator;
+    readonly userNameMinCharacters: Locator;
     readonly deleteTableBtn: Locator;
     readonly deleteConfirmBtn: Locator;
+    readonly editTableBtn: Locator;
+    readonly passwordCheckbox: Locator;
 
     
     constructor(page: Page) {
@@ -51,6 +54,9 @@ export class AdminPage {
         this.passwordDoNotMatchError = this.page.locator("//span[text()='Passwords do not match']")
         this.deleteTableBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[1]");
         this.deleteConfirmBtn = this.page.getByRole('button', { name: 'Yes, Delete' });
+        this.editTableBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[2]");
+        this.userNameMinCharacters = this.page.locator("//span[text()='Should be at least 5 characters']")
+        this.passwordCheckbox = this.page.locator("i.oxd-icon.bi-check.oxd-checkbox-input-icon");
     }
 
     async goToAdminPage() {
@@ -138,6 +144,32 @@ export class AdminPage {
         await this.deleteConfirmBtn.waitFor({ state: 'visible' });
         await this.deleteConfirmBtn.click();
         await responsePromiseDeleteEmployee;
+    }
 
+    async checkPasswordChange() {
+        await this.passwordCheckbox.check();
+    }
+
+    async clickEditPermissonsIcon() {
+        await this.page.waitForLoadState('networkidle'); 
+        await this.editTableBtn.click();
+    }
+
+    async editPermissons(username: string, userRole: "Admin" | "ESS", status: string, password?: string, confirmpassword?: string) {
+        
+        await this.chooseUserRole(userRole);
+        await this.chooseStatus(status);
+        await this.fillUserNameInput(username);
+
+        //Si se desea cambiar pw
+        const isPasswordChecked = await this.passwordCheckbox.isChecked();
+        if (isPasswordChecked) {
+            await this.passwordInput.fill(password);
+            await this.confirmPasswordInput.fill(confirmpassword);
+            
+        }
+
+        await this.saveBtn.click();
+        
     }
 }

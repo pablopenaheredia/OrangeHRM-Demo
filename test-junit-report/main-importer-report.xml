@@ -1,6 +1,27 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="48.702793000000064">
-<testsuite name="e2e\permissons\validate-permissons.spec.ts" timestamp="2025-03-26T03:24:14.875Z" hostname="chromium" tests="1" failures="0" skipped="0" time="34.402" errors="0">
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › Validar que no se puede crear un nuevo permiso con un nombre de usuario ya existente" classname="e2e\permissons\validate-permissons.spec.ts" time="34.402">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="27.084801">
+<testsuite name="e2e\permissons\edit-permissons.spec.ts" timestamp="2025-03-27T01:03:26.156Z" hostname="chromium" tests="1" failures="1" skipped="0" time="23.348" errors="0">
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › [US-06 | TC-01] | Validar editar permisos de administrador exitosamente" classname="e2e\permissons\edit-permissons.spec.ts" time="23.348">
+<failure message="edit-permissons.spec.ts:21:9 [US-06 | TC-01] | Validar editar permisos de administrador exitosamente" type="FAILURE">
+<![CDATA[  [chromium] › e2e\permissons\edit-permissons.spec.ts:21:9 › [US05] Asignación de permisos | Asignar permisos a los empleados › [US-06 | TC-01] | Validar editar permisos de administrador exitosamente 
+
+    TimeoutError: locator.waitFor: Timeout 6000ms exceeded.
+    Call log:
+      - waiting for getByRole('cell', { name: 'AdminPablo' }).first() to be visible
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:129
+
+      127 |         await responsePromiseSearchUserRole;
+      128 |         const locator = this.employeeUserNameSelect(username);
+    > 129 |         await locator.waitFor({ state: 'visible', timeout: 6000 });
+          |                       ^
+      130 | }
+      131 |
+      132 |     async logOut() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:129:23)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+]]>
+</failure>
 </testcase>
 </testsuite>
 </testsuites>

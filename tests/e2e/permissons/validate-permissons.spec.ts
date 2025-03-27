@@ -126,4 +126,19 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
         });
     });
 
+    test('Validar error para caracteres minimos de username', async ({ adminPage }) => {
+        await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
+        await test.step('Y ya hay un empleado agregado', async () => { });
+        await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
+        await test.step('Y se dirige a la sección Admin', async () => {
+            await adminPage.goToAdminPage();
+        });
+        await test.step('Y se agrega un nuevo rol de usuario', async () => {
+            await adminPage.addNewUserRole('Xris', 'Admin', 'Xristoph Pereh', 'Enabled', 'password1', 'password2');
+        });
+        await test.step('Y se verifica que aparezca un span con el texto "Necesita al menos un caracter numerico"', async () => {
+            await adminPage.userNameMinCharacters.waitFor({ state: 'visible' });
+        });
+    });
+
 });

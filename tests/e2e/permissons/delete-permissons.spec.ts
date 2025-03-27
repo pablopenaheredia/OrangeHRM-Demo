@@ -9,7 +9,8 @@ await employeePage.addNewEmployee({
        firstName: "Xristoph",
        lastName: "Pereh",
        employeeID: uniqueID
-       });
+});
+    await employeePage.verifyEmployeeInList(uniqueID);
 });
 
 test.describe('[US05] Asignación de permisos | Asignar eliminar permisos a los empleados', () => {
