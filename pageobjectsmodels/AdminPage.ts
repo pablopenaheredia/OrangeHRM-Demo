@@ -1,5 +1,9 @@
 import { type Page, type Locator, expect } from '@playwright/test';
 
+type UserRoleOptions = 'Admin' | 'ESS' | 'SelectOption' | 'NoChange';
+type UserStatusOptions = 'Enabled' | 'Disabled' | 'SelectOption' | 'NoChange';
+
+
 export class AdminPage {
     readonly page: Page;
     readonly userRoleDropdown: Locator;
@@ -29,6 +33,7 @@ export class AdminPage {
     readonly deleteConfirmBtn: Locator;
     readonly editTableBtn: Locator;
     readonly passwordCheckbox: Locator;
+    readonly selectInvalidOptionInDropdown : Locator;
 
     
     constructor(page: Page) {
@@ -36,7 +41,7 @@ export class AdminPage {
         this.userRoleDropdown = page.locator("(//div[@class='oxd-select-text-input'])[1]");
         this.employeeNameInput = page.getByRole('textbox', { name: 'Type for hints' });
         this.statusDropdown = page.getByRole('combobox', { name: 'Status' });
-        this.usernameInput = page.locator("(//input[@class='oxd-input oxd-input--active'])[2]")
+        this.usernameInput = page.locator("(//label[normalize-space(text())='Username']/following::input)[1]")
         this.passwordInput = page.locator("(//input[@type='password'])[1]");
         this.confirmPasswordInput = page.locator("(//input[@type='password'])[2]");
         this.searchBtn = page.getByRole('button', { name: 'Search' });
@@ -57,6 +62,7 @@ export class AdminPage {
         this.editTableBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[2]");
         this.userNameMinCharacters = this.page.locator("//span[text()='Should be at least 5 characters']")
         this.passwordCheckbox = this.page.locator("i.oxd-icon.bi-check.oxd-checkbox-input-icon");
+        this.selectInvalidOptionInDropdown = this.page.getByText('-- Select --');
     }
 
     async goToAdminPage() {
@@ -73,6 +79,7 @@ export class AdminPage {
         await this.userRoleOptions(userRole).click();
 
         await this.employeeNameInput.fill(employeeName);
+        await this.page.waitForTimeout(3000);
         await this.page.keyboard.press('ArrowDown');
         await this.page.keyboard.press('Enter');
 
@@ -83,8 +90,9 @@ export class AdminPage {
 
         await this.passwordInput.fill(password);
         await this.confirmPasswordInput.fill(confirmpassword);
-
+    
         await this.saveBtn.click();
+        
     }
 
     async searchUserClick() {
@@ -95,14 +103,28 @@ export class AdminPage {
         await this.usernameInput.fill(username);
     }
 
-    async chooseUserRole(userRole: 'Admin' | 'ESS') {
+    async chooseUserRole(userRole: UserRoleOptions) {
         await this.userRoleDropdown.click();
-        await this.userRoleOptions(userRole).click();
+        if (userRole === "SelectOption") {
+            
+            await this.selectInvalidOptionInDropdown.click();
+        }
+        else {
+            await this.userRoleOptions(userRole).click();
+        }
     }
 
-    async chooseStatus(status: string) {
-        await this.chooseStatusDropdown.click();
-        await this.userStatusOptions(status).click();
+    async chooseStatus(status: UserStatusOptions) {
+        
+        if (status === "NoChange") return;
+        await this.userRoleDropdown.click();
+        if (status === "SelectOption") {
+            await this.selectInvalidOptionInDropdown.click();
+        }
+        else {
+        await this.userStatusOptions(status).click(); 
+        }
+        
     }
 
     async fillSystemUserForm(username: string, employeeName: string, status: 'Enabled' | 'Disabled', userRole: 'Admin' | 'ESS') {
@@ -115,9 +137,11 @@ export class AdminPage {
         await this.chooseStatus(status);
     }
 
+
     async verifyUserRole(username: string) {
         await this.goToAdminPage();
         await this.fillUserNameInput(username);
+        await this.page.waitForTimeout(3000);
         const responsePromiseSearchUserRole = this.page.waitForResponse(response =>
                 response.url().includes('/api/v2/admin/') &&
                 response.status() === 200 &&
@@ -126,8 +150,8 @@ export class AdminPage {
         await this.searchUserClick();
         await responsePromiseSearchUserRole;
         const locator = this.employeeUserNameSelect(username);
-        await locator.waitFor({ state: 'visible', timeout: 6000 });
-}
+        await expect(locator).toBeVisible({ timeout: 6000 });
+    }
 
     async logOut() {
         await this.userProfileBtn.click();
@@ -151,14 +175,16 @@ export class AdminPage {
     }
 
     async clickEditPermissonsIcon() {
-        await this.page.waitForLoadState('networkidle'); 
+        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(1000);
         await this.editTableBtn.click();
     }
 
-    async editPermissons(username: string, userRole: "Admin" | "ESS", status: string, password?: string, confirmpassword?: string) {
-        
+    async editPermissonsSuccess(username: string, userRole: "Admin" | "ESS", status: 'Enabled' | 'Disabled', password?: string, confirmpassword?: string) {
+
         await this.chooseUserRole(userRole);
         await this.chooseStatus(status);
+        await this.fillUserNameInput('');
         await this.fillUserNameInput(username);
 
         //Si se desea cambiar pw
@@ -168,8 +194,35 @@ export class AdminPage {
             await this.confirmPasswordInput.fill(confirmpassword);
             
         }
-
+        const responsePromiseEditPermisson = this.page.waitForResponse(response =>
+            response.url().includes('/api/v2/admin/') &&
+            response.status() === 200 &&
+            response.request().method() === 'PUT'
+        );
         await this.saveBtn.click();
+        await responsePromiseEditPermisson;
+        await this.page.waitForLoadState('networkidle');
+    }
+    async editPermissonsUnsuccess(username: string,
+        userRole: UserRoleOptions,
+        status: UserStatusOptions,
+        password?: string,
+        confirmpassword?: string) {
         
+        await this.chooseUserRole(userRole);
+        await this.chooseStatus(status);
+    
+        await this.fillUserNameInput('');
+        await this.fillUserNameInput(username);
+
+        //Si se desea cambiar pw
+        const isPasswordChecked = await this.passwordCheckbox.isChecked();
+        if (isPasswordChecked) {
+            await this.passwordInput.fill(password);
+            await this.confirmPasswordInput.fill(confirmpassword);
+            
+        }
+        await this.saveBtn.click();
+        await this.page.waitForLoadState('networkidle');
     }
 }

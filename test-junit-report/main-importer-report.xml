@@ -1,25 +1,29 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="27.084801">
-<testsuite name="e2e\permissons\edit-permissons.spec.ts" timestamp="2025-03-27T01:03:26.156Z" hostname="chromium" tests="1" failures="1" skipped="0" time="23.348" errors="0">
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › [US-06 | TC-01] | Validar editar permisos de administrador exitosamente" classname="e2e\permissons\edit-permissons.spec.ts" time="23.348">
-<failure message="edit-permissons.spec.ts:21:9 [US-06 | TC-01] | Validar editar permisos de administrador exitosamente" type="FAILURE">
-<![CDATA[  [chromium] › e2e\permissons\edit-permissons.spec.ts:21:9 › [US05] Asignación de permisos | Asignar permisos a los empleados › [US-06 | TC-01] | Validar editar permisos de administrador exitosamente 
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="62.98944">
+<testsuite name="e2e\permissons\edit-permissons.spec.ts" timestamp="2025-03-29T05:20:06.696Z" hostname="chromium" tests="1" failures="1" skipped="0" time="60.047" errors="0">
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › Validar no poder editar un permiso con un campo requerido invalido" classname="e2e\permissons\edit-permissons.spec.ts" time="60.047">
+<failure message="edit-permissons.spec.ts:40:9 Validar no poder editar un permiso con un campo requerido invalido" type="FAILURE">
+<![CDATA[  [chromium] › e2e\permissons\edit-permissons.spec.ts:40:9 › [US05] Asignación de permisos | Asignar permisos a los empleados › Validar no poder editar un permiso con un campo requerido invalido › Y se edita el rol de usuario incorrectamente 
 
-    TimeoutError: locator.waitFor: Timeout 6000ms exceeded.
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
     Call log:
-      - waiting for getByRole('cell', { name: 'AdminPablo' }).first() to be visible
+      - waiting for getByRole('option', { name: 'Disabled' })
 
 
-       at ..\pageobjectsmodels\AdminPage.ts:129
+       at ..\pageobjectsmodels\AdminPage.ts:121
 
-      127 |         await responsePromiseSearchUserRole;
-      128 |         const locator = this.employeeUserNameSelect(username);
-    > 129 |         await locator.waitFor({ state: 'visible', timeout: 6000 });
-          |                       ^
-      130 | }
-      131 |
-      132 |     async logOut() {
-        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:129:23)
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+      119 |         }
+      120 |         else {
+    > 121 |         await this.userStatusOptions(status).click(); 
+          |                                              ^
+      122 |         }
+      123 |         
+      124 |     }
+        at AdminPage.chooseStatus (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:121:46)
+        at AdminPage.editPermissonsUnsuccess (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:209:9)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:51:13
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:50:9
 ]]>
 </failure>
 </testcase>
