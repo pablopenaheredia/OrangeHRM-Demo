@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="35.015799999999814">
-<testsuite name="e2e\permissons\edit-permissons.spec.ts" timestamp="2025-04-01T02:13:03.157Z" hostname="chromium" tests="1" failures="0" skipped="0" time="28.854" errors="0">
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › Validar error para contraseñas que no coinciden al editar un permiso" classname="e2e\permissons\edit-permissons.spec.ts" time="28.854">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="22.975199999999955">
+<testsuite name="e2e\permissons\validate-permissons.spec.ts" timestamp="2025-04-01T22:05:38.959Z" hostname="chromium" tests="1" failures="0" skipped="0" time="18.981" errors="0">
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › Validar error para cantidad de caracteres minimos en username" classname="e2e\permissons\validate-permissons.spec.ts" time="18.981">
 </testcase>
 </testsuite>
 </testsuites>

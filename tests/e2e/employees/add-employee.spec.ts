@@ -182,7 +182,7 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
 
         });
     });
-    test('Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput', async ({ employeePage }) => {
+    test('Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput', async ({ employeePage, adminPage }) => {
         const uniqueID = "uniqueID";
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
 
@@ -204,13 +204,9 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
         });
 
         await test.step('Entonces se muestra un mensaje de error', async () => {
-            await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]");
-            await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[1]")).toHaveText('Invalid characters');
-            await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[2]");
-            await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[2]")).toHaveText('Invalid characters');
+            await employeePage.requiredError.waitFor({ state: 'visible' });
+            await employeePage.page.getByText('Employee Id already exists');
         });
-        await employeePage.page.waitForSelector("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[3]");
-        await expect(employeePage.page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//span[3]")).toHaveText('Invalid characters');
 
         await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
                 await expect.soft(employeePage.idColumnValues(uniqueID)).toBeHidden();

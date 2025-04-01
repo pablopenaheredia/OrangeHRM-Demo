@@ -1,0 +1,192 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: [US05] Asignación de permisos | Asignar permisos a los empleados >> Validar error para caracteres minimos de username
+- Location: C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\validate-permissons.spec.ts:129:9
+
+# Error details
+
+```
+Error: locator.fill: Test ended.
+Call log:
+  - waiting for getByRole('textbox', { name: 'First Name' })
+
+    at EmployeePage.fillAddEmployee (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\EmployeePage.ts:64:35)
+    at EmployeePage.addNewEmployee (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\EmployeePage.ts:116:20)
+    at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\validate-permissons.spec.ts:8:5
+```
+
+# Test source
+
+```ts
+   1 | import { type Page, type Locator, expect } from '@playwright/test';
+   2 |
+   3 | export type EmployeeData = {
+   4 |     firstName: string;
+   5 |     lastName: string;
+   6 |     employeeID: string;
+   7 | };
+   8 |
+   9 | export class EmployeePage {
+   10 |     readonly page: Page;
+   11 |     readonly addEmployeeBtn: Locator;
+   12 |     readonly firstNameInput: Locator;
+   13 |     readonly lastNameInput: Locator;
+   14 |     readonly employeeIDInput: Locator;
+   15 |     readonly saveNewEmployeeBtn: Locator;
+   16 |     readonly saveEditBtn: Locator;
+   17 |     readonly searchBtn: Locator;
+   18 |     readonly pimModuleBtn: Locator;
+   19 |     readonly employeeInfoIDInput: Locator;
+   20 |     readonly idColumnValues = (id: string) => this.page.getByRole('cell', { name: id }).first();
+   21 |     readonly editEmployeeInfoIconBtn: Locator;
+   22 |     readonly deleteEmployeeIconBtn: Locator;
+   23 |     readonly successPopUp: Locator;
+   24 |     readonly firstNameEditInput: Locator;
+   25 |     readonly lastNameEditInput: Locator;
+   26 |     readonly employeeIDEditInput: Locator;
+   27 |     readonly deleteEmployeeConfirmBtn: Locator;
+   28 |     readonly requiredError: Locator;
+   29 |     readonly employeeAlreadyExists: Locator;
+   30 |     //readonly deletePopUp: Locator;
+   31 |
+   32 |     
+   33 |     constructor(page: Page) {
+   34 |         this.page = page;
+   35 |         this.addEmployeeBtn = this.page.getByRole('button', { name: 'Add' });
+   36 |         this.firstNameInput = this.page.getByRole('textbox', { name: 'First Name' });
+   37 |         this.lastNameInput = this.page.getByRole('textbox', { name: 'Last Name' });
+   38 |         this.employeeIDInput = this.page.locator("(//input[@class='oxd-input oxd-input--active'])[2]");
+   39 |         this.firstNameEditInput = this.page.getByRole('textbox', { name: 'First Name' });
+   40 |         this.lastNameEditInput = this.page.getByRole('textbox', { name: 'Last Name' });
+   41 |         this.employeeIDEditInput = this.page.getByRole('textbox', { name: 'Employee Id' });
+   42 |         this.saveNewEmployeeBtn = this.page.getByRole('button', { name: 'Save' });
+   43 |         this.saveEditBtn = this.page.getByRole('button', { name: 'Save' }).first();
+   44 |         this.searchBtn = this.page.getByRole('button', { name: 'Search' });
+   45 |         this.pimModuleBtn = this.page.getByRole('link', { name: 'PIM' });
+   46 |         this.employeeInfoIDInput = this.page.getByRole('textbox').nth(2);
+   47 |         this.editEmployeeInfoIconBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[1]");
+   48 |         this.deleteEmployeeIconBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[2]");
+   49 |         this.deleteEmployeeConfirmBtn = this.page.getByRole('button', { name: 'Yes, Delete' });
+   50 |         this.successPopUp = this.page.getByRole('alert', { name: 'Successfully Updated' });
+   51 |         this.requiredError = this.page.locator("//span[text()='Required']");
+   52 |         this.employeeAlreadyExists = this.page.locator("//span[text()='Employee Id already exists']")
+   53 |         //this.deletePopUp = this.page.getByRole('document', { : })
+   54 |     }
+   55 |
+   56 |     async goToAddEmployeePage() {
+   57 |         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
+   58 |         await this.addEmployeeBtn.click();
+   59 |         await this.page.waitForLoadState('domcontentloaded');
+   60 |         await expect(this.page).toHaveURL(/pim\/addEmployee/);
+   61 |     }
+   62 |
+   63 |     async fillAddEmployee(employee: EmployeeData) {
+>  64 |         await this.firstNameInput.fill(employee.firstName);
+      |                                   ^ Error: locator.fill: Test ended.
+   65 |         await this.lastNameInput.fill(employee.lastName);
+   66 |         await this.employeeIDInput.fill(employee.employeeID);
+   67 |     }
+   68 |
+   69 |     async searchClick() {
+   70 |         await this.searchBtn.click();
+   71 |     }
+   72 |
+   73 |     async fillEmployeeInfoIDInput(id: string) {
+   74 |         await this.employeeInfoIDInput.fill(id);
+   75 |     }
+   76 |     async saveNewEmployeeClick() {
+   77 |         await this.saveNewEmployeeBtn.click();
+   78 |     }
+   79 |     async saveEditEmployeeClick() {
+   80 |         await this.saveEditBtn.click();
+   81 |     }
+   82 |     async clickOnPIMModule() {
+   83 |         await this.pimModuleBtn.click();
+   84 |     }
+   85 |
+   86 |     async succeedPopUpVisible() {
+   87 |         await this.successPopUp.isVisible();
+   88 |     };
+   89 |
+   90 |     async editEmployeeInfoIconClick() {
+   91 |         await this.editEmployeeInfoIconBtn.click();
+   92 |     }
+   93 |
+   94 |     async isUniqueID(id: string): Promise<boolean> {
+   95 |         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
+   96 |         await this.page.waitForLoadState('domcontentloaded');
+   97 |
+   98 |         const employeeRow = this.page.locator(`div.oxd-table-row:has-text("${id}")`);
+   99 |         const isRowVisible = await employeeRow.isVisible();
+  100 |         return !isRowVisible;
+  101 |     }
+  102 |
+  103 |     async generateUniqueID(): Promise<string> {
+  104 |         let uniqueID: string = '';
+  105 |         let isUnique: boolean = false;
+  106 |         while (!isUnique) {
+  107 |             uniqueID = Math.floor(Math.random() * (10000 - 1 + 1) + 1).toString();
+  108 |             isUnique = await this.isUniqueID(uniqueID);
+  109 |         }
+  110 |         return uniqueID;
+  111 |     }
+  112 |
+  113 |     async addNewEmployee(employee: EmployeeData) {
+  114 |         await this.clickOnPIMModule();
+  115 |         await this.goToAddEmployeePage();
+  116 |         await this.fillAddEmployee(employee);
+  117 |         const responsePromiseAddEmployee = this.page.waitForResponse(response =>
+  118 |             response.url().includes('/api/v2/pim/employees')
+  119 |             && response.status() === 200
+  120 |             && response.request().method() === 'POST');
+  121 |         await this.saveNewEmployeeClick();
+  122 |         await responsePromiseAddEmployee;
+  123 |     }
+  124 |
+  125 |     async verifyEmployeeInList(employeeID: string) {
+  126 |         
+  127 |         await this.clickOnPIMModule();
+  128 |         await this.page.waitForLoadState('networkidle');
+  129 |         await this.fillEmployeeInfoIDInput(employeeID);
+  130 |         await this.searchClick();
+  131 |         const locator = this.idColumnValues(employeeID);
+  132 |         await locator.waitFor({ state: 'visible', timeout: 10000 });
+  133 |     }
+  134 |
+  135 |     async editEmployeeInfoSuccess(employee: EmployeeData) {
+  136 |         const responsePromiseEditEmployee = this.page.waitForResponse(response =>
+  137 |                 response.url().includes('/api/v2/pim/employees') &&
+  138 |                 response.url().includes('/personal-details') &&
+  139 |                 response.status() === 200 &&
+  140 |                 response.request().method() === 'GET'
+  141 |             );
+  142 |         await this.editEmployeeInfoIconClick();
+  143 |         await responsePromiseEditEmployee;
+  144 |         await this.fillAddEmployee(employee);
+  145 |         const responsePromiseSaveEditedEmployee = this.page.waitForResponse(response =>
+  146 |                 response.url().includes('/api/v2/pim/employees') &&
+  147 |                 response.url().includes('/personal-details') &&
+  148 |                 response.status() === 200 &&
+  149 |                 response.request().method() === 'PUT'
+  150 |             );
+  151 |             await this.saveEditEmployeeClick();
+  152 |             await responsePromiseSaveEditedEmployee;
+  153 |     }
+  154 |
+  155 |     async editEmployeeInfoUnsuccess(employee: EmployeeData) {
+  156 |         const responsePromiseEditEmployee = this.page.waitForResponse(response =>
+  157 |                 response.url().includes('/api/v2/pim/employees') &&
+  158 |                 response.url().includes('/personal-details') &&
+  159 |                 response.status() === 200 &&
+  160 |                 response.request().method() === 'GET'
+  161 |             );
+  162 |         await this.editEmployeeInfoIconClick();
+  163 |         await responsePromiseEditEmployee;
+  164 |         await this.fillAddEmployee(employee);
+```

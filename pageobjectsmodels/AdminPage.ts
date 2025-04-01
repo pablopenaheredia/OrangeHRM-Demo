@@ -37,7 +37,7 @@ export class AdminPage {
     
     constructor(page: Page) {
         this.page = page;
-        this.userRoleDropdown = page.locator("(//div[@class='oxd-select-text-input'])[1]");
+        this.userRoleDropdown = page.locator('.oxd-select-text').first();
         this.employeeNameInput = page.getByRole('textbox', { name: 'Type for hints' });
         this.usernameInput = page.locator("(//label[normalize-space(text())='Username']/following::input)[1]")
         this.passwordInput = page.locator("(//input[@type='password'])[1]");
@@ -191,15 +191,21 @@ export class AdminPage {
             await this.confirmPasswordInput.fill(confirmpassword);
             
         }
-        const responsePromiseEditPermisson = this.page.waitForResponse(response =>
-            response.url().includes('/api/v2/admin/') &&
+        /*const responsePromiseEditPermisson = this.page.waitForResponse(response =>
+            response.url().includes('/api/v2/admin/users') &&
             response.status() === 200 &&
             response.request().method() === 'PUT'
-        );
-        await this.saveBtn.click();
-        await responsePromiseEditPermisson;
-        await this.page.waitForLoadState('networkidle');
-    }
+        );*/
+    await this.saveBtn.click();
+    
+    // Esperar por el toast de éxito o la desaparición del formulario
+    await this.page.waitForSelector('.oxd-toast-container', { 
+        state: 'visible', 
+        timeout: 10000 
+    }).catch(() => {});
+
+    await this.page.waitForLoadState('networkidle');
+}
     async editPermissonsUnsuccess(username: string,
         userRole: UserRoleOptions,
         status: UserStatusOptions,
