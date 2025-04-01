@@ -10,7 +10,6 @@ export class AdminPage {
     readonly userRoleOptions = (role: string) => this.page.getByRole('option', { name: role });
     readonly employeeNameInput: Locator;
     readonly employeeUserNameSelect = (name: string) => this.page.getByRole('cell', { name: name }).first();
-    readonly statusDropdown: Locator;
     readonly userStatusOptions = (status: string) => this.page.getByRole('option', { name: status });
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
@@ -40,7 +39,6 @@ export class AdminPage {
         this.page = page;
         this.userRoleDropdown = page.locator("(//div[@class='oxd-select-text-input'])[1]");
         this.employeeNameInput = page.getByRole('textbox', { name: 'Type for hints' });
-        this.statusDropdown = page.getByRole('combobox', { name: 'Status' });
         this.usernameInput = page.locator("(//label[normalize-space(text())='Username']/following::input)[1]")
         this.passwordInput = page.locator("(//input[@type='password'])[1]");
         this.confirmPasswordInput = page.locator("(//input[@type='password'])[2]");
@@ -51,17 +49,17 @@ export class AdminPage {
         this.adminModuleBtn = page.getByRole('link', { name: 'Admin' });
         this.logOutBtn = page.getByRole('button', { name: 'Logout' });
         this.userProfileBtn = page.locator('.oxd-userdropdown-tab');
-        this.requiredError = this.page.locator("//span[text()='Required']");
-        this.passwordNotMatch = this.page.locator("//span[text()='Passwords do not match']");
-        this.userNameAlreadyExists = this.page.locator("//span[text()='Already exists']");
-        this.passwordLengthError = this.page.locator("//span[text()='Should have at least 7 characters']")
-        this.passwordNumberError = this.page.locator("//span[text()='Your password must contain minimum 1 number']")
-        this.passwordDoNotMatchError = this.page.locator("//span[text()='Passwords do not match']")
+        this.requiredError = this.page.getByText('Required', { exact: true });
+        this.passwordNotMatch = this.page.getByText('Passwords do not match');
+        this.userNameAlreadyExists = this.page.getByText('Already exists');
+        this.passwordLengthError = this.page.getByText("Should have at least 7")
+        this.passwordNumberError = this.page.getByText('Your password must contain minimum 1 number');
+        this.passwordDoNotMatchError = this.page.getByText('Passwords do not match')
         this.deleteTableBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[1]");
         this.deleteConfirmBtn = this.page.getByRole('button', { name: 'Yes, Delete' });
         this.editTableBtn = this.page.locator("//div[@class='oxd-table-cell-actions']//button[2]");
-        this.userNameMinCharacters = this.page.locator("//span[text()='Should be at least 5 characters']")
-        this.passwordCheckbox = this.page.locator("i.oxd-icon.bi-check.oxd-checkbox-input-icon");
+        this.userNameMinCharacters = this.page.getByText('Should be at least 5 characters');
+        this.passwordCheckbox = this.page.locator('label').filter({ hasText: 'Yes' }).locator('i')
         this.selectInvalidOptionInDropdown = this.page.getByText('-- Select --');
     }
 
@@ -115,11 +113,10 @@ export class AdminPage {
     }
 
     async chooseStatus(status: UserStatusOptions) {
-        
+        await this.chooseStatusDropdown.click();
         if (status === "NoChange") return;
-        await this.userRoleDropdown.click();
         if (status === "SelectOption") {
-            await this.selectInvalidOptionInDropdown.click();
+        await this.selectInvalidOptionInDropdown.click();
         }
         else {
         await this.userStatusOptions(status).click(); 
@@ -189,7 +186,7 @@ export class AdminPage {
 
         //Si se desea cambiar pw
         const isPasswordChecked = await this.passwordCheckbox.isChecked();
-        if (isPasswordChecked) {
+        if (isPasswordChecked && password && confirmpassword) {
             await this.passwordInput.fill(password);
             await this.confirmPasswordInput.fill(confirmpassword);
             
@@ -217,12 +214,11 @@ export class AdminPage {
 
         //Si se desea cambiar pw
         const isPasswordChecked = await this.passwordCheckbox.isChecked();
-        if (isPasswordChecked) {
+        if (isPasswordChecked && password && confirmpassword) {
             await this.passwordInput.fill(password);
             await this.confirmPasswordInput.fill(confirmpassword);
             
         }
-        await this.saveBtn.click();
-        await this.page.waitForLoadState('networkidle');
+        await this.saveBtn.click();;
     }
 }
