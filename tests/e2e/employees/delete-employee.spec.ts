@@ -13,7 +13,7 @@ await employeePage.addNewEmployee({
 });
 
 test.describe('[US04] Gestión de empleados | Eliminar empleados', () => {
-    test('[US-04 | TC-01] | Validar eliminar un empleado exitosamente', async ({ employeePage }) => {
+    test('TC-01 - Validar eliminar un empleado exitosamente', async ({ employeePage }) => {
         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => {

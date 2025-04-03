@@ -1,4 +1,4 @@
-import type { Page, Locator } from '@playwright/test';
+import { type Page, type Locator, expect } from '@playwright/test';
 
 export class LoginPage {
     readonly page: Page;
@@ -8,7 +8,8 @@ export class LoginPage {
     readonly sideMenu: Locator;
     readonly invalidCredentialsError: Locator;
     readonly requiredError: Locator;
-
+    readonly logOutBtn: Locator;
+    readonly userProfileBtn: Locator;
     
     constructor(page: Page) {
         this.page = page;
@@ -18,6 +19,8 @@ export class LoginPage {
         this.sideMenu = page.getByRole('link', { name: 'banner' });
         this.invalidCredentialsError = page.getByRole('alert', { name: 'Invalid credentials' });
         this.requiredError = page.getByRole('alert', { name: 'Required' });
+        this.logOutBtn = page.getByRole('menuitem', { name: 'Logout' });
+        this.userProfileBtn = page.locator('.oxd-userdropdown-tab');
     }
     
     async goToLoginPage() {
@@ -43,5 +46,11 @@ export class LoginPage {
     }
     async loginBtnDisabled(): Promise<boolean> {
         return this.loginBtn.isDisabled();
+    }
+
+    async logOut() {
+        await this.userProfileBtn.click();
+        await this.logOutBtn.click();
+        await expect(this.page).toHaveURL(/auth\/login/);
     }
 }

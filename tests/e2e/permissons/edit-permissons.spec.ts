@@ -17,8 +17,8 @@ test.beforeEach(async ({ loginPage, employeePage, adminPage }) => {
     await adminPage.verifyUserRole('AdminPablo');
 });
 
-test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados', () => {
-    test('[US-06 | TC-01] | Validar editar permisos de administrador exitosamente', async ({ adminPage }) => {
+test.describe('[US06] Asignación de permisos | Asignar permisos a los empleados', () => {
+    test('TC-01 - Validar editar permisos de administrador exitosamente', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
@@ -37,7 +37,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
     });
 
 
-    test('Validar no poder editar un permiso con un campo requerido invalido', async ({ adminPage }) => {
+    test('TC-02 - Validar no poder editar un permiso con un campo requerido invalido', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
@@ -54,7 +54,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
             await adminPage.requiredError.waitFor({ state: 'visible' });
         });
     });
-    test('Validar error para longitud mínima de contraseña al editar un permiso', async ({ adminPage }) => {
+    test('TC-03 - Validar error para longitud mínima de contraseña al editar un permiso', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
@@ -75,7 +75,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
         });
     });
 
-    test('Validar error para contraseñas sin caracteres numéricos al editar un permiso', async ({ adminPage }) => {
+    test('TC-04 - Validar error para contraseñas sin caracteres numéricos al editar un permiso', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
@@ -95,7 +95,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
             await adminPage.passwordNumberError.waitFor({ state: 'visible' });
         });
         });
-    test('Validar error para contraseñas que no coinciden al editar un permiso', async ({ adminPage }) => {
+    test('TC-05 - Validar error para contraseñas que no coinciden al editar un permiso', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });

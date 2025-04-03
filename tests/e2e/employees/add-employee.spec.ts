@@ -5,9 +5,9 @@ test.beforeEach(async ({ loginPage }) => {
     await loginPage.login();
 });
 
-test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () => {
+test.describe('[US02] Gestión de empleados | Agregar nuevos empleados', () => {
 
-    test('Escenario 1 | Validar agregar un empleado exitosamente', async ({ employeePage }) => {
+    test('TC-01 - Validar agregar un empleado exitosamente', async ({ employeePage }) => {
         const uniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario navega a la seccion de agregar empleados', async () => {
             await employeePage.clickOnPIMModule();
@@ -41,7 +41,7 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
         });
     });
 
-    test('Escenario 2 | Validar agregar un empleado sin nombre', async ({ employeePage }) => {
+    test('TC-02 - Validar agregar un empleado sin nombre', async ({ employeePage }) => {
         const uniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
 
@@ -72,7 +72,7 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
         });
     });
 
-    test('Escenario 3 | Validar agregar un empleado sin apellido', async ({ employeePage }) => {
+    test('TC-03 - Validar agregar un empleado sin apellido', async ({ employeePage }) => {
         const uniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
 
@@ -102,7 +102,7 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
         });
     });
 
-    test('Escenario 4 | Validar agregar un empleado sin ID', async ({ employeePage }) => {
+    test('TC-04 - Validar agregar un empleado sin ID', async ({ employeePage }) => {
         const uniqueID = ""
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
 
@@ -132,7 +132,7 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
         });
     });
 
-    test('Escenario 5 | Validar agregar un empleado con ID duplicado', async ({ employeePage }) => {
+    test('TC-05 - Validar agregar un empleado con ID duplicado', async ({ employeePage }) => {
         const uniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Cuando el usuario navega a la página de empleados', async () => {
@@ -182,7 +182,7 @@ test.describe('[US02] Gestión de empleados | Agregar y validar empleados', () =
 
         });
     });
-    test('Escenario 6 | Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDIunput', async ({ employeePage, adminPage }) => {
+    test('TC-06 - Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDInput', async ({ employeePage }) => {
         const uniqueID = "uniqueID";
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
 

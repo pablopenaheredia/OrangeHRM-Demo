@@ -13,9 +13,9 @@ test.beforeEach(async ({ loginPage, employeePage }) => {
     });
 });
 
-test.describe('[US03] Gestión de empleados | Editar información de empleados existentes', () => {
+test.describe('[US03] Gestión de empleados | Editar información de empleados existentesTC-01 - ', () => {
     
-    test('[US-03 | TC-01] | Validar editar un empleado exitosamente', async ({ employeePage }) => {
+    test('TC-01 - Validar editar un empleado exitosamente', async ({ employeePage }) => {
         const newUniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
@@ -34,7 +34,7 @@ test.describe('[US03] Gestión de empleados | Editar información de empleados e
         });
     });
 
-    test('Validar error al intentar editar un empleado sin nombre', async ({ employeePage }) => {
+    test('TC-02 - Validar error al intentar editar un empleado sin nombre', async ({ employeePage }) => {
         const newUniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
@@ -53,7 +53,7 @@ test.describe('[US03] Gestión de empleados | Editar información de empleados e
         });
     });
 
-    test('Validar error al intentar editar un empleado sin apellido', async ({ employeePage }) => {
+    test('TC-03 - Validar error al intentar editar un empleado sin apellido', async ({ employeePage }) => {
         const newUniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
@@ -72,7 +72,7 @@ test.describe('[US03] Gestión de empleados | Editar información de empleados e
         });
     });
 
-    test('Validar error al intentar editar un empleado sin ID', async ({ employeePage }) => {
+    test('TC-04 - Validar error al intentar editar un empleado sin ID', async ({ employeePage }) => {
         const newUniqueID = "";
         await test.step('Dado que el usuario se encuenrta en la pagina de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });

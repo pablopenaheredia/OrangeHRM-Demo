@@ -13,8 +13,8 @@ await employeePage.addNewEmployee({
     await employeePage.verifyEmployeeInList(uniqueID);
 });
 
-test.describe('[US05] Asignación de permisos | Asignar eliminar permisos a los empleados', () => {
-    test('[US-05 | TC-0] | Validar eliminar permisos a un empleado exitosamente', async ({ adminPage }) => {
+test.describe('[US07] Asignación de permisos | Asignar eliminar permisos a los empleados', () => {
+    test('TC-01 - Validar eliminar permisos a un empleado exitosamente', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });

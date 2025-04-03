@@ -15,7 +15,7 @@ test.beforeEach(async ({ loginPage, employeePage }) => {
 });
 
 test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados', () => {
-    test('Validar no poder agregar un permiso con un requisito vacio', async ({ adminPage }) => {
+    test('TC-01 - Validar no poder agregar un permiso con un requisito vacio', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
@@ -31,7 +31,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
         });
     });
 
-    test('Validar que no se permite la creación de un nuevo permiso si las contraseñas no coinciden.', async ({ adminPage }) => {
+    test('TC-02 - Validar que no se permite la creación de un nuevo permiso si las contraseñas no coinciden.', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
@@ -47,7 +47,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
         });
     });
 
-    test('Validar que no se puede crear un nuevo permiso con un nombre de usuario ya existente', async ({ employeePage, adminPage }) => {
+    test('TC-03 - Validar que no se puede crear un nuevo permiso con un nombre de usuario ya existente', async ({ employeePage, adminPage }) => {
         const secondUniqueID = await employeePage.generateUniqueID();
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
@@ -81,7 +81,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
             
     });
 
-    test('Validar error para longitud mínima de contraseña', async ({ adminPage }) => {
+    test('TC-04 - Validar error para longitud mínima de contraseña', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
@@ -96,7 +96,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
         });
     });
 
-    test('Validar error para caracter numerico necesario en contraseña', async ({ adminPage }) => {
+    test('TC-05 - Validar error para caracter numerico necesario en contraseña', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
@@ -111,7 +111,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
         });
     });
 
-    test('Validar error para contraseñas sin coincidir', async ({ adminPage }) => {
+    test('TC-06 - Validar error para contraseñas sin coincidir', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });
@@ -126,7 +126,7 @@ test.describe('[US05] Asignación de permisos | Asignar permisos a los empleados
         });
     });
 
-    test('Validar error para 4 caracteres minimos en username', async ({ adminPage }) => {
+    test('TC-07 - Validar error para 4 caracteres minimos en username', async ({ adminPage }) => {
         await test.step('Dado que el usuario se encuentra en la página de inicio de sesión', async () => { });
         await test.step('Y ya hay un empleado agregado', async () => { });
         await test.step('Y se verifica que el empleado se encuentre en la lista de empleados', async ({ }) => { });

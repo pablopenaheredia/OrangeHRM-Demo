@@ -12,6 +12,7 @@ export class EmployeePage {
     readonly firstNameInput: Locator;
     readonly lastNameInput: Locator;
     readonly employeeIDInput: Locator;
+    readonly employeeIDEditInput: Locator;
     readonly saveNewEmployeeBtn: Locator;
     readonly saveEditBtn: Locator;
     readonly searchBtn: Locator;
@@ -23,7 +24,6 @@ export class EmployeePage {
     readonly successPopUp: Locator;
     readonly firstNameEditInput: Locator;
     readonly lastNameEditInput: Locator;
-    readonly employeeIDEditInput: Locator;
     readonly deleteEmployeeConfirmBtn: Locator;
     readonly requiredError: Locator;
     readonly employeeAlreadyExists: Locator;
@@ -36,9 +36,9 @@ export class EmployeePage {
         this.firstNameInput = this.page.getByRole('textbox', { name: 'First Name' });
         this.lastNameInput = this.page.getByRole('textbox', { name: 'Last Name' });
         this.employeeIDInput = this.page.locator("(//input[@class='oxd-input oxd-input--active'])[2]");
+        this.employeeIDEditInput = this.page.locator('div').filter({ hasText: /^Employee IdOther Id$/ }).getByRole('textbox').first()
         this.firstNameEditInput = this.page.getByRole('textbox', { name: 'First Name' });
         this.lastNameEditInput = this.page.getByRole('textbox', { name: 'Last Name' });
-        this.employeeIDEditInput = this.page.getByRole('textbox', { name: 'Employee Id' });
         this.saveNewEmployeeBtn = this.page.getByRole('button', { name: 'Save' });
         this.saveEditBtn = this.page.getByRole('button', { name: 'Save' }).first();
         this.searchBtn = this.page.getByRole('button', { name: 'Search' });
@@ -60,10 +60,14 @@ export class EmployeePage {
         await expect(this.page).toHaveURL(/pim\/addEmployee/);
     }
 
-    async fillAddEmployee(employee: EmployeeData) {
+    async fillAddEmployee(employee: EmployeeData, isEditing: boolean = false) {
         await this.firstNameInput.fill(employee.firstName);
         await this.lastNameInput.fill(employee.lastName);
+        if (isEditing) {
+        await this.employeeIDEditInput.fill(employee.employeeID);
+    } else {
         await this.employeeIDInput.fill(employee.employeeID);
+    }
     }
 
     async searchClick() {
@@ -141,7 +145,7 @@ export class EmployeePage {
             );
         await this.editEmployeeInfoIconClick();
         await responsePromiseEditEmployee;
-        await this.fillAddEmployee(employee);
+        await this.fillAddEmployee(employee, true);
         const responsePromiseSaveEditedEmployee = this.page.waitForResponse(response =>
                 response.url().includes('/api/v2/pim/employees') &&
                 response.url().includes('/personal-details') &&
@@ -161,7 +165,7 @@ export class EmployeePage {
             );
         await this.editEmployeeInfoIconClick();
         await responsePromiseEditEmployee;
-        await this.fillAddEmployee(employee);
+        await this.fillAddEmployee(employee, true);
         await this.saveEditEmployeeClick();
 
     }

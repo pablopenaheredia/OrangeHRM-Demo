@@ -53,7 +53,7 @@ expect: {
 		/* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
 		actionTimeout: 0,
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-		trace: 'off',
+    trace: 'off',
 		//screenshot: 'on'
 	},
 
@@ -61,8 +61,16 @@ expect: {
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+      use: {
+        ...devices[ 'Desktop Chrome' ],
+        /*video: {
+          mode: 'retain-on-failure',
+          size: { width: 1280, height: 720 }
+        }*/
+      }
+    }
+      ]
+
 
     /*{
       name: 'firefox',
@@ -93,7 +101,7 @@ expect: {
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  
 
   /* Run your local dev server before starting the tests */
   // webServer: {

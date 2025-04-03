@@ -19,8 +19,6 @@ export class AdminPage {
     readonly chooseStatusDropdown: Locator
     readonly saveBtn: Locator;
     readonly adminModuleBtn: Locator;
-    readonly logOutBtn: Locator
-    readonly userProfileBtn: Locator;
     readonly requiredError: Locator;
     readonly passwordNotMatch: Locator;
     readonly userNameAlreadyExists: Locator;
@@ -47,8 +45,6 @@ export class AdminPage {
         this.saveBtn = page.getByRole('button', { name: 'Save' });
         this.chooseStatusDropdown = page.locator("(//div[@class='oxd-select-text-input'])[2]");
         this.adminModuleBtn = page.getByRole('link', { name: 'Admin' });
-        this.logOutBtn = page.getByRole('button', { name: 'Logout' });
-        this.userProfileBtn = page.locator('.oxd-userdropdown-tab');
         this.requiredError = this.page.getByText('Required', { exact: true });
         this.passwordNotMatch = this.page.getByText('Passwords do not match');
         this.userNameAlreadyExists = this.page.getByText('Already exists');
@@ -150,11 +146,6 @@ export class AdminPage {
         await expect(locator).toBeVisible({ timeout: 6000 });
     }
 
-    async logOut() {
-        await this.userProfileBtn.click();
-        await this.logOutBtn.click();
-        await expect(this.page).toHaveURL(/auth\/login/);
-    }
     async deletePermissons() {
         const responsePromiseDeleteEmployee = this.page.waitForResponse(response =>
                 response.url().includes('/api/v2/admin/') &&

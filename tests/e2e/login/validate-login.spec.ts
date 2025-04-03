@@ -4,23 +4,8 @@ const user = process.env.USER;
 const password = process.env.PASSWORD;
 
 test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales', () => {
-    
-    test('Validar inicio de sesión exitoso', async ({ loginPage }) => {
-        await test.step('Dado que el usuario navega a la página de inicio de sesión', async () => {
-            await loginPage.goToLoginPage();
-        });
 
-        await test.step('Cuando el usuario ingresa credenciales válidas y hace clic en "Login"', async () => {
-            await loginPage.login();
-        });
-
-        await test.step('Entonces el usuario debería ser redirigido al dashboard y ver el menú principal', async () => {
-            await expect(loginPage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index');
-            await expect(loginPage.sideMenu).toBeVisible();
-        });
-    });
-
-    test('Validar error al iniciar sesión con username incorrecto', async ({ loginPage }) => {
+    test('TC-02 - Validar error al iniciar sesión con username incorrecto', async ({ loginPage }) => {
         await test.step('Dado que el usuario navega a la página de inicio de sesión', async () => {
             await loginPage.goToLoginPage();
         });
@@ -34,7 +19,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
         });
     });
 
-    test('Validar error al iniciar sesión con password incorrecto', async ({ loginPage }) => {
+    test('TC-03 - Validar error al iniciar sesión con password incorrecto', async ({ loginPage }) => {
         await test.step('Dado que el usuario navega a la página de inicio de sesión', async () => {
             await loginPage.goToLoginPage();
         });
@@ -48,7 +33,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
         });
     });
 
-    test('Validar inicio de sesión sin ingresar username', async ({ loginPage }) => {
+    test('TC-04 - Validar inicio de sesión sin ingresar username', async ({ loginPage }) => {
         await test.step('Dado que el usuario navega a la página de inicio de sesión', async () => {
             await loginPage.goToLoginPage();
         });
@@ -62,7 +47,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
         });
     });
 
-    test('Validar inicio de sesión sin ingresar contraseña', async ({ loginPage }) => {
+    test('TC-05 - Validar inicio de sesión sin ingresar contraseña', async ({ loginPage }) => {
         await test.step('Dado que el usuario navega a la página de inicio de sesión', async () => {
             await loginPage.goToLoginPage();
         });
@@ -76,7 +61,7 @@ test.describe('[US01] Inicio de sesión | Iniciar sesión con mis credenciales',
         });
     });
 
-    test('Validar boton login deshabilitado sin credenciales', async ({ loginPage }) => {
+    test('TC-06 - Validar boton login deshabilitado sin credenciales', async ({ loginPage }) => {
         await test.step('Dado que el usuario navega a la página de inicio de sesión', async () => {
             await loginPage.goToLoginPage();
         });
