@@ -132,23 +132,47 @@ Los reportes de ejecución se generan en las carpetas:
 
 ```text
 Proyecto OrangeHRM
-├── tests/                           # Casos de prueba automatizados
-│   ├── admin.spec.ts                # Pruebas del módulo Admin
-│   ├── employee.spec.ts             # Pruebas del módulo PIM (Empleados)
-│   ├── login.spec.ts                # Pruebas de inicio de sesión
-│   └── dashboard.spec.ts            # Pruebas del panel principal
+tests/
+├── e2e/
+│   ├── admin/
+│   │   └── permissions/
+│   │       ├── add-permissions.spec.ts     # Añadir permisos como admin
+│   │       ├── edit-permissions.spec.ts    # Editar permisos existentes
+│   │       ├── delete-permissions.spec.ts  # Eliminar permisos
+│   │       └── validate-permissions.spec.ts # Validaciones
+│   │
+│   ├── pim/
+│   │   ├── add-employee.spec.ts     # Añadir empleados
+│   │   ├── edit-employee.spec.ts    # Editar información de empleados
+│   │   └── delete-employee.spec.ts  # Eliminar empleados
+│   │
+│   └── login/
+│   │   ├── login-permissons.spec.spec.ts   # Login exitoso luego de editar permisos
+│   │   └── standard-login.spec.ts   # Login exitoso con credenciales por defecto
+│   │   └── validate-login.spec.ts   # Validaciones
+│   │
+│   ├── fixtures/                          # Fixtures para configuración de pruebas
+│   │   └── index.ts                       # Exportación de fixtures personalizados
+│   │
+│   └── custom-reporter.ts                 # Reporter personalizado
 │
-├── pageobjectsmodels/               # Implementación del patrón Page Object
-│   ├── AdminPage.ts                 # Página de administración
-│   ├── EmployeePage.ts              # Página de empleados
-│   ├── LoginPage.ts                 # Página de inicio de sesión
-│   └── DashboardPage.ts             # Página del panel principal
+├── pageobjectsmodels/                     # Implementación del patrón Page Object
+│   ├── AdminPage.ts                       # Página de administración
+│   ├── EmployeePage.ts                    # Página de empleados
+│   ├── LoginPage.ts                       # Página de inicio de sesión
+│   ├── DashboardPage.ts                   # Página del panel principal
+│   └── BasePage.ts                        # Clase base para todas las páginas
 │
-├── .env                             # Variables de entorno (configurables)
-├── playwright.config.ts             # Configuración de Playwright
-├── package.json                     # Configuración del proyecto y scripts
-├── tsconfig.json                    # Configuración de TypeScript
-└── README.md                        # Documentación del proyecto
+├── allure-results/                        # Resultados de Allure (generados)
+├── test-html-report/                      # Reportes HTML (generados)
+├── test-junit-report/                     # Reportes JUnit (generados)
+│
+├── .env                                   # Variables de entorno (configurables)
+├── playwright.config.ts                   # Configuración de Playwright
+├── package.json                           # Configuración del proyecto y scripts
+├── tsconfig.json                          # Configuración de TypeScript
+├── .gitignore                             # Archivos ignorados por git
+└── README.md                              # Documentación del proyecto
 ```
 
 ## Documentación y Recursos
