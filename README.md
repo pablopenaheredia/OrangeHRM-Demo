@@ -168,6 +168,19 @@ Consulta la documentación completa en Notion:
 - Integración con CI/CD
  Ampliar cobertura de pruebas
 
+## Lecciones Aprendidas y Áreas de Mejora
+
+Este proyecto representa mi primer framework completo de automatización con Playwright, donde he aplicado diversos conceptos técnicos:
+
+### Lo que aprendí
+
+- **Programación Orientada a Objetos**: Implementación de clases, herencia y encapsulamiento en el patrón Page Object Model
+- **TypeScript fundamentals**: Tipado estático, interfaces y manejo de tipos personalizados para datos de prueba
+- **Asincronía en JavaScript**: Manejo de Promises, async/await para operaciones de UI
+- **Selectores avanzados**: CSS, XPath y selectores propios de Playwright para localizar elementos del DOM
+- **Assertions testing**: Implementación de validaciones explícitas e implícitas con expect
+- **Manejo de fixtures**: Configuración de estados de prueba reutilizables con beforeEach/afterEach
+
 ## Contacto
 
 - [![GitHub](https://img.shields.io/badge/GitHub-pablopenaheredia-181717?style=flat&logo=github)](https://github.com/pablopenaheredia)
