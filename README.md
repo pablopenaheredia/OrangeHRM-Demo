@@ -160,8 +160,6 @@ tests/
 │   ├── AdminPage.ts                       # Página de administración
 │   ├── EmployeePage.ts                    # Página de empleados
 │   ├── LoginPage.ts                       # Página de inicio de sesión
-│   ├── DashboardPage.ts                   # Página del panel principal
-│   └── BasePage.ts                        # Clase base para todas las páginas
 │
 ├── allure-results/                        # Resultados de Allure (generados)
 ├── test-html-report/                      # Reportes HTML (generados)
