@@ -4,7 +4,8 @@
 
 # OrangeHRM Automation Project
 
-Este es un proyecto personal de testing automatizado para OrangeHRM creado con Playwright, Node.js y TypeScript. Su objetivo es aprender y aplicar estrategias de automatización de pruebas funcionales en la interfaz gráfica (UI), siguiendo buenas prácticas como el patrón Page Object Model y generando reportes de ejecución.
+Este es un proyecto personal de testing automatizado utilizando las tecnologicas de Playwright, Node.js y TypeScript. 
+Su objetivo es aprender y aplicar estrategias de automatización de pruebas funcionales en la interfaz gráfica (UI), siguiendo buenas prácticas como el patrón Page Object Model y generando reportes de ejecución.
 
 ## Índice
 
@@ -22,7 +23,7 @@ Este es un proyecto personal de testing automatizado para OrangeHRM creado con P
 
 ## Introducción
 
-Este proyecto de testing automatizado surge como parte de mi portfolio personal. La idea es validar las funcionalidades clave de OrangeHRM mediante pruebas automatizadas, utilizando Playwright y TypeScript, para garantizar la calidad y estabilidad del sistema. Se ejecutan pruebas en distintos navegadores, aplicando técnicas de Black Box Testing.
+Este proyecto de testing automatizado surge como parte de mi portfolio personal. La idea es validar las funcionalidades clave de la aplicacion demo de OrangeHRM mediante pruebas automatizadas, utilizando Playwright y TypeScript, detectar problemas y posibles funcionamientos indevidos. Se ejecutaron pruebas tanto en chrome, como firefox y webkit.
 
 ## Alcance del Proyecto
 
