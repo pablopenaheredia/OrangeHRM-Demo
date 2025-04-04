@@ -1,22 +1,43 @@
-<testsuites id="" name="" tests="37" failures="9" skipped="11" errors="0" time="509.974815">
-<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="6" failures="2" skipped="0" time="179.553" errors="0">
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-01 - Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee.spec.ts" time="21.295">
+<testsuites id="" name="" tests="37" failures="13" skipped="0" errors="0" time="1779.8160520000001">
+<testsuite name="e2e\employees\add-employee.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="6" failures="2" skipped="0" time="534.407" errors="0">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-01 - Validar agregar un empleado exitosamente" classname="e2e\employees\add-employee.spec.ts" time="17.537">
 </testcase>
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-02 - Validar agregar un empleado sin nombre" classname="e2e\employees\add-employee.spec.ts" time="12.544">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-02 - Validar agregar un empleado sin nombre" classname="e2e\employees\add-employee.spec.ts" time="9.314">
 </testcase>
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-03 - Validar agregar un empleado sin apellido" classname="e2e\employees\add-employee.spec.ts" time="10.904">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-03 - Validar agregar un empleado sin apellido" classname="e2e\employees\add-employee.spec.ts" time="9.327">
 </testcase>
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-04 - Validar agregar un empleado sin ID" classname="e2e\employees\add-employee.spec.ts" time="60.114">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-04 - Validar agregar un empleado sin ID" classname="e2e\employees\add-employee.spec.ts" time="240.112">
 <failure message="add-employee.spec.ts:105:9 TC-04 - Validar agregar un empleado sin ID" type="FAILURE">
 <![CDATA[  [chromium] › e2e\employees\add-employee.spec.ts:105:9 › [US02] Gestión de empleados | Agregar nuevos empleados › TC-04 - Validar agregar un empleado sin ID › Entonces se muestra un mensaje de error 
 
-    Test timeout of 60000ms exceeded.
+    Test timeout of 120000ms exceeded.
 
-    Error: locator.waitFor: Test timeout of 60000ms exceeded.
+    Error: locator.waitFor: Test timeout of 120000ms exceeded.
     Call log:
       - waiting for locator('//span[text()=\'Required\']') to be visible
-        - waiting for" https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/193" navigation to finish...
-        - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/193"
+        - waiting for" https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/224" navigation to finish...
+        - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/224"
+
+
+      125 |
+      126 |         await test.step('Entonces se muestra un mensaje de error', async () => {
+    > 127 |             await employeePage.requiredError.waitFor({ state: 'visible' });
+          |                                              ^
+      128 |         });
+      129 |
+      130 |         await test.step('Entonces el empleado no se encuentra en la lista de empleados', async () => {
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:127:46
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:126:20
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.waitFor: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for locator('//span[text()=\'Required\']') to be visible
+        - waiting for" https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/226" navigation to finish...
+        - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/226"
 
 
       125 |
@@ -31,19 +52,36 @@
 ]]>
 </failure>
 </testcase>
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-05 - Validar agregar un empleado con ID duplicado" classname="e2e\employees\add-employee.spec.ts" time="14.645">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-05 - Validar agregar un empleado con ID duplicado" classname="e2e\employees\add-employee.spec.ts" time="17.995">
 </testcase>
-<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-06 - Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDInput" classname="e2e\employees\add-employee.spec.ts" time="60.051">
+<testcase name="[US02] Gestión de empleados | Agregar nuevos empleados › TC-06 - Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDInput" classname="e2e\employees\add-employee.spec.ts" time="240.122">
 <failure message="add-employee.spec.ts:185:9 TC-06 - Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDInput" type="FAILURE">
 <![CDATA[  [chromium] › e2e\employees\add-employee.spec.ts:185:9 › [US02] Gestión de empleados | Agregar nuevos empleados › TC-06 - Validar agregar un empleado con numeros y signos para NameInput y LastNameInput, y letras para IDInput › Entonces se muestra un mensaje de error 
 
-    Test timeout of 60000ms exceeded.
+    Test timeout of 120000ms exceeded.
 
-    Error: locator.waitFor: Test timeout of 60000ms exceeded.
+    Error: locator.waitFor: Test timeout of 120000ms exceeded.
     Call log:
       - waiting for locator('//span[text()=\'Required\']') to be visible
-        - waiting for" https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/195" navigation to finish...
-        - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/195"
+
+
+      205 |
+      206 |         await test.step('Entonces se muestra un mensaje de error', async () => {
+    > 207 |             await employeePage.requiredError.waitFor({ state: 'visible' });
+          |                                              ^
+      208 |             await employeePage.page.getByText('Employee Id already exists');
+      209 |         });
+      210 |
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:207:46
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\add-employee.spec.ts:206:20
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.waitFor: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for locator('//span[text()=\'Required\']') to be visible
 
 
       205 |
@@ -59,24 +97,85 @@
 </failure>
 </testcase>
 </testsuite>
-<testsuite name="e2e\employees\delete-employee.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="1" failures="0" skipped="0" time="12.161" errors="0">
-<testcase name="[US04] Gestión de empleados | Eliminar empleados › TC-01 - Validar eliminar un empleado exitosamente" classname="e2e\employees\delete-employee.spec.ts" time="12.161">
+<testsuite name="e2e\employees\delete-employee.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="1" failures="0" skipped="0" time="12.449" errors="0">
+<testcase name="[US04] Gestión de empleados | Eliminar empleados › TC-01 - Validar eliminar un empleado exitosamente" classname="e2e\employees\delete-employee.spec.ts" time="12.449">
 </testcase>
 </testsuite>
-<testsuite name="e2e\employees\edit-employee.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="4" failures="1" skipped="0" time="107.639" errors="0">
-<testcase name="[US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-01 - Validar editar un empleado exitosamente" classname="e2e\employees\edit-employee.spec.ts" time="16.222">
+<testsuite name="e2e\employees\edit-employee.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="4" failures="2" skipped="0" time="322.668" errors="0">
+<testcase name="[US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-01 - Validar editar un empleado exitosamente" classname="e2e\employees\edit-employee.spec.ts" time="47.488">
+<failure message="edit-employee.spec.ts:18:9 TC-01 - Validar editar un empleado exitosamente" type="FAILURE">
+<![CDATA[  [chromium] › e2e\employees\edit-employee.spec.ts:18:9 › [US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-01 - Validar editar un empleado exitosamente › Entonces el usuario verifica que el empleado se haya editado correctamente 
+
+    TimeoutError: locator.waitFor: Timeout 3000ms exceeded.
+    Call log:
+      - waiting for getByRole('cell', { name: '8276' }).first() to be visible
+
+
+       at ..\pageobjectsmodels\EmployeePage.ts:178
+
+      176 |         await this.searchClick();
+      177 |         const locator = this.idColumnValues(employeeID);
+    > 178 |         await locator.waitFor({ timeout: 3000 });
+          |                       ^
+      179 |     }
+      180 |
+      181 |     async deleteEmployee() {
+        at EmployeePage.verifyEmployeeEdited (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\EmployeePage.ts:178:23)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.spec.ts:33:13
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.spec.ts:32:9
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.waitFor: Timeout 3000ms exceeded.
+    Call log:
+      - waiting for getByRole('cell', { name: '5858' }).first() to be visible
+
+
+       at ..\pageobjectsmodels\EmployeePage.ts:178
+
+      176 |         await this.searchClick();
+      177 |         const locator = this.idColumnValues(employeeID);
+    > 178 |         await locator.waitFor({ timeout: 3000 });
+          |                       ^
+      179 |     }
+      180 |
+      181 |     async deleteEmployee() {
+        at EmployeePage.verifyEmployeeEdited (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\EmployeePage.ts:178:23)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.spec.ts:33:13
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.spec.ts:32:9
+]]>
+</failure>
 </testcase>
-<testcase name="[US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-02 - Validar error al intentar editar un empleado sin nombre" classname="e2e\employees\edit-employee.spec.ts" time="15.242">
+<testcase name="[US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-02 - Validar error al intentar editar un empleado sin nombre" classname="e2e\employees\edit-employee.spec.ts" time="18.075">
 </testcase>
-<testcase name="[US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-03 - Validar error al intentar editar un empleado sin apellido" classname="e2e\employees\edit-employee.spec.ts" time="16.063">
+<testcase name="[US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-03 - Validar error al intentar editar un empleado sin apellido" classname="e2e\employees\edit-employee.spec.ts" time="16.991">
 </testcase>
-<testcase name="[US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-04 - Validar error al intentar editar un empleado sin ID" classname="e2e\employees\edit-employee.spec.ts" time="60.112">
+<testcase name="[US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-04 - Validar error al intentar editar un empleado sin ID" classname="e2e\employees\edit-employee.spec.ts" time="240.114">
 <failure message="edit-employee.spec.ts:75:9 TC-04 - Validar error al intentar editar un empleado sin ID" type="FAILURE">
 <![CDATA[  [chromium] › e2e\employees\edit-employee.spec.ts:75:9 › [US03] Gestión de empleados | Editar información de empleados existentesTC-01 -  › TC-04 - Validar error al intentar editar un empleado sin ID › Entonces se muestra un mensaje de error 
 
-    Test timeout of 60000ms exceeded.
+    Test timeout of 120000ms exceeded.
 
-    Error: locator.waitFor: Test timeout of 60000ms exceeded.
+    Error: locator.waitFor: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for locator('//span[text()=\'Required\']') to be visible
+
+
+      88 |         });
+      89 |         await test.step('Entonces se muestra un mensaje de error', async () => {
+    > 90 |             await employeePage.requiredError.waitFor({ state: 'visible' });
+         |                                              ^
+      91 |         });
+      92 |     });
+      93 | });
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.spec.ts:90:46
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\employees\edit-employee.spec.ts:89:20
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.waitFor: Test timeout of 120000ms exceeded.
     Call log:
       - waiting for locator('//span[text()=\'Required\']') to be visible
 
@@ -94,60 +193,58 @@
 </failure>
 </testcase>
 </testsuite>
-<testsuite name="e2e\login\login-permissons.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="1" failures="1" skipped="0" time="30.441" errors="0">
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-07 - Validar inicio de sesión con nuevos permisos" classname="e2e\login\login-permissons.spec.ts" time="30.441">
-<failure message="login-permissons.spec.ts:24:9 TC-07 - Validar inicio de sesión con nuevos permisos" type="FAILURE">
-<![CDATA[  [chromium] › e2e\login\login-permissons.spec.ts:24:9 › [US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-07 - Validar inicio de sesión con nuevos permisos 
-
-    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
-
-    Locator: getByRole('cell', { name: 'Sarah_123' }).first()
-    Expected: visible
-    Received: <element(s) not found>
-    Call log:
-      - expect.toBeVisible with timeout 6000ms
-      - waiting for getByRole('cell', { name: 'Sarah_123' }).first()
-
-
-       at ..\pageobjectsmodels\AdminPage.ts:146
-
-      144 |         await responsePromiseSearchUserRole;
-      145 |         const locator = this.employeeUserNameSelect(username);
-    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
-          |                               ^
-      147 |     }
-      148 |
-      149 |     async deletePermissons() {
-        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
-        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\login\login-permissons.spec.ts:19:5
-]]>
-</failure>
+<testsuite name="e2e\login\login-permissons.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="1" failures="0" skipped="0" time="26.108" errors="0">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-07 - Validar inicio de sesión con nuevos permisos" classname="e2e\login\login-permissons.spec.ts" time="26.108">
 </testcase>
 </testsuite>
-<testsuite name="e2e\login\standard-login.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="6" failures="1" skipped="0" time="33.128" errors="0">
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-01 - Validar inicio de sesión exitoso" classname="e2e\login\standard-login.spec.ts" time="5.138">
+<testsuite name="e2e\login\standard-login.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="6" failures="1" skipped="0" time="55.922" errors="0">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-01 - Validar inicio de sesión exitoso" classname="e2e\login\standard-login.spec.ts" time="5.407">
 </testcase>
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-02 - Validar error al iniciar sesión con username incorrecto" classname="e2e\login\standard-login.spec.ts" time="4.372">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-02 - Validar error al iniciar sesión con username incorrecto" classname="e2e\login\standard-login.spec.ts" time="6.01">
 </testcase>
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-03 - Validar error al iniciar sesión con password incorrecto" classname="e2e\login\standard-login.spec.ts" time="5.624">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-03 - Validar error al iniciar sesión con password incorrecto" classname="e2e\login\standard-login.spec.ts" time="6.102">
 </testcase>
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-04 - Validar inicio de sesión sin ingresar username" classname="e2e\login\standard-login.spec.ts" time="4.701">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-04 - Validar inicio de sesión sin ingresar username" classname="e2e\login\standard-login.spec.ts" time="5.595">
 </testcase>
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-05 - Validar inicio de sesión sin ingresar contraseña" classname="e2e\login\standard-login.spec.ts" time="4.27">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-05 - Validar inicio de sesión sin ingresar contraseña" classname="e2e\login\standard-login.spec.ts" time="4.642">
 </testcase>
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-06 - Validar boton login deshabilitado sin credenciales" classname="e2e\login\standard-login.spec.ts" time="9.023">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-06 - Validar boton login deshabilitado sin credenciales" classname="e2e\login\standard-login.spec.ts" time="28.166">
 <failure message="standard-login.spec.ts:79:9 TC-06 - Validar boton login deshabilitado sin credenciales" type="FAILURE">
 <![CDATA[  [chromium] › e2e\login\standard-login.spec.ts:79:9 › [US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-06 - Validar boton login deshabilitado sin credenciales › Entonces el botón "Login" debería estar deshabilitado cuando los campos están vacíos 
 
-    Error: Timed out 6000ms waiting for expect(locator).toBeDisabled()
+    Error: Timed out 10000ms waiting for expect(locator).toBeDisabled()
 
     Locator: getByRole('button', { name: 'LOGIN' })
     Expected: disabled
     Received: enabled
     Call log:
-      - expect.toBeDisabled with timeout 6000ms
+      - expect.toBeDisabled with timeout 10000ms
       - waiting for getByRole('button', { name: 'LOGIN' })
-        7 × locator resolved to <button type="submit" data-v-10d463b7="" data-v-0af708be="" class="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button">…</button>
+        9 × locator resolved to <button type="submit" data-v-10d463b7="" data-v-0af708be="" class="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button">…</button>
+          - unexpected value "enabled"
+
+
+      83 |
+      84 |         await test.step('Entonces el botón "Login" debería estar deshabilitado cuando los campos están vacíos', async () => {
+    > 85 |             await expect(loginPage.loginBtn).toBeDisabled();
+         |                                              ^
+      86 |         });
+      87 |     });
+      88 |
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\login\standard-login.spec.ts:85:46
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\login\standard-login.spec.ts:84:20
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toBeDisabled()
+
+    Locator: getByRole('button', { name: 'LOGIN' })
+    Expected: disabled
+    Received: enabled
+    Call log:
+      - expect.toBeDisabled with timeout 10000ms
+      - waiting for getByRole('button', { name: 'LOGIN' })
+        9 × locator resolved to <button type="submit" data-v-10d463b7="" data-v-0af708be="" class="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button">…</button>
           - unexpected value "enabled"
 
 
@@ -164,28 +261,52 @@
 </failure>
 </testcase>
 </testsuite>
-<testsuite name="e2e\login\validate-login.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="5" failures="1" skipped="0" time="25.42" errors="0">
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-02 - Validar error al iniciar sesión con username incorrecto" classname="e2e\login\validate-login.spec.ts" time="4.317">
+<testsuite name="e2e\login\validate-login.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="5" failures="1" skipped="0" time="56.788" errors="0">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-02 - Validar error al iniciar sesión con username incorrecto" classname="e2e\login\validate-login.spec.ts" time="6.531">
 </testcase>
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-03 - Validar error al iniciar sesión con password incorrecto" classname="e2e\login\validate-login.spec.ts" time="4.57">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-03 - Validar error al iniciar sesión con password incorrecto" classname="e2e\login\validate-login.spec.ts" time="6.934">
 </testcase>
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-04 - Validar inicio de sesión sin ingresar username" classname="e2e\login\validate-login.spec.ts" time="4.499">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-04 - Validar inicio de sesión sin ingresar username" classname="e2e\login\validate-login.spec.ts" time="5.943">
 </testcase>
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-05 - Validar inicio de sesión sin ingresar contraseña" classname="e2e\login\validate-login.spec.ts" time="3.562">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-05 - Validar inicio de sesión sin ingresar contraseña" classname="e2e\login\validate-login.spec.ts" time="7.127">
 </testcase>
-<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-06 - Validar boton login deshabilitado sin credenciales" classname="e2e\login\validate-login.spec.ts" time="8.472">
+<testcase name="[US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-06 - Validar boton login deshabilitado sin credenciales" classname="e2e\login\validate-login.spec.ts" time="30.253">
 <failure message="validate-login.spec.ts:64:9 TC-06 - Validar boton login deshabilitado sin credenciales" type="FAILURE">
 <![CDATA[  [chromium] › e2e\login\validate-login.spec.ts:64:9 › [US01] Inicio de sesión | Iniciar sesión con mis credenciales › TC-06 - Validar boton login deshabilitado sin credenciales › Entonces el botón "Login" debería estar deshabilitado cuando los campos están vacíos 
 
-    Error: Timed out 6000ms waiting for expect(locator).toBeDisabled()
+    Error: Timed out 10000ms waiting for expect(locator).toBeDisabled()
 
     Locator: getByRole('button', { name: 'LOGIN' })
     Expected: disabled
     Received: enabled
     Call log:
-      - expect.toBeDisabled with timeout 6000ms
+      - expect.toBeDisabled with timeout 10000ms
       - waiting for getByRole('button', { name: 'LOGIN' })
-        6 × locator resolved to <button type="submit" data-v-10d463b7="" data-v-0af708be="" class="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button">…</button>
+        9 × locator resolved to <button type="submit" data-v-10d463b7="" data-v-0af708be="" class="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button">…</button>
+          - unexpected value "enabled"
+
+
+      68 |
+      69 |         await test.step('Entonces el botón "Login" debería estar deshabilitado cuando los campos están vacíos', async () => {
+    > 70 |             await expect(loginPage.loginBtn).toBeDisabled();
+         |                                              ^
+      71 |         });
+      72 |     });
+      73 |
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\login\validate-login.spec.ts:70:46
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\login\validate-login.spec.ts:69:20
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toBeDisabled()
+
+    Locator: getByRole('button', { name: 'LOGIN' })
+    Expected: disabled
+    Received: enabled
+    Call log:
+      - expect.toBeDisabled with timeout 10000ms
+      - waiting for getByRole('button', { name: 'LOGIN' })
+        9 × locator resolved to <button type="submit" data-v-10d463b7="" data-v-0af708be="" class="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button">…</button>
           - unexpected value "enabled"
 
 
@@ -202,10 +323,35 @@
 </failure>
 </testcase>
 </testsuite>
-<testsuite name="e2e\permissons\add-permissons.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="1" failures="1" skipped="0" time="28.096" errors="0">
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-01 - Validar asignar permisos de administrador un empleado exitosamente" classname="e2e\permissons\add-permissons.spec.ts" time="28.096">
+<testsuite name="e2e\permissons\add-permissons.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="1" failures="1" skipped="0" time="65.951" errors="0">
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-01 - Validar asignar permisos de administrador un empleado exitosamente" classname="e2e\permissons\add-permissons.spec.ts" time="65.951">
 <failure message="add-permissons.spec.ts:18:9 TC-01 - Validar asignar permisos de administrador un empleado exitosamente" type="FAILURE">
 <![CDATA[  [chromium] › e2e\permissons\add-permissons.spec.ts:18:9 › [US05] Asignación de permisos | Asignar permisos a los empleados › TC-01 - Validar asignar permisos de administrador un empleado exitosamente › Y se verifica que el usuario se encuentre en la lista de empleados con permisos 
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'XristophAdmin' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'XristophAdmin' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\add-permissons.spec.ts:30:13
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\add-permissons.spec.ts:29:9
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
 
     Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
 
@@ -233,10 +379,35 @@
 </failure>
 </testcase>
 </testsuite>
-<testsuite name="e2e\permissons\delete-permissons.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="1" failures="1" skipped="0" time="29.256" errors="0">
-<testcase name="[US07] Asignación de permisos | Asignar eliminar permisos a los empleados › TC-01 - Validar eliminar permisos a un empleado exitosamente" classname="e2e\permissons\delete-permissons.spec.ts" time="29.256">
+<testsuite name="e2e\permissons\delete-permissons.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="1" failures="1" skipped="0" time="58.652" errors="0">
+<testcase name="[US07] Asignación de permisos | Asignar eliminar permisos a los empleados › TC-01 - Validar eliminar permisos a un empleado exitosamente" classname="e2e\permissons\delete-permissons.spec.ts" time="58.652">
 <failure message="delete-permissons.spec.ts:17:9 TC-01 - Validar eliminar permisos a un empleado exitosamente" type="FAILURE">
 <![CDATA[  [chromium] › e2e\permissons\delete-permissons.spec.ts:17:9 › [US07] Asignación de permisos | Asignar eliminar permisos a los empleados › TC-01 - Validar eliminar permisos a un empleado exitosamente › Y se verifica que el usuario se encuentre en la lista de empleados con permisos 
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'XristopherAdmin' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'XristopherAdmin' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\delete-permissons.spec.ts:29:13
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\delete-permissons.spec.ts:28:9
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
 
     Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
 
@@ -264,10 +435,34 @@
 </failure>
 </testcase>
 </testsuite>
-<testsuite name="e2e\permissons\edit-permissons.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="5" failures="1" skipped="4" time="35.719" errors="0">
-<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-01 - Validar editar permisos de administrador exitosamente" classname="e2e\permissons\edit-permissons.spec.ts" time="30.824">
+<testsuite name="e2e\permissons\edit-permissons.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="5" failures="5" skipped="0" time="305.361" errors="0">
+<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-01 - Validar editar permisos de administrador exitosamente" classname="e2e\permissons\edit-permissons.spec.ts" time="60.151">
 <failure message="edit-permissons.spec.ts:21:9 TC-01 - Validar editar permisos de administrador exitosamente" type="FAILURE">
 <![CDATA[  [chromium] › e2e\permissons\edit-permissons.spec.ts:21:9 › [US06] Asignación de permisos | Asignar permisos a los empleados › TC-01 - Validar editar permisos de administrador exitosamente 
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'AdminPablo' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'AdminPablo' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
 
     Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
 
@@ -293,51 +488,232 @@
 ]]>
 </failure>
 </testcase>
-<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-02 - Validar no poder editar un permiso con un campo requerido invalido" classname="e2e\permissons\edit-permissons.spec.ts" time="4.895">
-<skipped>
-</skipped>
+<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-02 - Validar no poder editar un permiso con un campo requerido invalido" classname="e2e\permissons\edit-permissons.spec.ts" time="58.212">
+<failure message="edit-permissons.spec.ts:40:9 TC-02 - Validar no poder editar un permiso con un campo requerido invalido" type="FAILURE">
+<![CDATA[  [chromium] › e2e\permissons\edit-permissons.spec.ts:40:9 › [US06] Asignación de permisos | Asignar permisos a los empleados › TC-02 - Validar no poder editar un permiso con un campo requerido invalido 
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'AdminPablo' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'AdminPablo' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'AdminPablo' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'AdminPablo' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+]]>
+</failure>
 </testcase>
-<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-03 - Validar error para longitud mínima de contraseña al editar un permiso" classname="e2e\permissons\edit-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-03 - Validar error para longitud mínima de contraseña al editar un permiso" classname="e2e\permissons\edit-permissons.spec.ts" time="57.208">
+<failure message="edit-permissons.spec.ts:57:9 TC-03 - Validar error para longitud mínima de contraseña al editar un permiso" type="FAILURE">
+<![CDATA[  [chromium] › e2e\permissons\edit-permissons.spec.ts:57:9 › [US06] Asignación de permisos | Asignar permisos a los empleados › TC-03 - Validar error para longitud mínima de contraseña al editar un permiso 
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'AdminPablo' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'AdminPablo' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'AdminPablo' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'AdminPablo' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+]]>
+</failure>
 </testcase>
-<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-04 - Validar error para contraseñas sin caracteres numéricos al editar un permiso" classname="e2e\permissons\edit-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-04 - Validar error para contraseñas sin caracteres numéricos al editar un permiso" classname="e2e\permissons\edit-permissons.spec.ts" time="67.984">
+<failure message="edit-permissons.spec.ts:78:9 TC-04 - Validar error para contraseñas sin caracteres numéricos al editar un permiso" type="FAILURE">
+<![CDATA[  [chromium] › e2e\permissons\edit-permissons.spec.ts:78:9 › [US06] Asignación de permisos | Asignar permisos a los empleados › TC-04 - Validar error para contraseñas sin caracteres numéricos al editar un permiso 
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'AdminPablo' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'AdminPablo' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'AdminPablo' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'AdminPablo' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+]]>
+</failure>
 </testcase>
-<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-05 - Validar error para contraseñas que no coinciden al editar un permiso" classname="e2e\permissons\edit-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testcase name="[US06] Asignación de permisos | Asignar permisos a los empleados › TC-05 - Validar error para contraseñas que no coinciden al editar un permiso" classname="e2e\permissons\edit-permissons.spec.ts" time="61.806">
+<failure message="edit-permissons.spec.ts:98:9 TC-05 - Validar error para contraseñas que no coinciden al editar un permiso" type="FAILURE">
+<![CDATA[  [chromium] › e2e\permissons\edit-permissons.spec.ts:98:9 › [US06] Asignación de permisos | Asignar permisos a los empleados › TC-05 - Validar error para contraseñas que no coinciden al editar un permiso 
+
+    Error: Timed out 6000ms waiting for expect(locator).toBeVisible()
+
+    Locator: getByRole('cell', { name: 'AdminPablo' }).first()
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 6000ms
+      - waiting for getByRole('cell', { name: 'AdminPablo' }).first()
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:146
+
+      144 |         await responsePromiseSearchUserRole;
+      145 |         const locator = this.employeeUserNameSelect(username);
+    > 146 |         await expect(locator).toBeVisible({ timeout: 6000 });
+          |                               ^
+      147 |     }
+      148 |
+      149 |     async deletePermissons() {
+        at AdminPage.verifyUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:146:31)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:17:5
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveURL(expected)
+
+    Locator: locator(':root')
+    Expected pattern: /admin\/viewSystemUsers/
+    Received string:  "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewAdminModule"
+    Call log:
+      - expect.toHaveURL with timeout 10000ms
+      - waiting for locator(':root')
+        13 × locator resolved to <html>…</html>
+           - unexpected value "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewAdminModule"
+
+
+       at ..\pageobjectsmodels\AdminPage.ts:65
+
+      63 |             await this.adminModuleBtn.click();
+      64 |             await this.page.waitForLoadState('domcontentloaded');
+    > 65 |             await expect(this.page).toHaveURL(/admin\/viewSystemUsers/);
+         |                                     ^
+      66 |         }
+      67 |
+      68 |     async addNewUserRole(username: string, userRole: string, employeeName: string, status: string, password: string, confirmpassword: string) {
+        at AdminPage.goToAdminPage (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:65:37)
+        at AdminPage.addNewUserRole (C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\pageobjectsmodels\AdminPage.ts:69:9)
+        at C:\Programacion\QA\Automation\Playwright-ts\Proyecto OrangeHRM\OrangeHRM-Demo\tests\e2e\permissons\edit-permissons.spec.ts:16:5
+]]>
+</failure>
 </testcase>
 </testsuite>
-<testsuite name="e2e\permissons\validate-permissons.spec.ts" timestamp="2025-04-03T21:00:50.801Z" hostname="chromium" tests="7" failures="0" skipped="7" time="0" errors="0">
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-01 - Validar no poder agregar un permiso con un requisito vacio" classname="e2e\permissons\validate-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testsuite name="e2e\permissons\validate-permissons.spec.ts" timestamp="2025-04-04T19:35:14.684Z" hostname="chromium" tests="7" failures="0" skipped="0" time="276.137" errors="0">
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-01 - Validar no poder agregar un permiso con un requisito vacio" classname="e2e\permissons\validate-permissons.spec.ts" time="23.182">
 </testcase>
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-02 - Validar que no se permite la creación de un nuevo permiso si las contraseñas no coinciden." classname="e2e\permissons\validate-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-02 - Validar que no se permite la creación de un nuevo permiso si las contraseñas no coinciden." classname="e2e\permissons\validate-permissons.spec.ts" time="20.932">
 </testcase>
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-03 - Validar que no se puede crear un nuevo permiso con un nombre de usuario ya existente" classname="e2e\permissons\validate-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-03 - Validar que no se puede crear un nuevo permiso con un nombre de usuario ya existente" classname="e2e\permissons\validate-permissons.spec.ts" time="154.583">
 </testcase>
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-04 - Validar error para longitud mínima de contraseña" classname="e2e\permissons\validate-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-04 - Validar error para longitud mínima de contraseña" classname="e2e\permissons\validate-permissons.spec.ts" time="19.561">
 </testcase>
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-05 - Validar error para caracter numerico necesario en contraseña" classname="e2e\permissons\validate-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-05 - Validar error para caracter numerico necesario en contraseña" classname="e2e\permissons\validate-permissons.spec.ts" time="20.734">
 </testcase>
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-06 - Validar error para contraseñas sin coincidir" classname="e2e\permissons\validate-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-06 - Validar error para contraseñas sin coincidir" classname="e2e\permissons\validate-permissons.spec.ts" time="19.829">
 </testcase>
-<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-07 - Validar error para 4 caracteres minimos en username" classname="e2e\permissons\validate-permissons.spec.ts" time="0">
-<skipped>
-</skipped>
+<testcase name="[US05] Asignación de permisos | Asignar permisos a los empleados › TC-07 - Validar error para 4 caracteres minimos en username" classname="e2e\permissons\validate-permissons.spec.ts" time="17.316">
 </testcase>
 </testsuite>
 </testsuites>

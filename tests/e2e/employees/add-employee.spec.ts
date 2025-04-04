@@ -29,7 +29,7 @@ test.describe('[US02] Gestión de empleados | Agregar nuevos empleados', () => {
             await responsePromiseAddEmployee;
         });
 
-        await test.step('Cuando el usuario busca al empleado por su ID', async () => {
+        await test.step('Cuando el usua rio busca al empleado por su ID', async () => {
             await employeePage.clickOnPIMModule();
             await employeePage.fillEmployeeInfoIDInput(uniqueID);
             await employeePage.searchClick();

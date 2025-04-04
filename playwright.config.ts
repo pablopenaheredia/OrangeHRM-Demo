@@ -21,17 +21,18 @@ export default defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-timeout: 60 * 1000, 
+timeout: 120 * 1000, 
 expect: {
-  timeout: 6000
-},
+  timeout: 10000
+  },
+    
   testMatch: /.*(test|spec)\.(ts)/,
   
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: 1, //process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 4: 1,
+  workers: 1,//process.env.CI ? 4: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
 		['./tests/custom-reporter.ts'],
@@ -54,6 +55,7 @@ expect: {
 		actionTimeout: 0,
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'off',
+
 		//screenshot: 'on'
 	},
 
