@@ -6,6 +6,7 @@
 
 Este es un proyecto personal de testing automatizado utilizando las tecnologicas de Playwright, Node.js y TypeScript. 
 Su objetivo es aprender y aplicar estrategias de automatización de pruebas funcionales en la interfaz gráfica (UI), siguiendo buenas prácticas como el patrón Page Object Model y generando reportes de ejecución.
+Mi portfolio (la documentación completa esta ahi) [https://www.notion.so/Soy-Pablo-Pena-Heredia-c4945a01c2d64e7abd9990c6b93a291e]
 
 ## Índice
 
